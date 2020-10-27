@@ -2,8 +2,11 @@
   "name": "task-track-app",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "14.3.X"
+  },
   "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/jest-dom": "^5.11.5",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "deep-freeze": "0.0.1",
@@ -44,7 +47,6 @@
     ]
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^9.5.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.8.0",
