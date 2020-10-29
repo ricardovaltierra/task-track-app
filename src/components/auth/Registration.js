@@ -24,10 +24,11 @@ class Registration extends Component {
       password,
       password_confirmation
     } = this.state;
-    axios.post('http://localhost:3001/registrations', {
+    axios.post('https://steptracking-api.herokuapp.com/registrations', {
+    // axios.post('http://localhost:3001/registrations', {
       user: {
         email: email,
-        password: password,
+        password: password, 
         password_confirmation: password_confirmation
       }
     },

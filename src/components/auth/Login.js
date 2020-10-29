@@ -22,7 +22,8 @@ class Login extends Component {
       email,
       password
     } = this.state;
-    axios.post('http://localhost:3001/sessions', {
+    axios.post('https://steptracking-api.herokuapp.com/sessions', {
+    // axios.post('http://localhost:3001/sessions', {
       user: {
         email: email,
         password: password,
