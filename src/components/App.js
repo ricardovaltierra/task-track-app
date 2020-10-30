@@ -19,7 +19,6 @@ class App extends Component {
 
   checkLoginStatus() {
     axios.get('https://steptracking-api.herokuapp.com/logged_in', { withCredentials: true })
-    // axios.get('http://localhost:3001/logged_in', { withCredentials: true })
     .then((response) => {
       console.log(response);
       if(response.data.logged_in && this.state.loggedInStatus === 'NOT_LOGGED_IN')
@@ -43,7 +42,6 @@ class App extends Component {
 
   handleLogout() {
     axios.delete('https://steptracking-api.herokuapp.com/logout', { withCredentials: true })
-    // axios.delete('http://localhost:3001/logout', { withCredentials: true })
     .then((response) => {
       if (response.data.logged_out)
       this.setState({
