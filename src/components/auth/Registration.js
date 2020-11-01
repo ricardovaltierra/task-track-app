@@ -24,20 +24,7 @@ class Registration extends Component {
       password,
       password_confirmation
     } = this.state;
-    axios.post('https://steptracking-api.herokuapp.com/registrations', {
-      user: {
-        email: email,
-        password: password, 
-        password_confirmation: password_confirmation
-      }
-    },
-    { withCredentials: true }
-    ).then(response => {
-      if (response.data.status === 'created')
-        this.props.handleSuccessfulAuth(response.data)
-    }).catch(error => 
-      console.log('registration error', error)
-      );
+    
   }
 
   handleChange(e) {

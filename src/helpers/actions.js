@@ -1,7 +1,9 @@
-SIGN_IN = 'SIGN_IN';
-SIGN_OUT = 'SIGN_OUT';
-SIGN_UP = 'SIGN_UP';
+const SIGN = "SIGN";
+const SIGN_SUCCESS = "SIGN_SUCCESS";
+const SIGN_FAILURE = "SIGN_FAILURE";
 
-
-
- 
+export {
+  SIGN,
+  SIGN_SUCCESS,
+  SIGN_FAILURE,
+};

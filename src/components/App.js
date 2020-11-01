@@ -41,16 +41,7 @@ class App extends Component {
   }
 
   handleLogout() {
-    axios.delete('https://steptracking-api.herokuapp.com/logout', { withCredentials: true })
-    .then((response) => {
-      if (response.data.logged_out)
-      this.setState({
-        loggedInStatus: 'NOT_LOGGED_IN',
-        user: {}
-      });
-    }).catch(error => 
-      console.log('logout error: ', error)
-      );
+    
   }
 
   handleLogin(data) {

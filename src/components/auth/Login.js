@@ -22,20 +22,7 @@ class Login extends Component {
       email,
       password
     } = this.state;
-    axios.post('https://steptracking-api.herokuapp.com/sessions', {
-      user: {
-        email: email,
-        password: password,
-      }
-    },
-    { withCredentials: true }
-    ).then(response => {
-      console.log('login response', response);
-      if (response.data.logged_in)
-        this.props.handleSuccessfulAuth(response.data)
-    }).catch(error => 
-      console.log('login error', error)
-      );
+    
   }
 
   handleChange(e) {
