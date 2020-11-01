@@ -7,7 +7,9 @@ import {
 export const initialState = {
   loading: false,
   errors: "",
-  user: {}
+  user: {},
+  loggedInStatus: 'NOT_LOGGED_IN',
+  currentUser: {}
 };
 
 const user = (state = initialState, action) => {

@@ -10,7 +10,6 @@ class Registration extends Component {
       email: "",
       password: "",
       password_confirmation: "",
-      registrationErrors: "",
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);

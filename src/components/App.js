@@ -14,8 +14,6 @@ class App extends Component {
       loggedInStatus: 'NOT_LOGGED_IN',
       user: {}
     }
-
-    this.handleLogin = this.handleLogin.bind(this);
   }
 
   checkLoginStatus() {
@@ -41,13 +39,6 @@ class App extends Component {
     this.checkLoginStatus()
   }
 
-  handleLogin(data) {
-    this.setState({
-      loggedInStatus: 'LOGGED_IN',
-      user: data.user
-    });
-  }
-
   render() {
     return (
       <div className="app">
@@ -59,7 +50,6 @@ class App extends Component {
             render={props => (
               <Home 
               {...props}  
-              handleLogin={this.handleLogin} 
               handleLogout={this.props.handleLogout}
               loggedInStatus={this.state.loggedInStatus}
               user={this.state.user} />
@@ -82,8 +72,13 @@ class App extends Component {
   }
 }
 
+const mapStateToProps = (state) => ({
+  loggedInStatus: state.loggedInStatus,
+  currentUser: state.currentUser
+});
+
 const mapDispatchToProps = dispatch => ({
   handleLogout: () => dispatch(fetchUser('sign_out'))
 });
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

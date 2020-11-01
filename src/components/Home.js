@@ -9,8 +9,7 @@ class Home extends Component {
     this.handleSuccessfulAuth = this.handleSuccessfulAuth.bind(this);
   }
 
-  handleSuccessfulAuth(data) {
-    this.props.handleLogin(data);
+  handleSuccessfulAuth() {
     this.props.history.push('/dashboard');
   }
 
@@ -19,9 +18,7 @@ class Home extends Component {
 
     return (
       <div>
-        <h1>Home</h1>  
-        <h1>Status: {this.props.loggedInStatus}</h1>
-        <h1>Current user: {this.props.user.email}</h1>
+        <h1>Home</h1>
         <button onClick={() => handleLogout()}>Logout</button>
         <Registration handleSuccessfulAuth={this.handleSuccessfulAuth} />
         <Login handleSuccessfulAuth={this.handleSuccessfulAuth} />
