@@ -1,0 +1,56 @@
+
+
+  .home {
+    position: relative;
+    display: grid;
+    grid-template-rows: repeat(3, auto);
+    width: 100%;
+    background-color: darkgoldenrod;
+
+    .title {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      background-color: ghostwhite;
+      border: 2px solid saddlebrown;
+
+      h1 {
+        position: relative;
+        align-self: center;
+        background-color: gold;  
+      }
+    }
+
+    .registration {
+      position: relative;
+      display: grid;
+      width: 100%;
+      border: 2px solid silver;
+
+      .reg-form {
+        position: relative;
+        display: grid;
+        background-color: teal;
+
+        input {
+          text-align: center;
+        }
+      }
+    }
+
+    .login {
+      position: relative;
+      display: grid;
+      width: 100%;
+
+      .log-form {
+        position: relative;
+        display: grid;
+        
+
+        input {
+          text-align: center;
+        }
+      }
+    }
+  }

@@ -14,12 +14,9 @@ class Home extends Component {
   }
 
   render() {
-    const { handleLogout } = this.props; 
-
     return (
-      <div>
-        <h1>Home</h1>
-        <button onClick={() => handleLogout()}>Logout</button>
+      <div className='home'>
+        <div className='title'><h1>Tasktracker</h1></div>
         <Registration handleSuccessfulAuth={this.handleSuccessfulAuth} />
         <Login handleSuccessfulAuth={this.handleSuccessfulAuth} />
       </div>

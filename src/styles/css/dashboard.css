@@ -1,0 +1,17 @@
+.dashboard {
+  position: relative;
+  display: grid;
+  grid-template-rows: repeat(2, auto);
+  background-color: seagreen; }
+  .dashboard .title {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    background-color: ghostwhite;
+    border: 2px solid saddlebrown; }
+    .dashboard .title h1 {
+      position: relative;
+      align-self: center;
+      background-color: gold; }
+
+/*# sourceMappingURL=dashboard.css.map */
