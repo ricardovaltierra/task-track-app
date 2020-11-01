@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { fetchUser } from '../actions/index';
 import axios from "axios";
 import Home from './Home';
 import Dashboard from './Dashboard';
@@ -14,7 +16,6 @@ class App extends Component {
     }
 
     this.handleLogin = this.handleLogin.bind(this);
-    this.handleLogout = this.handleLogout.bind(this);
   }
 
   checkLoginStatus() {
@@ -40,10 +41,6 @@ class App extends Component {
     this.checkLoginStatus()
   }
 
-  handleLogout() {
-    
-  }
-
   handleLogin(data) {
     this.setState({
       loggedInStatus: 'LOGGED_IN',
@@ -63,7 +60,7 @@ class App extends Component {
               <Home 
               {...props}  
               handleLogin={this.handleLogin} 
-              handleLogout={this.handleLogout}
+              handleLogout={this.props.handleLogout}
               loggedInStatus={this.state.loggedInStatus}
               user={this.state.user} />
             )} 
@@ -85,4 +82,8 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapDispatchToProps = dispatch => ({
+  handleLogout: () => dispatch(fetchUser('sign_out'))
+});
+
+export default connect(null, mapDispatchToProps)(App);

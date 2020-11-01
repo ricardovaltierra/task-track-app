@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import axios from "axios";
+import { connect } from 'react-redux';
+import { fetchUser } from '../../actions/index';
 
 class Login extends Component {
   constructor(props) {
@@ -22,7 +23,7 @@ class Login extends Component {
       email,
       password
     } = this.state;
-    
+    this.props.handleSignIn({ email, password });
   }
 
   handleChange(e) {
@@ -60,4 +61,8 @@ class Login extends Component {
   }
 }
 
-export default Login;
+const mapDispatchToProps = dispatch => ({
+  handleSignIn: user => dispatch(fetchUser('sign_in', user))
+});
+
+export default connect(null, mapDispatchToProps)(Login);

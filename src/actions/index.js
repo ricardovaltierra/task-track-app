@@ -27,8 +27,8 @@ function fetchUser(action = 'sign_in', user = {}) {
       case 'sign_in':
         return axios.post('https://steptracking-api.herokuapp.com/sessions', {
           user: {
-            email: email,
-            password: password,
+            email: user.email,
+            password: user.password,
           }
         },
         { withCredentials: true })
@@ -38,15 +38,22 @@ function fetchUser(action = 'sign_in', user = {}) {
             dispatch(signUserSuccess(response.data))
           else dispatch(signUserFailure(response))
         })
-        .catch(error => dispatch (signUserFailure(error)));
+        .catch(error => {
+          console.log('login error', error);
+          dispatch (signUserFailure(error))
+        });
       case 'sign_out':
         return axios.delete('https://steptracking-api.herokuapp.com/logout', { withCredentials: true })
           .then((response) => {
+            console.log('login response', response);
             if (response.data.logged_out)
               dispatch(signUserSuccess(response.data))
             else dispatch(signUserFailure(response))
           })
-          .catch(error => dispatch (signUserFailure(error)));
+          .catch(error => {
+            console.log('login error', error);
+            dispatch (signUserFailure(error))
+          });
       case 'sign_up':
         return axios.post('https://steptracking-api.herokuapp.com/registrations', {
           user: {
@@ -56,12 +63,17 @@ function fetchUser(action = 'sign_in', user = {}) {
           }
         }, { withCredentials: true })
           .then(response => {
+            console.log('login response', response);
             if (response.data.status === 'created')
               dispatch(signUserSuccess(response.data))
             else dispatch(signUserFailure(response))
           })
-          .catch(error => dispatch (signUserFailure(error)));
+          .catch(error => {
+            console.log('login error', error);
+            dispatch (signUserFailure(error))
+          });
       default:
+        console.log('Request error');
         return dispatch (signUserFailure('Request error'));
     }
   }

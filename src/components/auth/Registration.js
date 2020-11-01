@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import axios from "axios";
+import { connect } from 'react-redux';
+import { fetchUser } from '../../actions/index';
 
 class Registration extends Component {
   constructor(props) {
@@ -24,7 +25,7 @@ class Registration extends Component {
       password,
       password_confirmation
     } = this.state;
-    
+    this.props.handleSignUp({ email, password, password_confirmation});
   }
 
   handleChange(e) {
@@ -72,4 +73,8 @@ class Registration extends Component {
   }
 }
 
-export default Registration;
+const mapDispatchToProps = dispatch => ({
+  handleSignUp: user => dispatch(fetchUser('sign_up',user))
+});
+
+export default connect(null, mapDispatchToProps)(Registration);
