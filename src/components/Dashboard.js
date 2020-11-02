@@ -13,7 +13,7 @@ class Dashboard extends React.Component {
     this.onLogout = this.onLogout.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.handleSignStatus().then(
       () => {
         if(this.props.accountState.logged_in === false) 
@@ -25,7 +25,6 @@ class Dashboard extends React.Component {
   }
 
   onLogout() {
-    console.log('props.history from Dashboard onLogout', this.props.history)
     this.props.handleLogout(this.props.history)
   }
 
@@ -50,7 +49,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   handleSignStatus: () => dispatch(fetchUser('sign_status')),
-  handleLogout: dashboardProps => dispatch(fetchUser('sign_out',{}, dashboardProps))
+  handleLogout: history => dispatch(fetchUser('sign_out',{}, history))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

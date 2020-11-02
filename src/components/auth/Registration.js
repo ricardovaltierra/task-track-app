@@ -26,7 +26,7 @@ class Registration extends Component {
     } = this.state;
     this.props.handleSignUp(
       { email, password, password_confirmation },
-      this.props.homeProps);
+      this.props.homeProps.history);
   }
 
   handleChange(e) {
@@ -75,7 +75,7 @@ class Registration extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  handleSignUp: (user, homeProps) => dispatch(fetchUser('sign_up', user, homeProps))
+  handleSignUp: (user, history) => dispatch(fetchUser('sign_up', user, history))
 });
 
 export default connect(null, mapDispatchToProps)(Registration);

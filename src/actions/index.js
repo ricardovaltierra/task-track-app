@@ -24,7 +24,7 @@ const getStatus = (status) => ({
   user: status.user
 });
 
-function fetchUser(action = 'sign_in', user = {}, redirectProps) {
+function fetchUser(action = 'sign_in', user = {}, routerHistory) {
   
   return dispatch => {
     
@@ -40,15 +40,13 @@ function fetchUser(action = 'sign_in', user = {}, redirectProps) {
         },
         { withCredentials: true })
         .then(response => {
-          console.log('login response', response);
           if (response.data.logged_in){
             dispatch(signUserSuccess(response.data))
-            redirectProps.history.push('/dashboard')
+            routerHistory.push('/dashboard')
           }
           else dispatch(signUserFailure(response))
         })
         .catch(error => {
-          console.log('login error', error);
           dispatch (signUserFailure(error))
         });
       case 'sign_out':
@@ -56,12 +54,11 @@ function fetchUser(action = 'sign_in', user = {}, redirectProps) {
           .then((response) => {
             if (response.data.logged_out){
               dispatch(signUserSuccess(response.data))
-              redirectProps.push('/')
+              routerHistory.push('/')
             }
             else dispatch(signUserFailure(response))
           })
           .catch(error => {
-            console.log('logout error', error);
             dispatch (signUserFailure(error))
           });
       case 'sign_up':
@@ -75,24 +72,20 @@ function fetchUser(action = 'sign_in', user = {}, redirectProps) {
           .then(response => {
             if (response.data.status === 'created'){
               dispatch(signUserSuccess(response.data))
-              console.log('after redirect')
-              redirectProps.history.push('/dashboard')
+              routerHistory.history.push('/dashboard')
             }
             else dispatch(signUserFailure(response))
           })
           .catch(error => {
-            console.log('sign up error', error);
             dispatch (signUserFailure(error))
           });
       case 'sign_status':
         return axios.get('https://steptracking-api.herokuapp.com/logged_in', { withCredentials: true })
           .then((response) => {
             dispatch(getStatus(response.data))
-            console.log('response.data from sign_status', response.data)
           })
           .catch((error) => console.log('login? error: ', error));
       default:
-        console.log('Request error');
         return dispatch (signUserFailure('Request error'));
     }
   }
