@@ -2,32 +2,55 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { fetchUser } from '../actions/index';
 
-const Dashboard = props => {
-  const { 
-    handleLogout,
-    user
-  } = props; 
+class Dashboard extends React.Component {
+  constructor(props) {
+    super(props);
 
-  console.log('Dashboard props>user', user);
+    this.state = {
+      user: ''
+    }
 
-  return (
-    <div className='dashboard'>
-      <div className='title'>
-        <h1>Dashboard</h1>
-        <h2>user: { user.email }</h2>
+    this.onLogout = this.onLogout.bind(this);
+  }
+
+  componentWillMount() {
+    this.props.handleSignStatus().then(
+      () => {
+        if(this.props.accountState.logged_in === false) 
+          this.props.history.push('/');
+        else this.setState({ 
+          user: this.props.accountState.user.email
+        })
+      })
+  }
+
+  onLogout() {
+    console.log('props.history from Dashboard onLogout', this.props.history)
+    this.props.handleLogout(this.props.history)
+  }
+
+  render() {
+    return (
+      <div className='dashboard'>
+        <div className='title'>
+          <h1>Dashboard</h1>
+          <h2>{ this.state.user }</h2>
+        </div>
+
+        <button onClick={this.onLogout}>Logout</button>
+
       </div>
-
-      <button onClick={() => handleLogout()}>Logout</button>
-    </div>
-  );
+    )
+  }
 };
 
 const mapStateToProps = state => ({
-  user: state.account.user
+  accountState: state.account
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleLogout: () => dispatch(fetchUser('sign_out'))
+  handleSignStatus: () => dispatch(fetchUser('sign_status')),
+  handleLogout: dashboardProps => dispatch(fetchUser('sign_out',{}, dashboardProps))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

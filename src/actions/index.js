@@ -54,9 +54,9 @@ function fetchUser(action = 'sign_in', user = {}, redirectProps) {
       case 'sign_out':
         return axios.delete('https://steptracking-api.herokuapp.com/logout', { withCredentials: true })
           .then((response) => {
-            console.log('logout response', response);
             if (response.data.logged_out){
               dispatch(signUserSuccess(response.data))
+              redirectProps.push('/')
             }
             else dispatch(signUserFailure(response))
           })
@@ -73,7 +73,6 @@ function fetchUser(action = 'sign_in', user = {}, redirectProps) {
           }
         }, { withCredentials: true })
           .then(response => {
-            // console.log('sign up response', response);
             if (response.data.status === 'created'){
               dispatch(signUserSuccess(response.data))
               console.log('after redirect')
@@ -89,6 +88,7 @@ function fetchUser(action = 'sign_in', user = {}, redirectProps) {
         return axios.get('https://steptracking-api.herokuapp.com/logged_in', { withCredentials: true })
           .then((response) => {
             dispatch(getStatus(response.data))
+            console.log('response.data from sign_status', response.data)
           })
           .catch((error) => console.log('login? error: ', error));
       default:

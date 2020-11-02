@@ -3,11 +3,14 @@
   display: grid;
   grid-template-rows: repeat(2, auto);
   background-color: seagreen;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 300;
 
   .title {
     position: relative;
-    display: flex;
+    display: grid;
     justify-content: center;
+    text-align: center;
     background-color: ghostwhite;
     border: 2px solid saddlebrown;
 
@@ -15,6 +18,13 @@
       position: relative;
       align-self: center;
       background-color: gold;  
+    }
+
+    h2 {
+      position: relative;
+      align-self: center;
+      color: wheat;
+      background-color: darkcyan;  
     }
   }
 }

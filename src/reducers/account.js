@@ -23,18 +23,21 @@ const account = (state = initialState, action) => {
       return {
         ...state,
         user: action.payload.user,
-        logged_in: action.payload.logged_in
+        logged_in: action.payload.logged_in,
+        loading: false
       }
     case SIGN_FAILURE:
       return {
         ...state,
         errors: action.errors,
+        loading: false
       }
     case GET_STATUS:
       return {
         ...state,
         user: action.user,
         logged_in: action.logged_in,
+        loading: false
       };
     default:
       return state;
