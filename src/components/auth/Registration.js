@@ -24,7 +24,7 @@ class Registration extends Component {
       password,
       password_confirmation
     } = this.state;
-    this.props.handleSignUp({ email, password, password_confirmation});
+    this.props.handleSignUp({ email, password, password_confirmation });
   }
 
   handleChange(e) {

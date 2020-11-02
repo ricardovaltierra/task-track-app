@@ -1,22 +1,14 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import axios from "axios";
+import { connect } from 'react-redux';
+import { fetchUser } from '../actions/index';
 import Home from './Home';
 import Dashboard from './Dashboard';
 
 class App extends Component {
 
-  checkLoginStatus() {
-    axios.get('https://steptracking-api.herokuapp.com/logged_in', { withCredentials: true })
-    .then((response) => {
-      console.log(response);
-      // if(response.data.logged_in && this.state.loggedInStatus === 'NOT_LOGGED_IN') {}
-      // else if(!response.data.logged_in && this.state.loggedInStatus === 'LOGGED_IN'){}
-    }).catch((error) => console.log('login? error: ', error));
-  }
-
   componentDidMount() {
-    this.checkLoginStatus()
+    this.props.handleSignStatus();
   }
 
   render() {
@@ -31,7 +23,6 @@ class App extends Component {
               <Home 
               {...props}  
               handleLogout={this.props.handleLogout}
-              // loggedInStatus={this.state.loggedInStatus}
               />
             )} 
             />
@@ -40,8 +31,7 @@ class App extends Component {
             path="/dashboard" 
             render={props => (
               <Dashboard 
-                {...props} 
-                // loggedInStatus={this.state.loggedInStatus}
+                {...props}
                 /> 
             )} 
             />
@@ -52,4 +42,8 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapDispatchToProps = dispatch => ({
+  handleSignStatus: () => dispatch(fetchUser('sign_status'))
+})
+
+export default connect(null, mapDispatchToProps)(App);

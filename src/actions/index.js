@@ -1,7 +1,8 @@
 import {
   SIGN,
   SIGN_SUCCESS,
-  SIGN_FAILURE
+  SIGN_FAILURE,
+  GET_STATUS
 } from '../helpers/actions';
 import axios from "axios";
 
@@ -15,6 +16,12 @@ const signUserSuccess = user => ({
 const signUserFailure = errors => ({
   type: SIGN_FAILURE,
   errors: errors
+});
+
+const getStatus = (status) => ({
+  type: GET_STATUS,
+  logged_in: status.logged_in,
+  user: status.user
 });
 
 function fetchUser(action = 'sign_in', user = {}) {
@@ -34,8 +41,9 @@ function fetchUser(action = 'sign_in', user = {}) {
         { withCredentials: true })
         .then(response => {
           console.log('login response', response);
-          if (response.data.logged_in)
+          if (response.data.logged_in){
             dispatch(signUserSuccess(response.data))
+          }
           else dispatch(signUserFailure(response))
         })
         .catch(error => {
@@ -45,13 +53,13 @@ function fetchUser(action = 'sign_in', user = {}) {
       case 'sign_out':
         return axios.delete('https://steptracking-api.herokuapp.com/logout', { withCredentials: true })
           .then((response) => {
-            console.log('login response', response);
+            console.log('logout response', response);
             if (response.data.logged_out)
               dispatch(signUserSuccess(response.data))
             else dispatch(signUserFailure(response))
           })
           .catch(error => {
-            console.log('login error', error);
+            console.log('logout error', error);
             dispatch (signUserFailure(error))
           });
       case 'sign_up':
@@ -63,15 +71,21 @@ function fetchUser(action = 'sign_in', user = {}) {
           }
         }, { withCredentials: true })
           .then(response => {
-            console.log('login response', response);
+            console.log('sign up response', response);
             if (response.data.status === 'created')
               dispatch(signUserSuccess(response.data))
             else dispatch(signUserFailure(response))
           })
           .catch(error => {
-            console.log('login error', error);
+            console.log('sign up error', error);
             dispatch (signUserFailure(error))
           });
+      case 'sign_status':
+        return axios.get('https://steptracking-api.herokuapp.com/logged_in', { withCredentials: true })
+          .then((response) => {
+            dispatch(getStatus(response.data))
+          })
+          .catch((error) => console.log('login? error: ', error));
       default:
         console.log('Request error');
         return dispatch (signUserFailure('Request error'));

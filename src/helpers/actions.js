@@ -1,9 +1,11 @@
 const SIGN = "SIGN";
 const SIGN_SUCCESS = "SIGN_SUCCESS";
 const SIGN_FAILURE = "SIGN_FAILURE";
+const GET_STATUS = "GET_STATUS";
 
 export {
   SIGN,
   SIGN_SUCCESS,
   SIGN_FAILURE,
+  GET_STATUS
 };
