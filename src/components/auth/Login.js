@@ -23,7 +23,8 @@ class Login extends Component {
       email,
       password
     } = this.state;
-    this.props.handleSignIn({ email, password });
+
+    this.props.handleSignIn({ email, password }, this.props.homeProps);
   }
 
   handleChange(e) {
@@ -62,7 +63,7 @@ class Login extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  handleSignIn: user => dispatch(fetchUser('sign_in', user))
+  handleSignIn: (user, homeProps) => dispatch(fetchUser('sign_in', user, homeProps)),
 });
 
 export default connect(null, mapDispatchToProps)(Login);

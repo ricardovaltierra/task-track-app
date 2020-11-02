@@ -2,7 +2,7 @@ import {
   SIGN,
   SIGN_SUCCESS,
   SIGN_FAILURE,
-  GET_STATUS
+  GET_STATUS,
 } from '../helpers/actions';
 import axios from "axios";
 
@@ -24,7 +24,7 @@ const getStatus = (status) => ({
   user: status.user
 });
 
-function fetchUser(action = 'sign_in', user = {}) {
+function fetchUser(action = 'sign_in', user = {}, redirectProps) {
   
   return dispatch => {
     
@@ -43,6 +43,7 @@ function fetchUser(action = 'sign_in', user = {}) {
           console.log('login response', response);
           if (response.data.logged_in){
             dispatch(signUserSuccess(response.data))
+            redirectProps.history.push('/dashboard')
           }
           else dispatch(signUserFailure(response))
         })
@@ -54,8 +55,9 @@ function fetchUser(action = 'sign_in', user = {}) {
         return axios.delete('https://steptracking-api.herokuapp.com/logout', { withCredentials: true })
           .then((response) => {
             console.log('logout response', response);
-            if (response.data.logged_out)
+            if (response.data.logged_out){
               dispatch(signUserSuccess(response.data))
+            }
             else dispatch(signUserFailure(response))
           })
           .catch(error => {
@@ -71,9 +73,12 @@ function fetchUser(action = 'sign_in', user = {}) {
           }
         }, { withCredentials: true })
           .then(response => {
-            console.log('sign up response', response);
-            if (response.data.status === 'created')
+            // console.log('sign up response', response);
+            if (response.data.status === 'created'){
               dispatch(signUserSuccess(response.data))
+              console.log('after redirect')
+              redirectProps.history.push('/dashboard')
+            }
             else dispatch(signUserFailure(response))
           })
           .catch(error => {

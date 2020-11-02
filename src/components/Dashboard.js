@@ -8,13 +8,13 @@ const Dashboard = props => {
     user
   } = props; 
 
-  console.log('props', props)
+  console.log('Dashboard props>user', user);
 
   return (
     <div className='dashboard'>
       <div className='title'>
         <h1>Dashboard</h1>
-        <h2>user: {user.email || 'NOT_LOGGED_IN'}</h2>
+        <h2>user: { user.email }</h2>
       </div>
 
       <button onClick={() => handleLogout()}>Logout</button>

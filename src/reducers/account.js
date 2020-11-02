@@ -22,8 +22,8 @@ const account = (state = initialState, action) => {
     case SIGN_SUCCESS:
       return {
         ...state,
-        user: action.payload,
-        logged_in: action.logged_in
+        user: action.payload.user,
+        logged_in: action.payload.logged_in
       }
     case SIGN_FAILURE:
       return {
@@ -31,13 +31,10 @@ const account = (state = initialState, action) => {
         errors: action.errors,
       }
     case GET_STATUS:
-      console.log('logged in', action.logged_in);
-      console.log('user', action.user);
       return {
         ...state,
-        loading: false,
-        logged_in: action.logged_in,
         user: action.user,
+        logged_in: action.logged_in,
       };
     default:
       return state;
