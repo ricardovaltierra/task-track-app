@@ -67,7 +67,7 @@ class Registration extends Component {
             required
           />
 
-          <button type="submit" className="button" className='reg-button'>Register</button>
+          <button type="submit">Register</button>
         </form>
       </div>
     );

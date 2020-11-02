@@ -72,7 +72,7 @@ function fetchUser(action = 'sign_in', user = {}, routerHistory) {
           .then(response => {
             if (response.data.status === 'created'){
               dispatch(signUserSuccess(response.data))
-              routerHistory.history.push('/dashboard')
+              routerHistory.push('/dashboard')
             }
             else dispatch(signUserFailure(response))
           })
