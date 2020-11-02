@@ -1,30 +1,47 @@
+@import './tasklist.scss';
+
 .dashboard {
   position: relative;
   display: grid;
-  grid-template-rows: repeat(2, auto);
-  background-color: seagreen;
+  grid-template-rows: 10% auto;
+  background-color: rgb(0, 75, 94);
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 300;
 
-  .title {
+  .top-dashboard {
     position: relative;
     display: grid;
-    justify-content: center;
-    text-align: center;
-    background-color: ghostwhite;
-    border: 2px solid saddlebrown;
+    grid-template-rows: 70% auto;
 
-    h1 {
+    .title {
       position: relative;
-      align-self: center;
-      background-color: gold;  
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      background-color: ghostwhite;
+      border: 2px solid saddlebrown;
+  
+      h1 {
+        position: relative;
+        align-self: center;
+        background-color: gold;
+        font-size: 1rem;
+        margin-right: 1rem;
+      }
+  
+      h2 {
+        position: relative;
+        align-self: center;
+        font-size: 1rem;
+        margin-left: 1rem;
+        color: wheat;
+        background-color: darkcyan;
+      }
     }
 
-    h2 {
+    button {
       position: relative;
-      align-self: center;
-      color: wheat;
-      background-color: darkcyan;  
+      width: 100%;
     }
   }
 }

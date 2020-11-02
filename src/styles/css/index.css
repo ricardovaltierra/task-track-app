@@ -44,29 +44,82 @@
         height: 100%;
         align-self: center; }
 
+.task-list {
+  position: relative;
+  display: grid;
+  grid-template-rows: 4% auto;
+  width: 100%;
+  background-color: tomato; }
+  .task-list h1 {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-size: 1.2rem;
+    background-color: darkgrey;
+    margin: 0; }
+  .task-list .task-items {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-auto-flow: row;
+    background-color: slateblue; }
+    .task-list .task-items .task-item {
+      position: relative;
+      display: grid;
+      align-content: center;
+      grid-template-columns: 80% auto;
+      width: 100%;
+      text-decoration: none;
+      color: aliceblue; }
+      .task-list .task-items .task-item p {
+        position: relative;
+        display: block;
+        margin: 0;
+        background-color: forestgreen; }
+      .task-list .task-items .task-item span {
+        position: relative;
+        display: block;
+        width: 100%;
+        background-color: black;
+        text-align: right; }
+
 .dashboard {
   position: relative;
   display: grid;
-  grid-template-rows: repeat(2, auto);
-  background-color: seagreen;
+  grid-template-rows: 10% auto;
+  background-color: #004b5e;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 300; }
-  .dashboard .title {
+  .dashboard .top-dashboard {
     position: relative;
     display: grid;
-    justify-content: center;
-    text-align: center;
-    background-color: ghostwhite;
-    border: 2px solid saddlebrown; }
-    .dashboard .title h1 {
+    grid-template-rows: 70% auto; }
+    .dashboard .top-dashboard .title {
       position: relative;
-      align-self: center;
-      background-color: gold; }
-    .dashboard .title h2 {
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      background-color: ghostwhite;
+      border: 2px solid saddlebrown; }
+      .dashboard .top-dashboard .title h1 {
+        position: relative;
+        align-self: center;
+        background-color: gold;
+        font-size: 1rem;
+        margin-right: 1rem; }
+      .dashboard .top-dashboard .title h2 {
+        position: relative;
+        align-self: center;
+        font-size: 1rem;
+        margin-left: 1rem;
+        color: wheat;
+        background-color: darkcyan; }
+    .dashboard .top-dashboard button {
       position: relative;
-      align-self: center;
-      color: wheat;
-      background-color: darkcyan; }
+      width: 100%; }
 
 .app {
   position: relative;

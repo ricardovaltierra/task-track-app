@@ -7,7 +7,7 @@ import {
 const initialState = {
   loading: false,
   errors: '',
-  tasks: []
+  items: []
 };
 
 const tasks = (state = initialState, action) => {
@@ -19,7 +19,7 @@ const tasks = (state = initialState, action) => {
       };
     case GET_TASKS_SUCCESS:
       return {
-        tasks: action.payload,
+        items: action.payload,
         loading: false,
         errors: ''
       };

@@ -40,39 +40,4 @@
         background-color: black;
         text-align: right; }
 
-.dashboard {
-  position: relative;
-  display: grid;
-  grid-template-rows: 10% auto;
-  background-color: #004b5e;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: 300; }
-  .dashboard .top-dashboard {
-    position: relative;
-    display: grid;
-    grid-template-rows: 70% auto; }
-    .dashboard .top-dashboard .title {
-      position: relative;
-      display: flex;
-      justify-content: center;
-      text-align: center;
-      background-color: ghostwhite;
-      border: 2px solid saddlebrown; }
-      .dashboard .top-dashboard .title h1 {
-        position: relative;
-        align-self: center;
-        background-color: gold;
-        font-size: 1rem;
-        margin-right: 1rem; }
-      .dashboard .top-dashboard .title h2 {
-        position: relative;
-        align-self: center;
-        font-size: 1rem;
-        margin-left: 1rem;
-        color: wheat;
-        background-color: darkcyan; }
-    .dashboard .top-dashboard button {
-      position: relative;
-      width: 100%; }
-
-/*# sourceMappingURL=dashboard.css.map */
+/*# sourceMappingURL=tasklist.css.map */

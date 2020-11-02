@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchUser } from '../actions/account';
+import TaskList from '../containers/TaskList';
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -31,13 +32,14 @@ class Dashboard extends React.Component {
   render() {
     return (
       <div className='dashboard'>
-        <div className='title'>
-          <h1>Dashboard</h1>
-          <h2>{ this.state.user }</h2>
+        <div className='top-dashboard'>
+          <div className='title'>
+            <h1>Dashboard</h1>
+            <h2>{ this.state.user }</h2>
+          </div>
+          <button onClick={this.onLogout}>Logout</button>
         </div>
-
-        <button onClick={this.onLogout}>Logout</button>
-
+        <TaskList />
       </div>
     )
   }

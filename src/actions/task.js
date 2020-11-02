@@ -17,12 +17,12 @@ const getTasksFailure = errors => ({
   errors: errors
 })
 
-function fetchTasks(userId) {
+function fetchTasks() {
   return dispatch => {
     dispatch(getTasks());
     return axios.get('https://steptracking-api.herokuapp.com/tasks', { withCredentials: true })
           .then((response) => {
-            dispatch(getTasksSuccess(response.data))
+            dispatch(getTasksSuccess(response.data.tasks))
           })
           .catch(errors => dispatch(getTasksFailure(errors)));
     
