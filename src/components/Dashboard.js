@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchUser } from '../actions/index';
+import { fetchUser } from '../actions/account';
 
 class Dashboard extends React.Component {
   constructor(props) {

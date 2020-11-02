@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Registration from './auth/Registration';
 import Login from './auth/Login';
 import { connect } from 'react-redux';
-import { fetchUser } from '../actions/index';
+import { fetchUser } from '../actions/account';
 
 class Home extends Component {
 
