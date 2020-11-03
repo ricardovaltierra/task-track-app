@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Home from './Home';
-import Dashboard from './Dashboard';
+import Home from '../containers/Home';
+import Dashboard from '../containers/Dashboard';
 
 class App extends Component {
 
@@ -22,7 +22,5 @@ class App extends Component {
     );
   }
 }
-
-
 
 export default App;

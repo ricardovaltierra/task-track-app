@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchUser } from '../actions/account';
-import TaskList from '../containers/TaskList';
+import TaskList from './TaskList';
 
 class Dashboard extends React.Component {
   constructor(props) {
