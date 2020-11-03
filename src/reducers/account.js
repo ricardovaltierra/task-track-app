@@ -33,6 +33,7 @@ const account = (state = initialState, action) => {
         loading: false
       }
     case GET_STATUS:
+      console.log('GET_STATUS account reducer', action.user)
       return {
         ...state,
         user: action.user,
