@@ -12,6 +12,7 @@ const Task = ({ task }) => (
   >
     <p>{task.name}</p>
     <span>{`${task.completion}%`}</span>
+    {console.log('task', task)}
   </Link>
 );
 

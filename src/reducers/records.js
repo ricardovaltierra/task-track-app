@@ -1,7 +1,7 @@
 import {
-  GET_TASKS,
-  GET_TASKS_SUCCESS,
-  GET_TASKS_FAILURE
+  GET_TASK_RECORDS,
+  GET_TASK_RECORDS_SUCCESS,
+  GET_TASK_RECORDS_FAILURE
 } from '../helpers/actions';
 
 const initialState = {
@@ -10,21 +10,20 @@ const initialState = {
   items: []
 };
 
-const tasks = (state = initialState, action) => {
+const records = (state = initialState, action) => {
   switch (action.type) {
-    case GET_TASKS:
+    case GET_TASK_RECORDS:
       return {
         ...state,
         loading: true
       };
-    case GET_TASKS_SUCCESS:
-      console.log('Tasks from reducer', action.payload)
+    case GET_TASK_RECORDS_SUCCESS:
       return {
         items: action.payload,
         loading: false,
         errors: ''
       };
-    case GET_TASKS_FAILURE:
+    case GET_TASK_RECORDS_FAILURE:
       return {
         ...state,
         loading: false,
@@ -35,4 +34,4 @@ const tasks = (state = initialState, action) => {
   }
 };
 
-export default tasks;
+export default records;
