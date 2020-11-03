@@ -5,7 +5,7 @@ const Record = ({ record }) => (
   <Link
     key={record.created_at}
     to={{
-      pathname: `/tasks/${record.task_id}/${record.id}`,
+      pathname: `/dashboard/tasks/${record.task_id}/${record.id}`,
       id: record.id
     }}
     className='record-item'

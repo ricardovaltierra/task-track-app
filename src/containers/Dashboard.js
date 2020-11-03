@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchUser } from '../actions/account';
-import TaskList from './TaskList';
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -15,6 +14,7 @@ class Dashboard extends React.Component {
   }
 
   componentDidMount() {
+    console.log('Dashboard props', this.props);
     this.props.handleSignStatus().then(
       () => {
         if(this.props.accountState.logged_in === false) 
@@ -39,7 +39,6 @@ class Dashboard extends React.Component {
           </div>
           <button onClick={this.onLogout}>Logout</button>
         </div>
-        <TaskList />
       </div>
     )
   }

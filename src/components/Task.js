@@ -5,7 +5,7 @@ const Task = ({ task }) => (
   <Link 
     key={task.created_at}
     to={{
-      pathname: `/tasks/${task.id}`,
+      pathname: `/dashboard/tasks/${task.id}`,
       id: task.id
     }}
     className='task-item'
