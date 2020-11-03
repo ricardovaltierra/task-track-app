@@ -3,16 +3,18 @@
 
 .dashboard {
   position: relative;
-  display: grid;
-  grid-template-rows: 10% auto;
-  background-color: rgb(0, 75, 94);
+  display: flex;
+  background-color: #f3f4f6;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 300;
 
   .top-dashboard {
-    position: relative;
+    position: absolute;
     display: grid;
     grid-template-rows: 70% auto;
+    width: 100%;
+    height: 12vh;
+    top: 0;
 
     .title {
       position: relative;
@@ -43,6 +45,36 @@
     button {
       position: relative;
       width: 100%;
+    }
+  }
+
+  .bottom-dashboard {
+    position: absolute;
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    width: 100%;
+    height: 12vh;
+    bottom: 0;
+
+    .menu-item {
+      position: relative;
+      display: flex;
+      width: 100%;
+      height: 100%;
+      justify-content: center;
+      align-items: flex-end;
+      text-decoration: none;
+      color: wheat;
+      background-color: #374044;
+
+      border-top: 1px solid #101721;
+      font-size: 0.7rem;
+      
+      div {
+        position: relative;
+        border: none;
+        margin-bottom: 1rem;
+      }
     }
   }
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchUser } from '../actions/account';
 import Record from '../components/Record';
@@ -43,6 +43,20 @@ class Dashboard extends React.Component {
             <h2>{ this.state.user }</h2>
           </div>
           <button onClick={this.onLogout}>Logout</button>
+        </div>
+        <div className='bottom-dashboard'>
+        <Link to='/dashboard/tasks' className='menu-item'>
+          <div>Tasks</div>
+        </Link>
+        <Link to='/dashboard/tasks' className='menu-item'>
+          <div>Records</div>
+        </Link>
+        <Link to='/dashboard/tasks' className='menu-item'>
+          <div>Progress</div>
+        </Link>
+        <Link to='/dashboard/tasks' className='menu-item'>
+          <div>Profile</div>
+        </Link>
         </div>
         <Router>
           <Switch>
