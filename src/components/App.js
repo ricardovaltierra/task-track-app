@@ -10,12 +10,8 @@ class App extends Component {
       <div className="app">
         <Router>
           <Switch>
-            <Route exact path="/" 
-              render={props => (<Home {...props} />)} 
-            />
-            <Route exact path="/dashboard" 
-              render={props => (<Dashboard {...props} /> )} 
-            />
+            <Route exact path="/" component={Home} />
+            <Route path="/dashboard" component={Dashboard} />
           </Switch>
         </Router>
       </div>

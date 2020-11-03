@@ -82,7 +82,7 @@ function fetchUser(action = 'sign_in', user = {}, routerHistory) {
       case 'sign_status':
         return axios.get('https://steptracking-api.herokuapp.com/logged_in', { withCredentials: true })
           .then((response) => {
-            console.log('fetchUser.data response', response.data);
+            
             dispatch(getStatus(response.data))
           })
           .catch((error) => console.log('login? error: ', error));

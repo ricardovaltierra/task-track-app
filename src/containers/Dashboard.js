@@ -1,10 +1,11 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { Switch, Route, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchUser } from '../actions/account';
-import Record from '../components/Record';
-import TaskRecords from '../containers/TaskRecords';
-import TaskList from '../containers/TaskList';
+import Tasks from '../test_components/Tasks';
+import Records from '../test_components/Records';
+import Progress from '../test_components/Progress';
+import Profile from '../test_components/Profile';
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -44,33 +45,28 @@ class Dashboard extends React.Component {
           </div>
           <button onClick={this.onLogout}>Logout</button>
         </div>
-        <div className='bottom-dashboard'>
-        <Link to='/dashboard/tasks' className='menu-item'>
-          <div>Tasks</div>
-        </Link>
-        <Link to='/dashboard/tasks' className='menu-item'>
-          <div>Records</div>
-        </Link>
-        <Link to='/dashboard/tasks' className='menu-item'>
-          <div>Progress</div>
-        </Link>
-        <Link to='/dashboard/tasks' className='menu-item'>
-          <div>Profile</div>
-        </Link>
-        </div>
-        <Router>
+        <div className='component-wrapper'>
           <Switch>
-            <Route exact path="/dashboard/tasks" 
-              render={props => (<TaskList {...props} /> )} 
-            />
-            <Route exact path="/dashboard/tasks/:task_id/"
-              render={props => (<TaskRecords {...props} />)}
-            />
-            <Route exact path="/dashboard/tasks/:task_id/:record_id"
-              render={props => (<Record {...props} />)}
-            />
+            <Route path="/dashboard/tasks" render={() => <Tasks />} />
+            <Route path="/dashboard/records" render={() => <Records />} />
+            <Route path="/dashboard/progress" render={() => <Progress />} />
+            <Route path="/dashboard/profile" render={() => <Profile />} />
           </Switch>
-        </Router>
+        </div>
+        <div className='bottom-dashboard component-links'>
+          <Link to='/dashboard/tasks' className='menu-item'>
+            <div>Tasks</div>
+          </Link>
+          <Link to='/dashboard/records' className='menu-item'>
+            <div>Records</div>
+          </Link>
+          <Link to='/dashboard/progress' className='menu-item'>
+            <div>Progress</div>
+          </Link>
+          <Link to='/dashboard/profile' className='menu-item'>
+            <div>Profile</div>
+          </Link>
+        </div>
       </div>
     )
   }
