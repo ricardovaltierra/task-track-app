@@ -11,11 +11,13 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <Dashboard />
         <Router>
           <Switch>
             <Route exact path="/" 
               render={props => (<Home {...props} />)} 
+            />
+            <Route exact path="/dashboard" 
+              render={props => (<Dashboard {...props} /> )} 
             />
             <Route exact path="/dashboard/tasks" 
               render={props => (<TaskList {...props} /> )} 
