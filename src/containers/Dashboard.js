@@ -3,10 +3,10 @@ import { Switch, Route, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchUser } from '../actions/account';
 import TaskList from './TaskList';
-import Progress from '../test_components/Progress';
 import Profile from './Profile';
 import TaskRecords from './TaskRecords';
 import RecordList from './RecordList';
+import Progress from './Progress';
 
 class Dashboard extends React.Component {
   constructor(props) {
