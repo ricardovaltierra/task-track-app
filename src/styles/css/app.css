@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;600&display=swap");
 .home {
   position: relative;
   display: grid;
@@ -46,17 +47,20 @@
 .task-list {
   position: relative;
   display: grid;
-  grid-template-rows: 4% auto 10%;
-  width: 100%;
-  background-color: tomato; }
+  grid-template-rows: 6% auto 10%;
+  width: 100%; }
   .task-list h1 {
     position: relative;
     display: block;
     width: 100%;
     height: 100%;
-    text-align: center;
+    z-index: 3;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
     font-size: 1.2rem;
-    background-color: #aaaaaa;
+    text-align: center;
+    color: #eaedf1;
+    background-color: #5b8092;
     margin: 0; }
   .task-list .task-items {
     position: relative;
@@ -64,8 +68,9 @@
     height: 62vh;
     display: grid;
     grid-auto-flow: row;
+    align-content: start;
     overflow: scroll;
-    background-color: slateblue; }
+    background-color: #dadbdd; }
     .task-list .task-items .task-item {
       position: relative;
       display: grid;
@@ -74,127 +79,144 @@
       width: 100%;
       height: 7.5vh;
       text-decoration: none;
-      color: aliceblue;
-      background-color: darkgoldenrod; }
+      color: #304a65; }
       .task-list .task-items .task-item p {
         position: relative;
         display: block;
         margin: 0;
-        background-color: forestgreen; }
+        background-color: white; }
       .task-list .task-items .task-item span {
         position: relative;
         display: block;
         width: 100%;
-        background-color: black;
+        background-color: white;
         text-align: right; }
   .task-list .task-new {
     position: relative;
     width: 100%;
     height: 7.5vh;
     z-index: 1;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
     text-align: center;
     text-decoration: none;
-    background-color: #86e6e6; }
+    color: #ecf6fc;
+    background-color: #97e494; }
 
 .trecord-list {
   position: relative;
   display: grid;
-  grid-template-rows: 4% auto;
-  width: 100%;
-  background-color: #74a120;
-  font-family: Arial, Helvetica, sans-serif; }
+  grid-template-rows: 6% auto 10%;
+  width: 100%; }
   .trecord-list .task-info h1 {
     position: relative;
     display: block;
     width: 100%;
     height: 100%;
-    text-align: center;
+    z-index: 3;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
     font-size: 1.2rem;
-    background-color: darkgrey;
+    text-align: center;
+    color: #eaedf1;
+    background-color: #5b8092;
     margin: 0; }
   .trecord-list .task-info h2 {
     position: relative;
     display: block;
     width: 100%;
-    height: 100%;
+    height: 8vh;
+    z-index: 3;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.1rem;
+    font-size: 0.7rem;
     text-align: center;
-    font-size: 1.0rem;
-    background-color: #78bddd;
-    z-index: 1;
-    margin: 0; }
+    padding-top: 1rem;
+    color: #304a65;
+    background-color: #ebebeb; }
   .trecord-list .trecord-items {
     position: relative;
     width: 100%;
     height: 100%;
     display: grid;
     grid-auto-flow: row;
-    background-color: #cda95a; }
+    align-content: start;
+    overflow: scroll;
+    padding-top: 6rem;
+    background-color: #dadbdd; }
     .trecord-list .trecord-items .record-item {
       position: relative;
       display: grid;
       align-content: center;
       grid-template-columns: 80% auto;
       width: 100%;
+      height: 7.5vh;
       text-decoration: none;
-      color: aliceblue; }
+      color: #304a65; }
       .trecord-list .trecord-items .record-item p {
         position: relative;
         display: block;
         margin: 0;
-        background-color: #3bbb9f; }
+        background-color: white; }
       .trecord-list .trecord-items .record-item span {
         position: relative;
         display: block;
         width: 100%;
-        background-color: black;
+        background-color: white;
         text-align: right; }
 
 .record-list {
   position: relative;
   display: grid;
-  grid-template-rows: 4% auto;
-  width: 100%;
-  background-color: #45bd8f;
-  font-family: Arial, Helvetica, sans-serif; }
+  grid-template-rows: 6% auto 10%;
+  width: 100%; }
   .record-list h1 {
     position: relative;
     display: block;
     width: 100%;
     height: 100%;
-    text-align: center;
+    z-index: 3;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
     font-size: 1.2rem;
+    text-align: center;
+    color: #eaedf1;
+    background-color: #5b8092;
     margin: 0; }
   .record-list .record-items {
     position: relative;
     width: 100%;
-    height: 100%;
+    height: 62vh;
     display: grid;
     grid-auto-flow: row;
-    background-color: #cda95a; }
+    align-content: start;
+    overflow: scroll;
+    background-color: #dadbdd; }
     .record-list .record-items .record-item {
       position: relative;
       display: grid;
       align-content: center;
       grid-template-columns: 80% auto;
       width: 100%;
+      height: 7.5vh;
       text-decoration: none;
-      color: aliceblue; }
+      color: #304a65; }
       .record-list .record-items .record-item p {
         position: relative;
         display: block;
         margin: 0;
-        background-color: #3bbb9f; }
+        background-color: white; }
       .record-list .record-items .record-item span {
         position: relative;
         display: block;
         width: 100%;
-        background-color: black;
+        background-color: white;
         text-align: right; }
 
 .dashboard {
   position: relative;
   display: flex;
-  background-color: #f3f4f6;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 300; }
   .dashboard .top-dashboard {
@@ -202,34 +224,30 @@
     display: grid;
     width: 100%;
     height: 12vh;
-    top: 0;
-    border: 1px solid red; }
+    top: 0; }
     .dashboard .top-dashboard .title {
       position: relative;
       display: flex;
       justify-content: center;
+      font-family: 'Open Sans', sans-serif;
       text-align: center;
-      background-color: ghostwhite;
-      border: 2px solid saddlebrown; }
+      background-color: #42b5e8; }
       .dashboard .top-dashboard .title h1 {
         position: relative;
         align-self: center;
-        background-color: gold;
         font-size: 1rem;
-        margin-right: 1rem; }
+        margin-right: 3rem; }
       .dashboard .top-dashboard .title h2 {
         position: relative;
         align-self: center;
         font-size: 1rem;
-        margin-left: 1rem;
-        color: wheat;
-        background-color: darkcyan; }
+        margin-left: 3rem;
+        color: wheat; }
   .dashboard .component-wrapper {
     position: relative;
     display: flex;
     width: 100%;
-    margin: 12vh 0;
-    background-color: darkcyan; }
+    margin: 12vh 0; }
   .dashboard .bottom-dashboard {
     position: absolute;
     display: grid;
@@ -260,6 +278,7 @@
   width: 100%;
   height: 100vh;
   max-height: 97vh;
-  overflow: hidden; }
+  overflow: hidden;
+  background-color: #dadbdd; }
 
 /*# sourceMappingURL=app.css.map */

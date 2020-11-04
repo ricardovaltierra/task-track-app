@@ -1,18 +1,21 @@
 .task-list {
   position: relative;
   display: grid;
-  grid-template-rows: 4% auto 10%;
+  grid-template-rows: 6% auto 10%;
   width: 100%;
-  background-color: tomato;
 
     h1 {
       position: relative;
       display: block;
       width: 100%;
       height: 100%;
-      text-align: center;
+      z-index: 3;
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 300;
       font-size: 1.2rem;
-      background-color: rgb(170, 170, 170);
+      text-align: center;
+      color: #eaedf1;
+      background-color: #5b8092;
       margin: 0;
     }
 
@@ -22,8 +25,9 @@
     height: 62vh;
     display: grid;
     grid-auto-flow: row;
+    align-content: start;
     overflow: scroll;
-    background-color: slateblue;
+    background-color: #dadbdd;
 
     .task-item {
       position: relative;
@@ -33,21 +37,20 @@
       width: 100%;
       height: 7.5vh;
       text-decoration: none;
-      color: aliceblue;
-      background-color: darkgoldenrod;
+      color: #304a65;
 
       p {
         position: relative;
         display: block;
         margin: 0;
-        background-color: forestgreen;
+        background-color: white;
       }
 
       span {
         position: relative;
         display: block;
         width: 100%;
-        background-color: black;
+        background-color: white;
         text-align: right;
       }
     }
@@ -58,8 +61,11 @@
     width: 100%;
     height: 7.5vh;
     z-index: 1;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
     text-align: center;
     text-decoration: none;
-    background-color: rgb(134, 230, 230);
+    color: #ecf6fc;
+    background-color: #97e494;
   }
 }

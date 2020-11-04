@@ -1,10 +1,8 @@
 .trecord-list {
   position: relative;
   display: grid;
-  grid-template-rows: 4% auto;
+  grid-template-rows: 6% auto 10%;
   width: 100%;
-  background-color: rgb(116, 161, 32);
-  font-family: Arial, Helvetica, sans-serif;
 
   .task-info {
     h1 {
@@ -12,9 +10,13 @@
       display: block;
       width: 100%;
       height: 100%;
-      text-align: center;
+      z-index: 3;
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 300;
       font-size: 1.2rem;
-      background-color: darkgrey;
+      text-align: center;
+      color: #eaedf1;
+      background-color: #5b8092;
       margin: 0;
     }
 
@@ -22,12 +24,16 @@
       position: relative;
       display: block;
       width: 100%;
-      height: 100%;
+      height: 8vh;
+      z-index: 3;
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 300;
+      letter-spacing: 0.1rem;
+      font-size: 0.7rem;
       text-align: center;
-      font-size: 1.0rem;
-      background-color: rgb(120, 189, 221);
-      z-index: 1;
-      margin: 0;
+      padding-top: 1rem;
+      color: #304a65;
+      background-color: #ebebeb;
     }
 
   }
@@ -38,7 +44,10 @@
     height: 100%;
     display: grid;
     grid-auto-flow: row;
-    background-color: rgb(205, 169, 90);
+    align-content: start;
+    overflow: scroll;
+    padding-top: 6rem;
+    background-color: #dadbdd;
 
     .record-item {
       position: relative;
@@ -46,21 +55,22 @@
       align-content: center;
       grid-template-columns: 80% auto;
       width: 100%;
+      height: 7.5vh;
       text-decoration: none;
-      color: aliceblue;
+      color: #304a65;
 
       p {
         position: relative;
         display: block;
         margin: 0;
-        background-color: rgb(59, 187, 159);
+        background-color: white;
       }
 
       span {
         position: relative;
         display: block;
         width: 100%;
-        background-color: black;
+        background-color: white;
         text-align: right;
       }
     }
