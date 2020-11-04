@@ -23,6 +23,7 @@ const TaskList = ({ handleFetchTasks, tasksState }) => {
       <div className='task-items'>
         {renderTasks()}
       </div>
+      <button>New task</button>
     </div>
   );
 };

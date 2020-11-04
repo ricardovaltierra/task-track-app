@@ -19,6 +19,7 @@ const Profile = ({ handleDeleteUser, appState }) => {
           <h1 className="username">mail: {user.email}</h1>
           <h2 className="created_at">Created date: {formatedDate[0]}</h2>
           <button>Delete account</button>
+          <button>Logout</button>
         </div>
       );
     }
