@@ -2,7 +2,14 @@ import React from "react";
 import { connect } from "react-redux";
 import { fetchUser } from "../actions/account";
 
-const Profile = ({ handleDeleteUser, appState }) => {
+const Profile = ({ ...props }) => {
+
+  console.log('Profile props including from dashboard', props);
+
+  const { handleDeleteUser,
+    onLogout,
+    appState } = props;
+  
   const { account } = appState;
   const { user } = account;
 
@@ -16,10 +23,10 @@ const Profile = ({ handleDeleteUser, appState }) => {
 
       return (
         <div className="user-profile">
-          <h1 className="username">mail: {user.email}</h1>
+          <h1 className="username">{user.email}</h1>
           <h2 className="created_at">Created date: {formatedDate[0]}</h2>
           <button>Delete account</button>
-          <button>Logout</button>
+          <button onClick={onLogout}>Logout</button>
         </div>
       );
     }

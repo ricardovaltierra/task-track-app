@@ -46,7 +46,7 @@
 .task-list {
   position: relative;
   display: grid;
-  grid-template-rows: 4% auto 5%;
+  grid-template-rows: 4% auto 10%;
   width: 100%;
   background-color: tomato; }
   .task-list h1 {
@@ -84,11 +84,13 @@
         width: 100%;
         background-color: black;
         text-align: right; }
-  .task-list button {
+  .task-list .task-new {
     position: relative;
     width: 100%;
     z-index: 1;
-    border: 2px solid silver; }
+    text-align: center;
+    text-decoration: none;
+    background-color: #86e6e6; }
 
 .trecord-list {
   position: relative;
@@ -194,7 +196,6 @@
   .dashboard .top-dashboard {
     position: absolute;
     display: grid;
-    grid-template-rows: 70% auto;
     width: 100%;
     height: 12vh;
     top: 0;
@@ -219,9 +220,6 @@
         margin-left: 1rem;
         color: wheat;
         background-color: darkcyan; }
-    .dashboard .top-dashboard button {
-      position: relative;
-      width: 100%; }
   .dashboard .component-wrapper {
     position: relative;
     display: flex;

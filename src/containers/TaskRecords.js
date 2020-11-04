@@ -26,12 +26,16 @@ const TaskRecords = ({ ...props }) => {
   const renderTask =  () => {
     if (tasks.loading) return <div>Loading...</div>;
     if (tasks.errors.length > 1) return <div>Unable to load records, please try again.</div>;
+    
     const task = tasks.items.find(task => parseInt(task_id) === task.id);
+
+    if (task) {
     return (
       <div className='task-info'>
         <h1>{task.name}</h1>
         <h2>{task.description}</h2>
       </div>);
+    }
   }
 
   const renderTaskRecords = () => {

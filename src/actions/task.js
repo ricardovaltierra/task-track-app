@@ -17,15 +17,36 @@ const getTasksFailure = errors => ({
   errors: errors
 })
 
-function fetchTasks() {
+function fetchTasks(action = 'load', task = {}, routerhistory) {
   return dispatch => {
     dispatch(getTasks());
-    return axios.get('https://steptracking-api.herokuapp.com/tasks', { withCredentials: true })
-          .then((response) => {
-            dispatch(getTasksSuccess(response.data.tasks))
-          })
-          .catch(errors => dispatch(getTasksFailure(errors)));
-    
+
+    if (action === 'load') {
+      return axios.get('https://steptracking-api.herokuapp.com/tasks', { withCredentials: true })
+            .then((response) => {
+              dispatch(getTasksSuccess(response.data.tasks))
+            })
+            .catch(errors => dispatch(getTasksFailure(errors)));
+    }
+
+    if (action === 'save') {
+      return axios.post('https://steptracking-api.herokuapp.com/tasks',
+        {
+          task: {
+            name: task.name,
+            description: task.description,
+            completion: task.completion,
+            user_id: task.user_id,
+          }
+        },
+       { withCredentials: true })
+            .then((response) => {
+              console.log('task response', response)
+              routerhistory.push('/dashboard/tasks')
+              // dispatch(getTasksSuccess(response.data.tasks))
+            })
+            .catch(errors => dispatch(getTasksFailure(errors)));
+    }
   }
 }
 

@@ -12,20 +12,22 @@ const RecordList = ({ handleFetchRecords, recordsState }) => {
   const renderRecords = () => {
     if (recordsState.loading) return <div>Loading...</div>;
     if (recordsState.errors.length > 1) return <div>Unable to load records, please try again.</div>;
-    return recordsState.items.map(
-      record => <Record key={record.id} record={record} />
-    );
+    if(recordsState) {
+      return recordsState.items.map(
+        record => <Record key={record.id} record={record} />
+      );
+    }
   };
 
   return (
     <div className='record-list'>
-      <h1>Your Records</h1>
+      <h1>Records</h1>
       <div className='record-items'>
         {renderRecords()}
       </div>
     </div>
   );
-}
+};
 
 const mapStateToProps = state => ({
   recordsState: state.records

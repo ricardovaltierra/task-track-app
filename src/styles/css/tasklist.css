@@ -1,7 +1,7 @@
 .task-list {
   position: relative;
   display: grid;
-  grid-template-rows: 4% auto 5%;
+  grid-template-rows: 4% auto 10%;
   width: 100%;
   background-color: tomato; }
   .task-list h1 {
@@ -39,10 +39,12 @@
         width: 100%;
         background-color: black;
         text-align: right; }
-  .task-list button {
+  .task-list .task-new {
     position: relative;
     width: 100%;
     z-index: 1;
-    border: 2px solid silver; }
+    text-align: center;
+    text-decoration: none;
+    background-color: #86e6e6; }
 
 /*# sourceMappingURL=tasklist.css.map */

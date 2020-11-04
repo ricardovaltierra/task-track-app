@@ -7,6 +7,7 @@ import Profile from './Profile';
 import TaskRecords from './TaskRecords';
 import RecordList from './RecordList';
 import Progress from './Progress';
+import NewTask from './NewTask';
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -40,18 +41,18 @@ class Dashboard extends React.Component {
       <div className='dashboard'>
         <div className='top-dashboard'>
           <div className='title'>
-            <h1>Dashboard</h1>
-            <h2>{ this.state.user }</h2>
+            <h1>Logo</h1>
+            <h2>account: { this.state.user }</h2>
           </div>
-          <button onClick={this.onLogout}>Logout</button>
         </div>
         <div className='component-wrapper'>
           <Switch>
             <Route exact path="/dashboard/tasks" render={() => <TaskList />} />
+            <Route exact path="/dashboard/tasks/new" render={props => <NewTask {...props} />} />
             <Route exact path="/dashboard/tasks/:task_id" render={props => <TaskRecords {...props} />} />
             <Route path="/dashboard/records" render={() => <RecordList />} />
             <Route path="/dashboard/progress" render={() => <Progress />} />
-            <Route path="/dashboard/profile" render={() => <Profile />} />
+            <Route path="/dashboard/profile" render={(props) => <Profile {...props} onLogout={this.onLogout} />} />
           </Switch>
         </div>
         <div className='bottom-dashboard component-links'>

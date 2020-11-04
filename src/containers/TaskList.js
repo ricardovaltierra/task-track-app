@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchTasks } from '../actions/task';
 import Task from '../components/Task';
@@ -12,18 +13,22 @@ const TaskList = ({ handleFetchTasks, tasksState }) => {
   const renderTasks  = () => {
     if (tasksState.loading) return <div>Loading...</div>;
     if (tasksState.errors.length > 1) return <div>Unable to load tasks, try again</div>;
-    return tasksState.items.map(
-      task => <Task key={task.id} task={task} />
-    );
+    if (tasksState) {
+      return tasksState.items.map(
+        task => <Task key={task.id} task={task} />
+      );
+    }
   }
 
   return (
     <div className='task-list'>
-      <h1>Your Tasks</h1>
+      <h1>Tasks</h1>
       <div className='task-items'>
         {renderTasks()}
       </div>
-      <button>New task</button>
+      <Link to='/dashboard/tasks/new'className='task-new'>
+        <p>New task</p>
+      </Link>
     </div>
   );
 };
