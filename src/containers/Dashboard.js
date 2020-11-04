@@ -2,10 +2,11 @@ import React from 'react';
 import { Switch, Route, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchUser } from '../actions/account';
-import Tasks from '../test_components/Tasks';
+import TaskList from './TaskList';
 import Records from '../test_components/Records';
 import Progress from '../test_components/Progress';
 import Profile from '../test_components/Profile';
+import TaskRecords from './TaskRecords';
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -22,7 +23,6 @@ class Dashboard extends React.Component {
     
     this.props.handleSignStatus().then(
       () => {
-        console.log('Dashboard props', this.props);
         if(this.props.accountState.logged_in === false) 
           this.props.history.push('/');
         else this.setState({ 
@@ -47,7 +47,8 @@ class Dashboard extends React.Component {
         </div>
         <div className='component-wrapper'>
           <Switch>
-            <Route path="/dashboard/tasks" render={() => <Tasks />} />
+            <Route exact path="/dashboard/tasks" render={() => <TaskList />} />
+            <Route exact path="/dashboard/tasks/:task_id" render={props => <TaskRecords {...props} />} />
             <Route path="/dashboard/records" render={() => <Records />} />
             <Route path="/dashboard/progress" render={() => <Progress />} />
             <Route path="/dashboard/profile" render={() => <Profile />} />
@@ -73,8 +74,7 @@ class Dashboard extends React.Component {
 };
 
 const mapStateToProps = state => ({
-  accountState: state.account,
-  globalState: state
+  accountState: state.account
 });
 
 const mapDispatchToProps = dispatch => ({

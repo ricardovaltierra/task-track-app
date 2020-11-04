@@ -5,7 +5,7 @@ import {
 } from '../helpers/actions';
 
 const initialState = {
-  loading: false,
+  loading: true,
   errors: '',
   items: []
 };
@@ -13,12 +13,8 @@ const initialState = {
 const tasks = (state = initialState, action) => {
   switch (action.type) {
     case GET_TASKS:
-      return {
-        ...state,
-        loading: true
-      };
+      return state;
     case GET_TASKS_SUCCESS:
-      console.log('Tasks from reducer', action.payload)
       return {
         items: action.payload,
         loading: false,
