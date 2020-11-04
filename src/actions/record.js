@@ -17,16 +17,14 @@ const getTRecordsFailure = errors => ({
   errors: errors
 });
 
-function fetchRecords(recordQuery) {
+function fetchRecords() {
   return dispatch => {
     dispatch(getRecords);
-    if(recordQuery === 'task-records') {
-      return axios.get('https://steptracking-api.herokuapp.com/records', { withCredentials: true })
-        .then((response) => {
-          dispatch(getTRecordsSuccess(response.data.records))
-        })
-        .catch(errors => dispatch(getTRecordsFailure(errors)));
-    }
+    return axios.get('https://steptracking-api.herokuapp.com/records', { withCredentials: true })
+      .then((response) => {
+        dispatch(getTRecordsSuccess(response.data.records))
+      })
+      .catch(errors => dispatch(getTRecordsFailure(errors)));
   }
 }
 

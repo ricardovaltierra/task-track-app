@@ -5,7 +5,7 @@ import {
 } from '../helpers/actions';
 
 const initialState = {
-  loading: false,
+  loading: true,
   errors: '',
   items: []
 };
@@ -13,10 +13,7 @@ const initialState = {
 const records = (state = initialState, action) => {
   switch (action.type) {
     case GET_TASK_RECORDS:
-      return {
-        ...state,
-        loading: true
-      };
+      return state;
     case GET_TASK_RECORDS_SUCCESS:
       return {
         items: action.payload,

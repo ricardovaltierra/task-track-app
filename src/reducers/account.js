@@ -6,7 +6,7 @@ import {
 } from '../helpers/actions';
 
 export const initialState = {
-  loading: false,
+  loading: true,
   errors: "",
   user: {},
   logged_in: false
@@ -15,10 +15,7 @@ export const initialState = {
 const account = (state = initialState, action) => {
   switch (action.type) {
     case SIGN:
-      return {
-        ...state,
-        loading: true
-      }
+      return state;
     case SIGN_SUCCESS:
       return {
         ...state,

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { fetchUser } from '../actions/account';
 import TaskList from './TaskList';
 import Progress from '../test_components/Progress';
-import Profile from '../test_components/Profile';
+import Profile from './Profile';
 import TaskRecords from './TaskRecords';
 import RecordList from './RecordList';
 

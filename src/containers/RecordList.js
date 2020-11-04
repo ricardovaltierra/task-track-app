@@ -32,7 +32,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleFetchRecords: () => dispatch(fetchRecords('records'))
+  handleFetchRecords: () => dispatch(fetchRecords())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(RecordList);
