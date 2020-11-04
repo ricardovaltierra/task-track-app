@@ -3,10 +3,10 @@ import { Switch, Route, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchUser } from '../actions/account';
 import TaskList from './TaskList';
-import Records from '../test_components/Records';
 import Progress from '../test_components/Progress';
 import Profile from '../test_components/Profile';
 import TaskRecords from './TaskRecords';
+import RecordList from './RecordList';
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -49,7 +49,7 @@ class Dashboard extends React.Component {
           <Switch>
             <Route exact path="/dashboard/tasks" render={() => <TaskList />} />
             <Route exact path="/dashboard/tasks/:task_id" render={props => <TaskRecords {...props} />} />
-            <Route path="/dashboard/records" render={() => <Records />} />
+            <Route path="/dashboard/records" render={() => <RecordList />} />
             <Route path="/dashboard/progress" render={() => <Progress />} />
             <Route path="/dashboard/profile" render={() => <Profile />} />
           </Switch>

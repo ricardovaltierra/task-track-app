@@ -139,6 +139,48 @@
         background-color: black;
         text-align: right; }
 
+.record-list {
+  position: relative;
+  display: grid;
+  grid-template-rows: 4% auto;
+  width: 100%;
+  background-color: #45bd8f;
+  font-family: Arial, Helvetica, sans-serif; }
+  .record-list h1 {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-size: 1.2rem;
+    margin: 0; }
+  .record-list .record-items {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-auto-flow: row;
+    background-color: #cda95a; }
+    .record-list .record-items .record-item {
+      position: relative;
+      display: grid;
+      align-content: center;
+      grid-template-columns: 80% auto;
+      width: 100%;
+      text-decoration: none;
+      color: aliceblue; }
+      .record-list .record-items .record-item p {
+        position: relative;
+        display: block;
+        margin: 0;
+        background-color: #3bbb9f; }
+      .record-list .record-items .record-item span {
+        position: relative;
+        display: block;
+        width: 100%;
+        background-color: black;
+        text-align: right; }
+
 .dashboard {
   position: relative;
   display: flex;

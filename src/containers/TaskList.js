@@ -19,7 +19,7 @@ const TaskList = ({ handleFetchTasks, tasksState }) => {
 
   return (
     <div className='task-list'>
-      <h1>Task list</h1>
+      <h1>Your Tasks</h1>
       <div className='task-items'>
         {renderTasks()}
       </div>
