@@ -61,9 +61,10 @@
   .task-list .task-items {
     position: relative;
     width: 100%;
-    height: 100%;
+    height: 62vh;
     display: grid;
     grid-auto-flow: row;
+    overflow: scroll;
     background-color: slateblue; }
     .task-list .task-items .task-item {
       position: relative;
@@ -71,8 +72,10 @@
       align-content: center;
       grid-template-columns: 80% auto;
       width: 100%;
+      height: 7.5vh;
       text-decoration: none;
-      color: aliceblue; }
+      color: aliceblue;
+      background-color: darkgoldenrod; }
       .task-list .task-items .task-item p {
         position: relative;
         display: block;
@@ -87,6 +90,7 @@
   .task-list .task-new {
     position: relative;
     width: 100%;
+    height: 7.5vh;
     z-index: 1;
     text-align: center;
     text-decoration: none;
