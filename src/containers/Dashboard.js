@@ -42,7 +42,7 @@ class Dashboard extends React.Component {
       <div className='dashboard'>
         <div className='top-dashboard'>
           <div className='title'>
-            <h1>Logo</h1>
+            <div className='avatar'></div>
             <h2>Account: { this.state.user }</h2>
           </div>
         </div>

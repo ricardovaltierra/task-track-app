@@ -26,10 +26,15 @@ const Profile = ({ ...props }) => {
 
       return (
         <div className="user-profile">
-          <h1 className="username">{user.email}</h1>
-          <h2 className="created_at">Created: {dateFormat}</h2>
-          <button>Delete account</button>
-          <button onClick={onLogout}>Logout</button>
+          <div className="picture-info">
+            <div className="picture"></div>
+            <h1 className="username">{user.email}</h1>
+            <h2 className="created_at">Created: {dateFormat}</h2>
+          </div>
+          <div className="buttons">
+            <div><p>Delete account</p></div>
+            <div className='division' ><p onClick={onLogout}>Logout</p></div>
+          </div>
         </div>
       );
     }

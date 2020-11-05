@@ -1,25 +1,77 @@
 .user-profile {
   position: relative;
   display: grid;
-  grid-template-rows: 4% auto;
+  grid-template-rows: 60% auto 30%;
   width: 100%;
-  background-color: rgb(69, 189, 143);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Open Sans', sans-serif;
 
-  .username {
+  .picture-info {
     position: relative;
-    display: block;
     width: 100%;
-    height: 100%;
+    display: grid;
+    grid-template-rows: 70% 10% 10% auto;
+    background-color: #42b5e8;
+
+    .picture {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: url('../assets/avatar.png') no-repeat center 50%;
+      background-size: 125px;
+    }
+
+    .username {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: #fff;
+      margin: 0;
+    }
+
+    .created_at {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: 100%;
+      font-size: 0.8rem;
+      font-weight: 300;
+      text-align: center;
+      color: #48677a;
+      margin: 0;
+    }
+
+  }
+
+  .buttons {
+    position: relative;
+    display: grid;
+    grid-template-columns: 50% auto;
     text-align: center;
-    font-size: 1.2rem;
-    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.8rem;
+    font-weight: 300;
+    width: 100%;
+    color: #8d9caa;
+    background-color: #fdfdfd;
+    border: 0;
+
+    div {
+      position: relative;
+      display: flex;
+      width: 100%;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+    } 
+
+    .division {
+      border-left: 1px solid #ccc;
+    }
   }
 
-  .created_at {
-    position: relative;
-    display: block;
-    width: 100%;
-    height: 100%;
-  }
 }

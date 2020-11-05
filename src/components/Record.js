@@ -9,8 +9,6 @@ const Record = ({ record, task }) => {
   const pattern = date.compile('MMM D YYYY');
   const dateFormat = date.format(new Date(dateArray[0], dateArray[1], dateArray[2]), pattern);
 
-  console.log('task', task)
-
   return (
     <Link
       key={record.created_at}

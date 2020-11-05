@@ -260,6 +260,67 @@
         background-color: white;
         text-align: right; }
 
+.user-profile {
+  position: relative;
+  display: grid;
+  grid-template-rows: 60% auto 30%;
+  width: 100%;
+  font-family: 'Open Sans', sans-serif; }
+  .user-profile .picture-info {
+    position: relative;
+    width: 100%;
+    display: grid;
+    grid-template-rows: 70% 10% 10% auto;
+    background-color: #42b5e8; }
+    .user-profile .picture-info .picture {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: url("../assets/avatar.png") no-repeat center 50%;
+      background-size: 125px; }
+    .user-profile .picture-info .username {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: #fff;
+      margin: 0; }
+    .user-profile .picture-info .created_at {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: 100%;
+      font-size: 0.8rem;
+      font-weight: 300;
+      text-align: center;
+      color: #48677a;
+      margin: 0; }
+  .user-profile .buttons {
+    position: relative;
+    display: grid;
+    grid-template-columns: 50% auto;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.8rem;
+    font-weight: 300;
+    width: 100%;
+    color: #8d9caa;
+    background-color: #fdfdfd;
+    border: 0; }
+    .user-profile .buttons div {
+      position: relative;
+      display: flex;
+      width: 100%;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      margin: 0; }
+    .user-profile .buttons .division {
+      border-left: 1px solid #ccc; }
+
 .dashboard {
   position: relative;
   display: flex;
@@ -273,21 +334,23 @@
     top: 0; }
     .dashboard .top-dashboard .title {
       position: relative;
-      display: flex;
+      display: grid;
+      grid-template-columns: 40% auto;
       justify-content: center;
       font-family: 'Open Sans', sans-serif;
       text-align: center;
       background-color: #42b5e8; }
-      .dashboard .top-dashboard .title h1 {
+      .dashboard .top-dashboard .title .avatar {
         position: relative;
-        align-self: center;
-        font-size: 1rem;
-        margin-right: 3rem; }
+        width: 100%;
+        height: 100%;
+        background: url("../assets/logo.png") no-repeat 15% 4% fixed;
+        background-size: 35px; }
       .dashboard .top-dashboard .title h2 {
         position: relative;
         align-self: center;
+        padding-right: 0.4rem;
         font-size: 1rem;
-        margin-left: 3rem;
         color: wheat; }
   .dashboard .component-wrapper {
     position: relative;
