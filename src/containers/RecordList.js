@@ -2,20 +2,34 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchRecords }  from '../actions/record';
+import { fetchTasks } from '../actions/task';
 import Record from '../components/Record';
 
-const RecordList = ({ handleFetchRecords, recordsState }) => {
+const RecordList = ({ 
+  handleFetchRecords, 
+  handleFetchTasks,
+  recordsState, 
+  tasksState }) => {
 
   useEffect(() => {
+    handleFetchTasks();
     handleFetchRecords();
-  }, [handleFetchRecords]);
+  }, [handleFetchTasks, handleFetchRecords]);
+
+  const mapTaskToComponent = (record, tasks) => {
+
+    for (let i = 0; i < tasks.length; i++) {
+      if (record.task_id === tasks[i].id)
+        return <Record key={record.id} record={record} task={tasks[i]}/>
+    }
+  };
 
   const renderRecords = () => {
-    if (recordsState.loading) return <div>Loading...</div>;
-    if (recordsState.errors.length > 1) return <div>Unable to load records, please try again.</div>;
-    if(recordsState) {
+    if (recordsState.loading || tasksState.loading) return <div>Loading...</div>;
+    if (recordsState.errors.length > 1 || tasksState.errors.length > 1) return <div>Unable to load records, please try again.</div>;
+    if(recordsState && tasksState) {
       const recordList = recordsState.items.map(
-        record => <Record key={record.id} record={record} />
+        record => mapTaskToComponent(record, tasksState.items)
       );
 
       return (
@@ -39,10 +53,12 @@ const RecordList = ({ handleFetchRecords, recordsState }) => {
 };
 
 const mapStateToProps = state => ({
-  recordsState: state.records
+  recordsState: state.records,
+  tasksState: state.tasks
 });
 
 const mapDispatchToProps = dispatch => ({
+  handleFetchTasks: () => dispatch(fetchTasks()),
   handleFetchRecords: () => dispatch(fetchRecords())
 });
 

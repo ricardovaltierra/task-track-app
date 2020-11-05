@@ -29,7 +29,7 @@
     overflow: scroll;
     background-color: #dadbdd;
 
-    .task-item, .record-item {
+    .task-item {
       position: relative;
       display: grid;
       align-content: center;
@@ -43,6 +43,8 @@
         position: relative;
         display: block;
         margin: 0;
+        overflow: scroll;
+        height: 1.2rem;
         background-color: white;
       }
 
@@ -54,6 +56,41 @@
         text-align: right;
       }
     }
+
+    .record-task {
+      position: relative;
+      display: grid;
+      align-content: center;
+      grid-template-columns: 30% auto 20%;
+      width: 100%;
+      height: 7.5vh;
+      text-decoration: none;
+      color: #304a65;
+
+      p {
+        position: relative;
+        display: block;
+        margin: 0;
+        background-color: white;
+      }
+
+      .task-name {
+        position: relative;
+        display: block;
+        margin: 0;
+        overflow: scroll;
+        height: 1.2rem;
+        background-color: white;
+      }
+
+      span {
+        position: relative;
+        display: block;
+        width: 100%;
+        background-color: white;
+        text-align: right;
+      }
+    } 
   }
 
   .task-new {
