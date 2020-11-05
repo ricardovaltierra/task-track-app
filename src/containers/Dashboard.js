@@ -48,8 +48,8 @@ class Dashboard extends React.Component {
         </div>
         <div className='component-wrapper'>
           <Switch>
-            <Route exact path="/dashboard/tasks" render={() => <TaskList />} />
             <Route exact path="/dashboard/tasks/:task_id/new" render={props => <NewRecord {...props} />} />
+            <Route exact path="/dashboard/tasks" render={() => <TaskList />} />
             <Route exact path="/dashboard/tasks/new" render={props => <NewTask {...props} />} />
             <Route exact path="/dashboard/tasks/:task_id" render={props => <TaskRecords {...props} />} />
             <Route path="/dashboard/records" render={() => <RecordList />} />

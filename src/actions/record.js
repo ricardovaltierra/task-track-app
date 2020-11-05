@@ -17,14 +17,35 @@ const getTRecordsFailure = errors => ({
   errors: errors
 });
 
-function fetchRecords() {
+function fetchRecords(action = 'load', record = {}, routerHistory) {
   return dispatch => {
     dispatch(getRecords);
-    return axios.get('https://steptracking-api.herokuapp.com/records', { withCredentials: true })
+
+    if (action === 'load') {
+      return axios.get('https://steptracking-api.herokuapp.com/records', { withCredentials: true })
       .then((response) => {
         dispatch(getTRecordsSuccess(response.data.records))
       })
       .catch(errors => dispatch(getTRecordsFailure(errors)));
+    }
+
+    if (action === 'save') {
+      return axios.post('https://steptracking-api.herokuapp.com/records', 
+        {
+          record: {
+            percentage: record.percentage,
+            user_id: record.user_id,
+            task_id: record.value
+          }
+        },
+        { withCredentials: true })
+      .then((response) => {
+        routerHistory.push('/dashboard/tasks')
+        // dispatch(getTRecordsSuccess(response.data.records))
+      })
+      .catch(errors => dispatch(getTRecordsFailure(errors)));
+    }
+    
   }
 }
 

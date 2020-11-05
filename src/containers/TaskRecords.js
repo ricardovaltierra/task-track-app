@@ -27,7 +27,6 @@ const TaskRecords = ({ ...props }) => {
   const renderTask =  () => {
     if (tasks.loading) return <div>Loading...</div>;
     if (tasks.errors.length > 1) return <div>Unable to load records, please try again.</div>;
-    
     const task = tasks.items.find(task => parseInt(task_id) === task.id);
 
     if (task) {
@@ -42,23 +41,30 @@ const TaskRecords = ({ ...props }) => {
   const renderTaskRecords = () => {
     if (records.loading) return <div>Loading...</div>;
     if (records.errors.length > 1) return <div>Unable to load records, please try again</div>;
-    return records.items.map(
-      record => {
-        if (parseInt(task_id) === record.task_id)
-          return <Record key={record.id} record={record} />
-        return '';
-      });
+    if (records && task_id) {
+      const recordList = records.items.map(
+        record => {
+          if (parseInt(task_id) === record.task_id)
+            return <Record key={record.id} record={record} />
+          return '';
+        });
+      
+      return (
+        <>
+          <div className='trecord-items'>
+            {recordList}
+          </div>
+          <Link to={`/dashboard/tasks/${task_id}/new`} className='record-new'>
+            <p>New record</p>
+          </Link>
+        </>);
+    }
   }
   
   return (
     <div className='trecord-list'>
       {renderTask()}
-      <div className='trecord-items'>
-        {renderTaskRecords()}
-      </div>
-      <Link to='/dashboard/tasks/new' className='record-new'>
-        <p>New record</p>
-      </Link>
+      {renderTaskRecords()}
     </div>
   );
 };
@@ -69,7 +75,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleFetchTRecords: () => dispatch(fetchRecords('task-records')),
+  handleFetchTRecords: () => dispatch(fetchRecords('load')),
   handleFetchTasks: () => dispatch(fetchTasks())
 }); 
 

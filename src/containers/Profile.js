@@ -4,9 +4,7 @@ import { connect } from "react-redux";
 import { fetchUser } from "../actions/account";
 
 const Profile = ({ ...props }) => {
-
-  console.log('Profile props including from dashboard', props);
-
+  
   const { 
     handleDeleteUser,
     onLogout,

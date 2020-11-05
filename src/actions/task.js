@@ -17,7 +17,7 @@ const getTasksFailure = errors => ({
   errors: errors
 })
 
-function fetchTasks(action = 'load', task = {}, routerhistory) {
+function fetchTasks(action = 'load', task = {}, routerHistory) {
   return dispatch => {
     dispatch(getTasks());
 
@@ -41,8 +41,7 @@ function fetchTasks(action = 'load', task = {}, routerhistory) {
         },
        { withCredentials: true })
             .then((response) => {
-              console.log('task response', response)
-              routerhistory.push('/dashboard/tasks')
+              routerHistory.push('/dashboard/tasks')
               // dispatch(getTasksSuccess(response.data.tasks))
             })
             .catch(errors => dispatch(getTasksFailure(errors)));
