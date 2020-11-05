@@ -71,7 +71,7 @@
     align-content: start;
     overflow: scroll;
     background-color: #dadbdd; }
-    .task-list .task-items .task-item {
+    .task-list .task-items .task-item, .task-list .task-items .record-item {
       position: relative;
       display: grid;
       align-content: center;
@@ -80,12 +80,12 @@
       height: 7.5vh;
       text-decoration: none;
       color: #304a65; }
-      .task-list .task-items .task-item p {
+      .task-list .task-items .task-item p, .task-list .task-items .record-item p {
         position: relative;
         display: block;
         margin: 0;
         background-color: white; }
-      .task-list .task-items .task-item span {
+      .task-list .task-items .task-item span, .task-list .task-items .record-item span {
         position: relative;
         display: block;
         width: 100%;

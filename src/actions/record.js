@@ -17,7 +17,7 @@ const getTRecordsFailure = errors => ({
   errors: errors
 });
 
-function fetchRecords(action = 'load', record = {}, routerHistory) {
+function fetchRecords(action = 'load', record = {}, routerHistory, flag = false) {
   return dispatch => {
     dispatch(getRecords);
 
@@ -40,7 +40,8 @@ function fetchRecords(action = 'load', record = {}, routerHistory) {
         },
         { withCredentials: true })
       .then((response) => {
-        routerHistory.push('/dashboard/tasks')
+        if (!flag) routerHistory.push('/dashboard/tasks')
+        else routerHistory.push('/dashboard/records')
         // dispatch(getTRecordsSuccess(response.data.records))
       })
       .catch(errors => dispatch(getTRecordsFailure(errors)));

@@ -12,6 +12,7 @@ class NewRecord extends Component {
       tasks:[],
       percentage: '',
       value: '',
+      flag: false
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -21,14 +22,24 @@ class NewRecord extends Component {
 
   componentDidMount() {
 
-    const { match, handleFetchTasks } = this.props;
+    const { match, handleFetchTasks, tasks } = this.props;
     const { params } = match;
     const { task_id } = params; 
 
     handleFetchTasks().then(() => {
+
+      let setFlag = false;
+      let setValue  = '';
+
+      if (task_id === undefined) {
+        setFlag = true;
+        setValue = tasks.length === 0 ? '' : 1
+      }
+
       this.setState({
         tasks: this.props.tasks.map(task => [task.id, task.name, task.created_at]),
-        value: task_id
+        value: task_id || setValue,
+        flag: setFlag
       })
     })
   }
@@ -37,10 +48,10 @@ class NewRecord extends Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    const { percentage, value } = this.state;
+    const { percentage, value, flag } = this.state;
     const { user_id, history } = this.props;
 
-    this.props.handleNewRecord({ percentage, user_id, value }, history);
+    this.props.handleNewRecord({ percentage, user_id, value }, history, flag);
   }
 
   handleChange(e) {
@@ -88,7 +99,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleNewRecord: (record, history) => dispatch(fetchRecords('save', record, history)),
+  handleNewRecord: (record, history, flag) => dispatch(fetchRecords('save', record, history, flag)),
   handleFetchTasks: () => dispatch(fetchTasks())
 });
 

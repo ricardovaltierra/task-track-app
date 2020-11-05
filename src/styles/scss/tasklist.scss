@@ -29,7 +29,7 @@
     overflow: scroll;
     background-color: #dadbdd;
 
-    .task-item {
+    .task-item, .record-item {
       position: relative;
       display: grid;
       align-content: center;

@@ -52,6 +52,7 @@ class Dashboard extends React.Component {
             <Route exact path="/dashboard/tasks" render={() => <TaskList />} />
             <Route exact path="/dashboard/tasks/new" render={props => <NewTask {...props} />} />
             <Route exact path="/dashboard/tasks/:task_id" render={props => <TaskRecords {...props} />} />
+            <Route exact path="/dashboard/records/new" render={props => <NewRecord {...props} />} />
             <Route path="/dashboard/records" render={() => <RecordList />} />
             <Route path="/dashboard/progress" render={() => <Progress />} />
             <Route path="/dashboard/profile" render={(props) => <Profile {...props} onLogout={this.onLogout} />} />
