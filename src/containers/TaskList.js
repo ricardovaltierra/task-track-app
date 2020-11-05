@@ -26,7 +26,7 @@ const TaskList = ({ handleFetchTasks, tasksState }) => {
       <div className='task-items'>
         {renderTasks()}
       </div>
-      <Link to='/dashboard/tasks/new'className='task-new'>
+      <Link to='/dashboard/tasks/new' className='task-new'>
         <p>New task</p>
       </Link>
     </div>

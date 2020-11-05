@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchRecords }  from '../actions/record';
 import { fetchTasks } from '../actions/task';
@@ -55,6 +56,9 @@ const TaskRecords = ({ ...props }) => {
       <div className='trecord-items'>
         {renderTaskRecords()}
       </div>
+      <Link to='/dashboard/tasks/new' className='record-new'>
+        <p>New record</p>
+      </Link>
     </div>
   );
 };

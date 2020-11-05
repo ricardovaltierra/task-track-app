@@ -11,7 +11,6 @@ class NewTask extends Component {
       name: '',
       description: '',
       completion: '',
-      user_id: '',
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -24,12 +23,9 @@ class NewTask extends Component {
     const { name, description, completion } = this.state;
     const { user_id } = this.props;
 
-    this.props.handleNewTask({ 
-      name, description, completion, user_id },
-      this.props.history)
-
-    console.log('new task props', this.props);
-
+    this.props.handleNewTask(
+      { name, description, completion, user_id },
+      this.props.history);
   }
 
   handleChange(e) {

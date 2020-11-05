@@ -1,7 +1,7 @@
 .task-list {
   position: relative;
   display: grid;
-  grid-template-rows: 6% auto 10%;
+  grid-template-rows: 6% auto 19%;
   width: 100%;
 
     h1 {
@@ -22,7 +22,7 @@
   .task-items {
     position: relative;
     width: 100%;
-    height: 62vh;
+    height: 59.8vh;
     display: grid;
     grid-auto-flow: row;
     align-content: start;
@@ -59,7 +59,7 @@
   .task-new {
     position: relative;
     width: 100%;
-    height: 7.5vh;
+    height: 9vh;
     z-index: 1;
     font-family: 'Open Sans', sans-serif;
     font-weight: 600;

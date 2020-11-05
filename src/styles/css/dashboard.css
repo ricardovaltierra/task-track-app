@@ -1,7 +1,7 @@
 .task-list {
   position: relative;
   display: grid;
-  grid-template-rows: 6% auto 10%;
+  grid-template-rows: 6% auto 19%;
   width: 100%; }
   .task-list h1 {
     position: relative;
@@ -19,7 +19,7 @@
   .task-list .task-items {
     position: relative;
     width: 100%;
-    height: 62vh;
+    height: 59.8vh;
     display: grid;
     grid-auto-flow: row;
     align-content: start;
@@ -48,7 +48,7 @@
   .task-list .task-new {
     position: relative;
     width: 100%;
-    height: 7.5vh;
+    height: 9vh;
     z-index: 1;
     font-family: 'Open Sans', sans-serif;
     font-weight: 600;
@@ -60,8 +60,9 @@
 .trecord-list {
   position: relative;
   display: grid;
-  grid-template-rows: 6% auto 10%;
-  width: 100%; }
+  grid-template-rows: 6% auto 12%;
+  width: 100%;
+  background-color: darkcyan; }
   .trecord-list .task-info h1 {
     position: relative;
     display: block;
@@ -119,6 +120,17 @@
         width: 100%;
         background-color: white;
         text-align: right; }
+  .trecord-list .record-new {
+    position: relative;
+    width: 100%;
+    height: 9vh;
+    z-index: 1;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    color: #ecf6fc;
+    background-color: #97e494; }
 
 .record-list {
   position: relative;
