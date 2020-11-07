@@ -1,12 +1,10 @@
 import React from "react";
 import date from 'date-and-time';
 import { connect } from "react-redux";
-import { fetchUser } from "../actions/account";
 
 const Profile = ({ ...props }) => {
   
   const { 
-    handleDeleteUser,
     onLogout,
     appState } = props;
   
@@ -47,8 +45,4 @@ const mapStateToProps = (state) => ({
   appState: state,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  handleDeleteUser: () => dispatch(fetchUser("delete_user")),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Profile);
+export default connect(mapStateToProps, null)(Profile);
