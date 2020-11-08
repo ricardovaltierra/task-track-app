@@ -19,6 +19,7 @@ class Dashboard extends React.Component {
     }
 
     this.onLogout = this.onLogout.bind(this);
+    this.onDelete = this.onDelete.bind(this);
   }
 
   componentDidMount() {
@@ -35,6 +36,12 @@ class Dashboard extends React.Component {
 
   onLogout() {
     this.props.handleLogout(this.props.history)
+  }
+
+  onDelete(user) {
+    this.props.handleLogout(this.props.history).then(() => {
+      this.props.handleDeleteUser(user);
+    })
   }
 
   render() {
@@ -55,7 +62,7 @@ class Dashboard extends React.Component {
             <Route exact path="/dashboard/records/new" render={props => <NewRecord {...props} />} />
             <Route path="/dashboard/records" render={() => <RecordList />} />
             <Route path="/dashboard/progress" render={() => <Progress />} />
-            <Route path="/dashboard/profile" render={(props) => <Profile {...props} onLogout={this.onLogout} />} />
+            <Route path="/dashboard/profile" render={(props) => <Profile {...props} onLogout={this.onLogout} onDelete ={this.onDelete} />} />
           </Switch>
         </div>
         <div className='bottom-dashboard component-links'>
@@ -83,7 +90,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   handleSignStatus: () => dispatch(fetchUser('sign_status')),
-  handleLogout: history => dispatch(fetchUser('sign_out',{}, history))
+  handleLogout: history => dispatch(fetchUser('sign_out',{}, history)),
+  handleDeleteUser: user => dispatch(fetchUser("delete_user", user)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

@@ -3,6 +3,8 @@ import {
   SIGN_SUCCESS,
   SIGN_FAILURE,
   GET_STATUS,
+  DELETE_USER_SUCCESS,
+  DELETE_USER_FAILURE
 } from '../helpers/actions';
 import axios from "axios";
 
@@ -22,6 +24,18 @@ const getStatus = (status) => ({
   type: GET_STATUS,
   logged_in: status.logged_in,
   user: status.user
+});
+
+const deleteUserSuccess = () => ({
+  type: DELETE_USER_SUCCESS,
+  logged_in: false,
+  user: {}
+});
+
+const deleteUserFailure = (error) => ({
+  type: DELETE_USER_FAILURE,
+  logged_in: true,
+  error: error
 });
 
 function fetchUser(action = 'sign_in', user = {}, routerHistory) {
@@ -86,6 +100,14 @@ function fetchUser(action = 'sign_in', user = {}, routerHistory) {
             dispatch(getStatus(response.data))
           })
           .catch((error) => console.log('login? error: ', error));
+      case 'delete_user':
+        return axios.delete(`https://steptracking-api.herokuapp.com/registrations/${user.id}`, { withCredentials: true })
+          .then((response) => {
+            dispatch(deleteUserSuccess(response.data))
+          })  
+          .catch(error => {
+            dispatch(deleteUserFailure(error))
+          });
       default:
         return dispatch (signUserFailure('Request error'));
     }
