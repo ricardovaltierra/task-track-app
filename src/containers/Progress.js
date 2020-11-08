@@ -4,6 +4,7 @@ import { fetchTasks } from '../actions/task';
 import { fetchRecords }  from '../actions/record';
 
 const Progress = ({
+  onReset,
   handleFetchTasks,
   handleFetchRecords,
   appState
@@ -34,7 +35,7 @@ const Progress = ({
           <p className='tasks'>Total tasks: {tasks.items.length}</p>
           <p className='completed'>Completed: {completed}</p>
           <p className='records'>Total Records: {records.items.length}</p>
-          <button>Reset progress</button>
+          <button onClick={() => onReset()}>Reset progress</button>
         </div>
       );
     }

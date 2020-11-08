@@ -17,10 +17,9 @@ const getTasksFailure = errors => ({
   errors: errors
 })
 
-function fetchTasks(action = 'load', task = {}, routerHistory) {
+function fetchTasks(action = 'load', task = {}, routerHistory = '') {
   return dispatch => {
-    dispatch(getTasks());
-
+    dispatch(getTasks())
     if (action === 'load') {
       return axios.get('https://steptracking-api.herokuapp.com/tasks', { withCredentials: true })
             .then((response) => {
@@ -45,6 +44,18 @@ function fetchTasks(action = 'load', task = {}, routerHistory) {
               // dispatch(getTasksSuccess(response.data.tasks))
             })
             .catch(errors => dispatch(getTasksFailure(errors)));
+    }
+
+    if(action === 'reset') {
+      return axios.delete('https://steptracking-api.herokuapp.com/reset',
+       { withCredentials: true })
+            .then((response) => {
+              console.log('response from reset', response)
+              dispatch(getTasksSuccess([]))
+            })
+            .catch(
+              errors => dispatch(getTasksFailure(errors))
+            );
     }
   }
 }

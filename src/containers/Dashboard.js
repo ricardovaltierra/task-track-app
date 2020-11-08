@@ -9,6 +9,7 @@ import RecordList from './RecordList';
 import Progress from './Progress';
 import NewTask from './NewTask';
 import NewRecord from './NewRecord';
+import { fetchTasks } from '../actions/task';
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -20,6 +21,7 @@ class Dashboard extends React.Component {
 
     this.onLogout = this.onLogout.bind(this);
     this.onDelete = this.onDelete.bind(this);
+    this.onReset = this.onReset.bind(this)
   }
 
   componentDidMount() {
@@ -44,6 +46,10 @@ class Dashboard extends React.Component {
     })
   }
 
+  onReset() {
+    this.props.handleReset()
+  }
+
   render() {
     return (
       <div className='dashboard'>
@@ -61,8 +67,8 @@ class Dashboard extends React.Component {
             <Route exact path="/dashboard/tasks/:task_id" render={props => <TaskRecords {...props} />} />
             <Route exact path="/dashboard/records/new" render={props => <NewRecord {...props} />} />
             <Route path="/dashboard/records" render={() => <RecordList />} />
-            <Route path="/dashboard/progress" render={() => <Progress />} />
-            <Route path="/dashboard/profile" render={(props) => <Profile {...props} onLogout={this.onLogout} onDelete ={this.onDelete} />} />
+            <Route path="/dashboard/progress" render={() => <Progress onReset={this.onReset} />} />
+            <Route path="/dashboard/profile" render={(props) => <Profile {...props} onLogout={this.onLogout} onDelete={this.onDelete} />} />
           </Switch>
         </div>
         <div className='bottom-dashboard component-links'>
@@ -85,13 +91,15 @@ class Dashboard extends React.Component {
 };
 
 const mapStateToProps = state => ({
-  accountState: state.account
+  accountState: state.account,
+  appState: state
 });
 
 const mapDispatchToProps = dispatch => ({
   handleSignStatus: () => dispatch(fetchUser('sign_status')),
   handleLogout: history => dispatch(fetchUser('sign_out',{}, history)),
   handleDeleteUser: user => dispatch(fetchUser("delete_user", user)),
+  handleReset: () => dispatch(fetchTasks('reset'))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

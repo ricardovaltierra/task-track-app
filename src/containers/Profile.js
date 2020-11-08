@@ -1,7 +1,6 @@
 import React from "react";
 import date from 'date-and-time';
 import { connect } from "react-redux";
-import { fetchUser } from "../actions/account";
 
 const Profile = ({ ...props }) => {
   
