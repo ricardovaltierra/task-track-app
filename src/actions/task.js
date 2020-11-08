@@ -3,6 +3,7 @@ import {
   GET_TASKS_SUCCESS,
   GET_TASKS_FAILURE
 } from '../helpers/actions';
+import { getTRecordsSuccess } from './record';
 import axios from "axios";
 
 const getTasks = () => ({ type: GET_TASKS });
@@ -51,6 +52,7 @@ function fetchTasks(action = 'load', task = {}, routerHistory = '') {
        { withCredentials: true })
             .then((response) => {
               dispatch(getTasksSuccess([]))
+              dispatch(getTRecordsSuccess([]))
             })
             .catch(
               errors => dispatch(getTasksFailure(errors))
