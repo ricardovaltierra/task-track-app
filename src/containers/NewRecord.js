@@ -22,19 +22,22 @@ class NewRecord extends Component {
 
   componentDidMount() {
 
-    const { match, handleFetchTasks, tasks } = this.props;
-    const { params } = match;
-    const { task_id } = params; 
+    const { handleFetchTasks } = this.props;
 
     handleFetchTasks().then(() => {
 
+      const { match, tasks } = this.props;
+      const { params } = match;
+      const { task_id } = params; 
+
       let setFlag = false;
       let setValue  = '';
-
+      
       if (task_id === undefined) {
         setFlag = true;
-        setValue = tasks.length === 0 ? '' : 1
+        setValue = tasks.length === 0 ? '' : tasks[0].id
       }
+      
 
       this.setState({
         tasks: this.props.tasks.map(task => [task.id, task.name, task.created_at]),

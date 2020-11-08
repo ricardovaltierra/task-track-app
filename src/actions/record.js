@@ -42,7 +42,6 @@ function fetchRecords(action = 'load', record = {}, routerHistory, flag = false)
       .then((response) => {
         if (!flag) routerHistory.push('/dashboard/tasks')
         else routerHistory.push('/dashboard/records')
-        // dispatch(getTRecordsSuccess(response.data.records))
       })
       .catch(errors => dispatch(getTRecordsFailure(errors)));
     }

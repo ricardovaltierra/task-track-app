@@ -50,7 +50,6 @@ function fetchTasks(action = 'load', task = {}, routerHistory = '') {
       return axios.delete('https://steptracking-api.herokuapp.com/reset',
        { withCredentials: true })
             .then((response) => {
-              console.log('response from reset', response)
               dispatch(getTasksSuccess([]))
             })
             .catch(
