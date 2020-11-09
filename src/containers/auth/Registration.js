@@ -37,37 +37,53 @@ class Registration extends Component {
 
   render() {
     return (
-      <div className='registration'>
-        <form onSubmit={this.handleSubmit} className='reg-form'>
-          <input
-            type="email"
-            name="email"
-            placeholder="type your email"
-            value={this.state.email}
-            onChange={this.handleChange}
-            required
-          />
+      <div id='signup'>
+  
+        <h1>Sign Up</h1>
 
-          <input
-            type="password"
-            name="password"
-            placeholder="password"
-            value={this.state.password}
-            onChange={this.handleChange}
-            required
-          />
+        <form onSubmit={this.handleSubmit}>
 
+          
+          <div className='field-wrap'>
+            <label>Email Address</label>
+            <input
+              type="email"
+              name="email"
+              placeholder="type your email"
+              value={this.state.email}
+              onChange={this.handleChange}
+              autoComplete="off"
+              required
+            />
+          </div>
 
-          <input
-            type="password"
-            name="password_confirmation"
-            placeholder="password"
-            value={this.state.password_confirmation}
-            onChange={this.handleChange}
-            required
-          />
+          <div className="field-wrap">
+            <label>Password</label>
+            <input
+              type="password"
+              name="password"
+              placeholder="password"
+              value={this.state.password}
+              onChange={this.handleChange}
+              autoComplete="off"
+              required
+            />
+          </div>
 
-          <button type="submit">Register</button>
+          <div className="field-wrap">
+              <label>Password Confirmation</label>
+              <input
+                type="password"
+                name="password_confirmation"
+                placeholder="password"
+                value={this.state.password_confirmation}
+                onChange={this.handleChange}
+                autoComplete="off"
+                required
+              />
+          </div>
+
+          <button type="submit" className='buton button-block'>Register</button>
         </form>
       </div>
     );

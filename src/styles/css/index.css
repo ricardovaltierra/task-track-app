@@ -1,62 +1,143 @@
 @import url("https://fonts.googleapis.com/css2?family=Handlee&family=Open+Sans:wght@600&family=Secular+One&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap");
 .home {
   position: relative;
   display: grid;
-  grid-template-rows: repeat(5, auto);
-  width: 100%; }
-  .home .hidden {
-    display: none !important; }
+  grid-template-rows: 10% 40% 50%;
+  justify-items: center;
+  width: 100%;
+  background-color: #42b5e8; }
   .home .error-container {
     position: relative;
     display: grid;
-    grid-auto-flow: row;
     width: 100%;
-    background-color: red; }
+    grid-auto-flow: row;
+    align-content: start;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    font-size: 0.8rem;
+    z-index: 2;
+    background-color: salmon; }
     .home .error-container .error-item {
       position: relative;
       display: grid;
       width: 100%;
-      background-color: fuchsia; }
-  .home .title {
+      padding: 0.5rem 0.5rem;
+      color: #ba3939;
+      background: #ffe0e0;
+      margin: 0;
+      border: 1px solid #a33a3a; }
+  .home .app-info {
     position: relative;
-    display: flex;
+    display: grid;
+    grid-template-rows: 80% auto;
     justify-content: center;
+    width: 100%;
+    height: 35vh;
+    padding: 0;
     background-color: ghostwhite;
     border: 2px solid saddlebrown; }
-    .home .title h1 {
+    .home .app-info .logo {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: url("../assets/logo.png") no-repeat center 50%;
+      background-size: 5rem;
+      background-color: firebrick; }
+    .home .app-info h1 {
       position: relative;
       align-self: center;
-      background-color: gold; }
-  .home .registration {
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 600;
+      margin: 0;
+      background-color: darkcyan; }
+  .home .form {
     position: relative;
     display: grid;
-    width: 100%;
-    border: 2px solid silver; }
-    .home .registration .reg-form {
+    grid-template-rows: 20% auto;
+    background: rgba(19, 35, 47, 0.9);
+    width: 90%;
+    height: 90%;
+    font-family: 'Open Sans', sans-serif;
+    border-radius: 4px;
+    box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3); }
+    .home .form .tab-group {
       position: relative;
-      display: grid; }
-      .home .registration .reg-form input {
-        text-align: center; }
-      .home .registration .reg-form button {
+      display: grid;
+      grid-template-columns: 40% 40%;
+      gap: 1rem;
+      align-items: center;
+      justify-content: center;
+      list-style: none;
+      padding: 0;
+      margin: 0.5rem 0 0; }
+      .home .form .tab-group li {
         position: relative;
-        width: 100%;
-        height: 100%;
-        align-self: center; }
-  .home .login {
-    position: relative;
-    display: grid;
-    width: 100%; }
-    .home .login .log-form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 80%; }
+        .home .form .tab-group li p {
+          display: block;
+          padding: 0.1rem;
+          background: rgba(160, 179, 176, 0.25);
+          color: #a0b3b0;
+          font-size: 1rem;
+          float: left;
+          width: 50%;
+          height: 4vh;
+          text-align: center;
+          cursor: pointer; }
+      .home .form .tab-group .active p {
+        background: #1ab188;
+        color: #fff; }
+    .home .form .tab-content > div:last-child {
+      display: none; }
+    .home .form h1 {
+      text-align: center;
+      color: #fff;
+      font-size: 1.4rem;
+      font-weight: 300;
+      margin: 1rem 0 1.5rem; }
+    .home .form .field-wrap {
       position: relative;
-      display: grid; }
-      .home .login .log-form input {
-        text-align: center; }
-      .home .login .log-form button {
-        position: relative;
-        width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1rem; }
+      .home .form .field-wrap input {
+        font-size: 1rem;
+        display: block;
+        width: 80%;
         height: 100%;
-        align-self: center; }
+        padding: 0.2rem 0.4rem;
+        background: none;
+        background-image: none;
+        border: 1px solid #a0b3b0;
+        color: #fff;
+        border-radius: 0;
+        transition: border-color 0.25s ease, box-shadow 0.25s ease; }
+        .home .form .field-wrap input:focus {
+          outline: 0;
+          border-color: #1ab188; }
+    .home .form .button {
+      border: 0;
+      outline: none;
+      border-radius: 0;
+      margin: 0 auto;
+      padding: 0.7rem 0;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.01rem;
+      background: #1ab188;
+      color: #fff;
+      transition: all 0.5s ease; }
+      .home .form .button:hover, .home .form .button:focus {
+        background: #179b77; }
+    .home .form .button-block {
+      display: block;
+      width: 80%; }
 
 .task-list {
   position: relative;
