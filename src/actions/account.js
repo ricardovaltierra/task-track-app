@@ -76,6 +76,7 @@ function fetchUser(action = 'sign_in', user = {}, routerHistory) {
             dispatch (signUserFailure(error))
           });
       case 'sign_up':
+        // return axios.post('http://localhost:3001/registrations', {
         return axios.post('https://steptracking-api.herokuapp.com/registrations', {
           user: {
           email: user.email,
@@ -85,13 +86,18 @@ function fetchUser(action = 'sign_in', user = {}, routerHistory) {
         }, { withCredentials: true })
           .then(response => {
             if (response.data.status === 'created'){
+              console.log('sign_up success', response)
               dispatch(signUserSuccess(response.data))
               routerHistory.push('/dashboard')
             }
-            else dispatch(signUserFailure(response))
+            else {
+              console.log('sign_up errors then', response)
+              dispatch(signUserFailure(response))
+            }
           })
           .catch(error => {
-            dispatch (signUserFailure(error))
+            const formatErrors = JSON.stringify(error.response.data.errors)
+            dispatch (signUserFailure(formatErrors))
           });
       case 'sign_status':
         return axios.get('https://steptracking-api.herokuapp.com/logged_in', { withCredentials: true })

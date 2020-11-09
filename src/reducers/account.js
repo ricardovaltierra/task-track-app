@@ -9,7 +9,7 @@ import {
 
 export const initialState = {
   loading: true,
-  errors: "",
+  errors: {},
   user: {},
   logged_in: false
 };
@@ -23,7 +23,7 @@ const account = (state = initialState, action) => {
         ...state,
         user: action.payload.user,
         logged_in: action.payload.logged_in,
-        loading: false
+        loading: false,
       }
     case SIGN_FAILURE:
       return {
@@ -52,7 +52,7 @@ const account = (state = initialState, action) => {
         user: {},
         logged_in: false,
         loading: false,
-        error: action.error
+        errors: action.errors
       }
     default:
       return state;
