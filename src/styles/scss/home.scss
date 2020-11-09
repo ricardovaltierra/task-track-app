@@ -3,8 +3,27 @@
   .home {
     position: relative;
     display: grid;
-    grid-template-rows: repeat(3, auto);
+    grid-template-rows: repeat(5, auto);
     width: 100%;
+
+    .hidden {
+      display: none !important;
+    }
+
+    .error-container {
+      position: relative;
+      display: grid;
+      grid-auto-flow: row;
+      width: 100%;
+      background-color: red;
+
+      .error-item {
+        position: relative;
+        display: grid;
+        width: 100%;
+        background-color: fuchsia;
+      }
+    }
 
     .title {
       position: relative;
