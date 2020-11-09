@@ -36,8 +36,10 @@ class Registration extends Component {
   }
 
   render() {
+    let { toggleClass } = this.props;
+
     return (
-      <div id='signup'>
+      <div id='signup' className={toggleClass ? '' : 'hidden'}>
   
         <h1>Sign Up</h1>
 
@@ -45,11 +47,10 @@ class Registration extends Component {
 
           
           <div className='field-wrap'>
-            <label>Email Address</label>
             <input
               type="email"
               name="email"
-              placeholder="type your email"
+              placeholder="Email Address"
               value={this.state.email}
               onChange={this.handleChange}
               autoComplete="off"
@@ -58,11 +59,10 @@ class Registration extends Component {
           </div>
 
           <div className="field-wrap">
-            <label>Password</label>
             <input
               type="password"
               name="password"
-              placeholder="password"
+              placeholder="Password"
               value={this.state.password}
               onChange={this.handleChange}
               autoComplete="off"
@@ -71,11 +71,10 @@ class Registration extends Component {
           </div>
 
           <div className="field-wrap">
-              <label>Password Confirmation</label>
               <input
                 type="password"
                 name="password_confirmation"
-                placeholder="password"
+                placeholder="Password Confirmation"
                 value={this.state.password_confirmation}
                 onChange={this.handleChange}
                 autoComplete="off"
@@ -83,7 +82,7 @@ class Registration extends Component {
               />
           </div>
 
-          <button type="submit" className='buton button-block'>Register</button>
+          <button type="submit" className='button button-block'>Register</button>
         </form>
       </div>
     );

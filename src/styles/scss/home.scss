@@ -18,7 +18,6 @@
       font-weight: 300;
       font-size: 0.8rem;
       z-index: 2;
-      background-color: salmon;
 
       .error-item {
         position: relative;
@@ -41,8 +40,6 @@
       width: 100%;
       height: 35vh;
       padding: 0;
-      background-color: ghostwhite;
-      border: 2px solid saddlebrown;
 
       .logo {
         position: relative;
@@ -50,7 +47,6 @@
         height: 100%;
         background: url('../assets/logo.png') no-repeat center 50%;
         background-size: 5rem;
-        background-color: firebrick;
       }
 
       h1 {
@@ -59,7 +55,6 @@
         font-family: 'Quicksand', sans-serif;
         font-weight: 600;
         margin: 0;
-        background-color: darkcyan;
       }
     }
 
@@ -112,7 +107,7 @@
         }
       }
 
-      .tab-content > div:last-child {
+      .hidden {
         display: none;
       }
 
@@ -171,5 +166,10 @@
         display: block;
         width: 80%;
       }
+    }
+
+    .register {
+      height: 103%;
+      margin-top: -1rem;
     }
   }

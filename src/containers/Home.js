@@ -9,7 +9,9 @@ class Home extends Component {
     super(props);
 
     this.state = {
-      form: false,
+      login: 'tab active',
+      signup: 'tab',
+      hidden: false
     }
 
     this.toggleForm = this.toggleForm.bind(this);
@@ -24,11 +26,21 @@ class Home extends Component {
       })
   }
 
-  toggleForm() {
-    const { form } = this.state;
-
-    this.setState({ form: !form });
-    console.log(form);
+  toggleForm(e) {
+    if (e.target.innerHTML === 'Log In') {
+      this.setState({
+        login: 'tab active',
+        signup: 'tab',
+        hidden: false
+      });
+    }
+    else if (e.target.innerHTML === 'Sign Up') {
+      this.setState({
+        login: 'tab',
+        signup: 'tab active',
+        hidden: true
+      });
+    }
   }
 
   render() {
@@ -55,14 +67,14 @@ class Home extends Component {
           <div className='logo'></div>
           <h1>Tasktracker</h1>
           </div>
-        <div className='form'>
+        <div className={this.state.hidden ? 'form register' : 'form'}>
           <ul className='tab-group'>
-            <li className='tab active' onClick={this.toggleForm}><p>Log in</p></li>
-            <li className='tab' onClick={this.toggleForm}><p>Sign Up</p></li>
+            <li className={this.state.login} onClick={this.toggleForm} ><p>Log In</p></li>
+            <li className={this.state.signup} onClick={this.toggleForm} ><p>Sign Up</p></li>
           </ul>
           <div className='tab-content'>
-            <Login homeProps={this.props} />
-            <Registration homeProps={this.props} />
+            <Login homeProps={this.props} toggleClass={this.state.hidden}/>
+            <Registration homeProps={this.props} toggleClass={this.state.hidden}/>
           </div>
         </div>
       </div>

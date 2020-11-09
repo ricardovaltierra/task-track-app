@@ -34,8 +34,11 @@ class Login extends Component {
   }
 
   render() {
+
+    let { toggleClass } = this.props;
+
     return (
-      <div id='login'>
+      <div id='login' className={toggleClass ? 'hidden' : ''} >
 
         <h1>Welcome Back!</h1>
         
