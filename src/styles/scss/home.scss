@@ -3,7 +3,7 @@
   .home {
     position: relative;
     display: grid;
-    grid-template-rows: 10% 40% 50%;
+    grid-template-rows: 10% 35% 55%;
     justify-items: center;
     width: 100%;
     background-color: #42b5e8;
@@ -35,7 +35,7 @@
     .app-info {
       position: relative;
       display: grid;
-      grid-template-rows: 80% auto;
+      grid-template-rows: 60% auto;
       justify-content: center;
       width: 100%;
       height: 35vh;
@@ -62,7 +62,7 @@
       position: relative;
       display: grid;
       grid-template-rows: 20% auto;
-      background: rgba(#13232f, 0.9);
+      background: rgba(#374044, 0.9);
       width: 90%;
       height: 90%;
       font-family: 'Open Sans', sans-serif;
