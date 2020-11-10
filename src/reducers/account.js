@@ -5,13 +5,13 @@ import {
   GET_STATUS,
   DELETE_USER_SUCCESS,
   DELETE_USER_FAILURE,
-} from "../helpers/actions";
+} from '../helpers/actions';
 
 export const initialState = {
   loading: true,
   errors: {},
   user: {},
-  logged_in: false,
+  loggedIn: false,
 };
 
 const account = (state = initialState, action) => {
@@ -21,7 +21,7 @@ const account = (state = initialState, action) => {
     case SIGN_SUCCESS:
       return {
         user: action.payload.user,
-        logged_in: action.payload.logged_in,
+        loggedIn: action.payload.loggedIn,
         loading: false,
         errors: {},
       };
@@ -34,21 +34,21 @@ const account = (state = initialState, action) => {
     case GET_STATUS:
       return {
         user: action.user,
-        logged_in: action.logged_in,
+        loggedIn: action.loggedIn,
         loading: false,
         errors: {},
       };
     case DELETE_USER_SUCCESS:
       return {
         user: {},
-        logged_in: false,
+        loggedIn: false,
         loading: false,
         errors: {},
       };
     case DELETE_USER_FAILURE:
       return {
         user: {},
-        logged_in: false,
+        loggedIn: false,
         loading: false,
         errors: action.errors,
       };

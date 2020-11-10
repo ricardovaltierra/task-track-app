@@ -1,30 +1,31 @@
-import React from "react";
-import { Switch, Route, Link } from "react-router-dom";
-import { connect } from "react-redux";
+/* eslint-disable react/jsx-props-no-spreading */
+import React from 'react';
+import { PropTypes } from 'prop-types';
+import { Switch, Route, Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import {
   faChartBar,
   faAngleDoubleRight,
   faChartPie,
   faAddressCard,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { fetchUser } from "../actions/account";
-import TaskList from "./TaskList";
-import Profile from "./Profile";
-import TaskRecords from "./TaskRecords";
-import RecordList from "./RecordList";
-import Progress from "./Progress";
-import NewTask from "./NewTask";
-import NewRecord from "./NewRecord";
-import { fetchTasks } from "../actions/task";
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { fetchUser } from '../actions/account';
+import TaskList from './TaskList';
+import Profile from './Profile';
+import TaskRecords from './TaskRecords';
+import RecordList from './RecordList';
+import Progress from './Progress';
+import NewTask from './NewTask';
+import NewRecord from './NewRecord';
+import { fetchTasks } from '../actions/task';
 
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      user: "",
-      tabColor: "wheat",
+      user: '',
     };
 
     this.onLogout = this.onLogout.bind(this);
@@ -33,37 +34,52 @@ class Dashboard extends React.Component {
   }
 
   componentDidMount() {
-    this.props.handleSignStatus().then(() => {
-      if (this.props.accountState.logged_in === false)
-        this.props.history.push("/");
-      else
+    const { handleSignStatus } = this.props;
+
+    handleSignStatus().then(() => {
+      const { accountState, history } = this.props;
+      const { loggedIn } = accountState;
+      const { user } = accountState;
+
+      if (loggedIn === false) history.push('/');
+      else {
         this.setState({
-          user: this.props.accountState.user.email,
+          user: user.email,
         });
+      }
     });
   }
 
   onLogout() {
-    this.props.handleLogout(this.props.history);
+    const { handleLogout, history } = this.props;
+    handleLogout(history);
   }
 
   onDelete(user) {
-    this.props.handleLogout(this.props.history).then(() => {
-      this.props.handleDeleteUser(user);
+    const { handleLogout, handleDeleteUser, history } = this.props;
+
+    handleLogout(history).then(() => {
+      handleDeleteUser(user);
     });
   }
 
   onReset() {
-    this.props.handleReset();
+    const { handleReset } = this.props;
+    handleReset();
   }
 
   render() {
+    const { user } = this.state;
+
     return (
       <div className="dashboard">
         <div className="top-dashboard">
           <div className="title">
-            <div className="avatar"></div>
-            <h2>Account: {this.state.user}</h2>
+            <div className="avatar" />
+            <h2>
+              Account:
+              {user}
+            </h2>
           </div>
         </div>
         <div className="component-wrapper">
@@ -71,23 +87,23 @@ class Dashboard extends React.Component {
             <Route
               exact
               path="/dashboard/tasks/:task_id/new"
-              render={(props) => <NewRecord {...props} />}
+              render={props => <NewRecord {...props} />}
             />
             <Route exact path="/dashboard/tasks" render={() => <TaskList />} />
             <Route
               exact
               path="/dashboard/tasks/new"
-              render={(props) => <NewTask {...props} />}
+              render={props => <NewTask {...props} />}
             />
             <Route
               exact
               path="/dashboard/tasks/:task_id"
-              render={(props) => <TaskRecords {...props} />}
+              render={props => <TaskRecords {...props} />}
             />
             <Route
               exact
               path="/dashboard/records/new"
-              render={(props) => <NewRecord {...props} />}
+              render={props => <NewRecord {...props} />}
             />
             <Route path="/dashboard/records" render={() => <RecordList />} />
             <Route
@@ -96,7 +112,7 @@ class Dashboard extends React.Component {
             />
             <Route
               path="/dashboard/profile"
-              render={(props) => (
+              render={props => (
                 <Profile
                   {...props}
                   onLogout={this.onLogout}
@@ -129,16 +145,32 @@ class Dashboard extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   accountState: state.account,
-  appState: state,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  handleSignStatus: () => dispatch(fetchUser("sign_status")),
-  handleLogout: (history) => dispatch(fetchUser("sign_out", {}, history)),
-  handleDeleteUser: (user) => dispatch(fetchUser("delete_user", user)),
-  handleReset: () => dispatch(fetchTasks("reset")),
+const mapDispatchToProps = dispatch => ({
+  handleSignStatus: () => dispatch(fetchUser('sign_status')),
+  handleLogout: history => dispatch(fetchUser('sign_out', {}, history)),
+  handleDeleteUser: user => dispatch(fetchUser('delete_user', user)),
+  handleReset: () => dispatch(fetchTasks('reset')),
 });
+
+Dashboard.propTypes = {
+  handleSignStatus: PropTypes.func.isRequired,
+  handleLogout: PropTypes.func.isRequired,
+  handleDeleteUser: PropTypes.func.isRequired,
+  handleReset: PropTypes.func.isRequired,
+  accountState: PropTypes.shape({
+    loggedIn: PropTypes.bool,
+    username: PropTypes.func,
+    user: PropTypes.shape({
+      email: PropTypes.string,
+    }),
+  }).isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { fetchRecords } from "../actions/record";
-import { fetchTasks } from "../actions/task";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { fetchRecords } from '../actions/record';
+import { fetchTasks } from '../actions/task';
 
 class NewRecord extends Component {
   constructor(props) {
@@ -9,8 +9,8 @@ class NewRecord extends Component {
 
     this.state = {
       tasks: [],
-      percentage: "",
-      value: "",
+      percentage: '',
+      value: '',
       flag: false,
     };
 
@@ -28,15 +28,15 @@ class NewRecord extends Component {
       const { task_id } = params;
 
       let setFlag = false;
-      let setValue = "";
+      let setValue = '';
 
       if (task_id === undefined) {
         setFlag = true;
-        setValue = tasks.length === 0 ? "" : tasks[0].id;
+        setValue = tasks.length === 0 ? '' : tasks[0].id;
       }
 
       this.setState({
-        tasks: this.props.tasks.map((task) => [
+        tasks: this.props.tasks.map(task => [
           task.id,
           task.name,
           task.created_at,
@@ -79,7 +79,7 @@ class NewRecord extends Component {
               onChange={this.handleSelect}
               className="task-option"
             >
-              {this.state.tasks.map((task) => (
+              {this.state.tasks.map(task => (
                 <option key={task[2]} value={task[0]}>
                   {task[1]}
                 </option>
@@ -108,14 +108,13 @@ class NewRecord extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   tasks: state.tasks.items,
   user_id: state.account.user.id,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  handleNewRecord: (record, history, flag) =>
-    dispatch(fetchRecords("save", record, history, flag)),
+const mapDispatchToProps = dispatch => ({
+  handleNewRecord: (record, history, flag) => dispatch(fetchRecords('save', record, history, flag)),
   handleFetchTasks: () => dispatch(fetchTasks()),
 });
 

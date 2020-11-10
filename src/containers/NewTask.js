@@ -1,15 +1,15 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { fetchTasks } from "../actions/task";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { fetchTasks } from '../actions/task';
 
 class NewTask extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      name: "",
-      description: "",
-      completion: "",
+      name: '',
+      description: '',
+      completion: '',
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -23,8 +23,10 @@ class NewTask extends Component {
     const { user_id } = this.props;
 
     this.props.handleNewTask(
-      { name, description, completion, user_id },
-      this.props.history
+      {
+        name, description, completion, user_id,
+      },
+      this.props.history,
     );
   }
 
@@ -81,12 +83,12 @@ class NewTask extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   user_id: state.account.user.id,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  handleNewTask: (task, history) => dispatch(fetchTasks("save", task, history)),
+const mapDispatchToProps = dispatch => ({
+  handleNewTask: (task, history) => dispatch(fetchTasks('save', task, history)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewTask);

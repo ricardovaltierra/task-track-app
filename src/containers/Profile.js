@@ -1,6 +1,6 @@
-import React from "react";
-import date from "date-and-time";
-import { connect } from "react-redux";
+import React from 'react';
+import date from 'date-and-time';
+import { connect } from 'react-redux';
 
 const Profile = ({ ...props }) => {
   const { onLogout, onDelete, appState } = props;
@@ -10,24 +10,26 @@ const Profile = ({ ...props }) => {
 
   const renderProfile = () => {
     if (account.loading) return <div>Loading...</div>;
-    if (account.errors.length > 0)
-      return <div>Unable to load profile, try again please</div>;
+    if (account.errors.length > 0) return <div>Unable to load profile, try again please</div>;
 
     if (user) {
-      const dateTime = user.created_at.split("T");
-      const dateArray = dateTime[0].split("-");
-      const pattern = date.compile("MMM D YYYY");
+      const dateTime = user.created_at.split('T');
+      const dateArray = dateTime[0].split('-');
+      const pattern = date.compile('MMM D YYYY');
       const dateFormat = date.format(
         new Date(dateArray[0], dateArray[1], dateArray[2]),
-        pattern
+        pattern,
       );
 
       return (
         <div className="user-profile">
           <div className="picture-info">
-            <div className="picture"></div>
+            <div className="picture" />
             <h1 className="username">{user.email}</h1>
-            <h2 className="created_at">Created: {dateFormat}</h2>
+            <h2 className="created_at">
+              Created:
+              {dateFormat}
+            </h2>
           </div>
           <div className="buttons">
             <div onClick={() => onDelete(user)}>
@@ -45,7 +47,7 @@ const Profile = ({ ...props }) => {
   return <>{renderProfile()}</>;
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   appState: state,
 });
 

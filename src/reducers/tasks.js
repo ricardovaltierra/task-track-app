@@ -2,11 +2,11 @@ import {
   GET_TASKS,
   GET_TASKS_SUCCESS,
   GET_TASKS_FAILURE,
-} from "../helpers/actions";
+} from '../helpers/actions';
 
 const initialState = {
   loading: true,
-  errors: "",
+  errors: '',
   items: [],
 };
 
@@ -18,7 +18,7 @@ const tasks = (state = initialState, action) => {
       return {
         items: action.payload,
         loading: false,
-        errors: "",
+        errors: '',
       };
     case GET_TASKS_FAILURE:
       return {

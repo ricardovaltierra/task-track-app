@@ -1,15 +1,15 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { fetchUser } from "../../actions/account";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { fetchUser } from '../../actions/account';
 
 class Login extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      email: "",
-      password: "",
-      loginErrors: "",
+      email: '',
+      password: '',
+      loginErrors: '',
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -31,10 +31,10 @@ class Login extends Component {
   }
 
   render() {
-    let { toggleClass } = this.props;
+    const { toggleClass } = this.props;
 
     return (
-      <div id="login" className={toggleClass ? "hidden" : ""}>
+      <div id="login" className={toggleClass ? 'hidden' : ''}>
         <h1>Welcome Back!</h1>
 
         <form onSubmit={this.handleSubmit}>
@@ -71,9 +71,8 @@ class Login extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  handleSignIn: (user, history) =>
-    dispatch(fetchUser("sign_in", user, history)),
+const mapDispatchToProps = dispatch => ({
+  handleSignIn: (user, history) => dispatch(fetchUser('sign_in', user, history)),
 });
 
 export default connect(null, mapDispatchToProps)(Login);

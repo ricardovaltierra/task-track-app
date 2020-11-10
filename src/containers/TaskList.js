@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import { fetchTasks } from "../actions/task";
-import Task from "../components/Task";
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { fetchTasks } from '../actions/task';
+import Task from '../components/Task';
 
 const TaskList = ({ handleFetchTasks, tasksState }) => {
   useEffect(() => {
@@ -11,10 +11,9 @@ const TaskList = ({ handleFetchTasks, tasksState }) => {
 
   const renderTasks = () => {
     if (tasksState.loading) return <div>Loading...</div>;
-    if (tasksState.errors.length > 1)
-      return <div>Unable to load tasks, try again</div>;
+    if (tasksState.errors.length > 1) return <div>Unable to load tasks, try again</div>;
     if (tasksState) {
-      return tasksState.items.map((task) => <Task key={task.id} task={task} />);
+      return tasksState.items.map(task => <Task key={task.id} task={task} />);
     }
   };
 
@@ -29,11 +28,11 @@ const TaskList = ({ handleFetchTasks, tasksState }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   tasksState: state.tasks,
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   handleFetchTasks: () => dispatch(fetchTasks()),
 });
 

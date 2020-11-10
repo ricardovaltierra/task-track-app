@@ -1,13 +1,13 @@
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import {
   faThumbtack,
   faTrophy,
   faCalendar,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { fetchTasks } from "../actions/task";
-import { fetchRecords } from "../actions/record";
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { fetchTasks } from '../actions/task';
+import { fetchRecords } from '../actions/record';
 
 const Progress = ({
   onReset,
@@ -22,12 +22,11 @@ const Progress = ({
 
   const { tasks, records } = appState;
 
-  const mainColor = { color: "#42b5e8" };
+  const mainColor = { color: '#42b5e8' };
 
   const renderProgress = () => {
     if (tasks.loading || records.loading) return <div>Loading...</div>;
-    if (tasks.errors.length > 1 || records.errors.length > 1)
-      return <div>Unable to load profile, try again please</div>;
+    if (tasks.errors.length > 1 || records.errors.length > 1) return <div>Unable to load profile, try again please</div>;
     if (tasks && records) {
       let completed = 0;
 
@@ -61,11 +60,11 @@ const Progress = ({
   return <>{renderProgress()}</>;
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   appState: state,
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   handleFetchTasks: () => dispatch(fetchTasks()),
   handleFetchRecords: () => dispatch(fetchRecords()),
 });

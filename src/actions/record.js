@@ -1,46 +1,46 @@
+import axios from 'axios';
 import {
   GET_TASK_RECORDS,
   GET_TASK_RECORDS_SUCCESS,
   GET_TASK_RECORDS_FAILURE,
-} from "../helpers/actions";
-import axios from "axios";
+} from '../helpers/actions';
 
 const getRecords = () => ({ type: GET_TASK_RECORDS });
 
-const getTRecordsSuccess = (records) => ({
+const getTRecordsSuccess = records => ({
   type: GET_TASK_RECORDS_SUCCESS,
   payload: records,
 });
 
-const getTRecordsFailure = (errors) => ({
+const getTRecordsFailure = errors => ({
   type: GET_TASK_RECORDS_FAILURE,
-  errors: errors,
+  errors,
 });
 
 function fetchRecords(
-  action = "load",
+  action = 'load',
   record = {},
   routerHistory,
-  flag = false
+  flag = false,
 ) {
-  return (dispatch) => {
+  return dispatch => {
     dispatch(getRecords);
 
-    if (action === "load") {
+    if (action === 'load') {
       return axios
-        .get("https://steptracking-api.herokuapp.com/records", {
+        .get('https://steptracking-api.herokuapp.com/records', {
           withCredentials: true,
         })
-        .then((response) => {
+        .then(response => {
           dispatch(getTRecordsSuccess(response.data.records));
         })
-        .catch((errors) => dispatch(getTRecordsFailure(errors)));
+        .catch(errors => dispatch(getTRecordsFailure(errors)));
     }
 
-    if (action === "save") {
+    if (action === 'save') {
       return axios
         .post(
-          "https://steptracking-api.herokuapp.com/records",
+          'https://steptracking-api.herokuapp.com/records',
           {
             record: {
               percentage: record.percentage,
@@ -48,15 +48,19 @@ function fetchRecords(
               task_id: record.value,
             },
           },
-          { withCredentials: true }
+          { withCredentials: true },
         )
-        .then((response) => {
-          if (!flag) routerHistory.push("/dashboard/tasks");
-          else routerHistory.push("/dashboard/records");
+        .then(() => {
+          if (!flag) routerHistory.push('/dashboard/tasks');
+          else routerHistory.push('/dashboard/records');
         })
-        .catch((errors) => dispatch(getTRecordsFailure(errors)));
+        .catch(errors => dispatch(getTRecordsFailure(errors)));
     }
+
+    return '';
   };
 }
 
-export { getRecords, getTRecordsSuccess, getTRecordsFailure, fetchRecords };
+export {
+  getRecords, getTRecordsSuccess, getTRecordsFailure, fetchRecords,
+};

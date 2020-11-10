@@ -1,11 +1,12 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { PropTypes } from 'prop-types';
 
 const Task = ({ task }) => {
-  const comStyle = { color: "" };
+  const comStyle = { color: '' };
 
-  if (task.completion > 50) comStyle.color = "#FF8000";
-  if (task.completion > 85) comStyle.color = "#FF0000";
+  if (task.completion > 50) comStyle.color = '#FF8000';
+  if (task.completion > 85) comStyle.color = '#FF0000';
 
   return (
     <Link
@@ -17,6 +18,15 @@ const Task = ({ task }) => {
       <span style={comStyle}>{`${task.completion}%`}</span>
     </Link>
   );
+};
+
+Task.propTypes = {
+  task: PropTypes.shape({
+    created_at: PropTypes.string,
+    completion: PropTypes.number,
+    name: PropTypes.string,
+    id: PropTypes.number,
+  }).isRequired,
 };
 
 export default Task;

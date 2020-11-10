@@ -1,16 +1,17 @@
-import React, { Component } from "react";
-import Registration from "./auth/Registration";
-import Login from "./auth/Login";
-import { connect } from "react-redux";
-import { fetchUser } from "../actions/account";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
+import Registration from './auth/Registration';
+import Login from './auth/Login';
+import { fetchUser } from '../actions/account';
 
 class Home extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      login: "tab active",
-      signup: "tab",
+      login: 'tab active',
+      signup: 'tab',
       hidden: false,
     };
 
@@ -18,36 +19,43 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    this.props.handleSignStatus().then(() => {
-      if (this.props.logged_in) this.props.history.push("/dashboard");
+    const { handleSignStatus } = this.props;
+
+    handleSignStatus().then(() => {
+      const { loggedIn, history } = this.props;
+
+      if (loggedIn) history.push('/dashboard');
     });
   }
 
   toggleForm(e) {
-    if (e.target.innerHTML === "Log In") {
+    if (e.target.innerHTML === 'Log In') {
       this.setState({
-        login: "tab active",
-        signup: "tab",
+        login: 'tab active',
+        signup: 'tab',
         hidden: false,
       });
-    } else if (e.target.innerHTML === "Sign Up") {
+    } else if (e.target.innerHTML === 'Sign Up') {
       this.setState({
-        login: "tab",
-        signup: "tab active",
+        login: 'tab',
+        signup: 'tab active',
         hidden: true,
       });
     }
   }
 
   render() {
-    let { errors } = this.props;
+    const { errors } = this.props;
     let jsonErrors = {};
-    let errorItems = [];
+    const errorItems = [];
 
     if (errors.length !== undefined) {
       jsonErrors = JSON.parse(errors);
-      for (let key in jsonErrors)
-        if (jsonErrors.hasOwnProperty(key)) errorItems.push(jsonErrors[key]);
+      Object.keys(jsonErrors)
+      .forEach(key => {
+        if (jsonErrors.hasOwnProperty(key)) 
+          errorItems.push(jsonErrors[key]);
+      });
     }
 
     return (
@@ -60,10 +68,10 @@ class Home extends Component {
           ))}
         </div>
         <div className="app-info">
-          <div className="logo"></div>
+          <div className="logo" />
           <h1>Tasktracker</h1>
         </div>
-        <div className={this.state.hidden ? "form register" : "form"}>
+        <div className={this.state.hidden ? 'form register' : 'form'}>
           <ul className="tab-group">
             <li className={this.state.login} onClick={this.toggleForm}>
               <p>Log In</p>
@@ -85,13 +93,24 @@ class Home extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  logged_in: state.account.logged_in,
+const mapStateToProps = state => ({
+  loggedIn: state.account.loggedIn,
   errors: state.account.errors,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  handleSignStatus: () => dispatch(fetchUser("sign_status")),
+const mapDispatchToProps = dispatch => ({
+  handleSignStatus: () => dispatch(fetchUser('sign_status')),
 });
+
+Home.propTypes = {
+  handleSignStatus: PropTypes.func.isRequired,
+  loggedIn: PropTypes.bool,
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
+  errors: PropTypes.shape({}),
+};
+
+Home.defaultProps = { errors: {} };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
