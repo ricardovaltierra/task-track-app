@@ -43,6 +43,7 @@
     display: grid;
     grid-auto-flow: row;
     align-content: start;
+    justify-items: center;
     overflow: scroll;
     background-color: #dadbdd; }
     .trecord-list .trecord-items .record-item {
@@ -50,19 +51,24 @@
       display: grid;
       align-content: center;
       grid-template-columns: 80% auto;
-      width: 100%;
+      width: 90%;
       height: 7.5vh;
+      margin: 0.2rem 0;
       text-decoration: none;
-      color: #304a65; }
+      color: #757575; }
       .trecord-list .trecord-items .record-item p {
         position: relative;
         display: block;
+        padding: 0.5rem 0 0.5rem 0.5rem;
         margin: 0;
+        overflow: scroll;
+        height: 1.2rem;
         background-color: white; }
       .trecord-list .trecord-items .record-item span {
         position: relative;
         display: block;
-        width: 100%;
+        width: 87%;
+        padding: 0.5rem 0.5rem 0.5rem 0;
         background-color: white;
         text-align: right; }
   .trecord-list .record-new {

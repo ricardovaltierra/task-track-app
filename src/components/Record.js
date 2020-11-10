@@ -9,20 +9,40 @@ const Record = ({ record, task }) => {
   const pattern = date.compile('MMM D YYYY');
   const dateFormat = date.format(new Date(dateArray[0], dateArray[1], dateArray[2]), pattern);
 
-  return (
-    <Link
-      key={record.created_at}
-      to={{
-        pathname: `/dashboard/tasks/${record.task_id}/${record.id}`,
-        id: record.id
-      }}
-      className={((task === undefined)) ? 'record-item' : 'record-task' }
-    >
-      <p>{dateFormat}</p>
-      {(task === undefined) ? '' : <p className='task-name'>{task.name}</p> }
-      <span>{`${record.percentage}%`}</span>
-    </Link>
-  );
+  if (task === undefined) {
+
+    return (
+      <Link
+        key={record.created_at}
+        to={{
+          pathname: `/dashboard/tasks/${record.task_id}/${record.id}`,
+          id: record.id
+        }}
+        className='record-item'
+      >
+        <p>{dateFormat}</p>
+        <span>{`${record.percentage}%`}</span>
+      </Link>
+    );
+
+  }
+
+  else
+
+    return (
+      <Link
+        key={record.created_at}
+        to={{
+          pathname: `/dashboard/tasks/${record.task_id}/${record.id}`,
+          id: record.id
+        }}
+        className='record-task'
+      >
+        <p className='date'>{dateTime[0]}</p>
+        <p className='task-name'>{task.name}</p>
+        <span>{`${record.percentage}%`}</span>
+      </Link>
+    );
 };
 
 export default Record;

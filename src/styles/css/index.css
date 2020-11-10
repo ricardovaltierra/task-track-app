@@ -162,20 +162,23 @@
     display: grid;
     grid-auto-flow: row;
     align-content: start;
+    justify-items: center;
     overflow: scroll;
     background-color: #dadbdd; }
     .task-list .task-items .task-item {
       position: relative;
       display: grid;
       align-content: center;
-      grid-template-columns: 80% auto;
-      width: 100%;
+      grid-template-columns: 75% auto;
+      width: 90%;
       height: 7.5vh;
+      margin: 0.2rem 0;
       text-decoration: none;
-      color: #304a65; }
+      color: #757575; }
       .task-list .task-items .task-item p {
         position: relative;
         display: block;
+        padding: 0.5rem 0 0.5rem 0.5rem;
         margin: 0;
         overflow: scroll;
         height: 1.2rem;
@@ -183,22 +186,31 @@
       .task-list .task-items .task-item span {
         position: relative;
         display: block;
-        width: 100%;
+        width: 87%;
+        padding: 0.5rem 0.5rem 0.5rem 0;
         background-color: white;
         text-align: right; }
+    .task-list .task-items .task-item:first-child,
+    .task-list .task-items .record-task:first-child {
+      margin-top: 1.5rem; }
     .task-list .task-items .record-task {
       position: relative;
       display: grid;
       align-content: center;
       grid-template-columns: 30% auto 20%;
-      width: 100%;
+      width: 90%;
       height: 7.5vh;
       text-decoration: none;
-      color: #304a65; }
+      font-size: 0.9rem;
+      color: #757575;
+      margin: 0.2rem 0; }
       .task-list .task-items .record-task p {
         position: relative;
         display: block;
+        padding: 0.7rem 0 0.5rem 0.5rem;
         margin: 0;
+        overflow: scroll;
+        height: 1.2rem;
         background-color: white; }
       .task-list .task-items .record-task .task-name {
         position: relative;
@@ -210,7 +222,8 @@
       .task-list .task-items .record-task span {
         position: relative;
         display: block;
-        width: 100%;
+        width: 87%;
+        padding: 0.7rem 0.5rem 0.5rem 0;
         background-color: white;
         text-align: right; }
   .task-list .task-new {
@@ -270,6 +283,7 @@
     display: grid;
     grid-auto-flow: row;
     align-content: start;
+    justify-items: center;
     overflow: scroll;
     background-color: #dadbdd; }
     .trecord-list .trecord-items .record-item {
@@ -277,19 +291,24 @@
       display: grid;
       align-content: center;
       grid-template-columns: 80% auto;
-      width: 100%;
+      width: 90%;
       height: 7.5vh;
+      margin: 0.2rem 0;
       text-decoration: none;
-      color: #304a65; }
+      color: #757575; }
       .trecord-list .trecord-items .record-item p {
         position: relative;
         display: block;
+        padding: 0.5rem 0 0.5rem 0.5rem;
         margin: 0;
+        overflow: scroll;
+        height: 1.2rem;
         background-color: white; }
       .trecord-list .trecord-items .record-item span {
         position: relative;
         display: block;
-        width: 100%;
+        width: 87%;
+        padding: 0.5rem 0.5rem 0.5rem 0;
         background-color: white;
         text-align: right; }
   .trecord-list .record-new {
@@ -304,54 +323,6 @@
     text-decoration: none;
     color: #ecf6fc;
     background-color: #1ab188; }
-
-.record-list {
-  position: relative;
-  display: grid;
-  grid-template-rows: 6% auto 10%;
-  width: 100%; }
-  .record-list h1 {
-    position: relative;
-    display: block;
-    width: 100%;
-    height: 100%;
-    z-index: 3;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 300;
-    font-size: 1.2rem;
-    text-align: center;
-    color: #eaedf1;
-    background-color: #5b8092;
-    margin: 0; }
-  .record-list .record-items {
-    position: relative;
-    width: 100%;
-    height: 62vh;
-    display: grid;
-    grid-auto-flow: row;
-    align-content: start;
-    overflow: scroll;
-    background-color: #dadbdd; }
-    .record-list .record-items .record-item {
-      position: relative;
-      display: grid;
-      align-content: center;
-      grid-template-columns: 20% 60% 20%;
-      width: 100%;
-      height: 7.5vh;
-      text-decoration: none;
-      color: #304a65; }
-      .record-list .record-items .record-item p {
-        position: relative;
-        display: block;
-        margin: 0;
-        background-color: white; }
-      .record-list .record-items .record-item span {
-        position: relative;
-        display: block;
-        width: 100%;
-        background-color: white;
-        text-align: right; }
 
 .progress {
   position: relative;
