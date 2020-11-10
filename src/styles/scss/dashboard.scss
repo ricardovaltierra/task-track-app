@@ -62,22 +62,31 @@
 
     .menu-item {
       position: relative;
-      display: flex;
+      display: grid;
+      grid-template-rows: 60% auto;
+      gap: 0.5rem;
       width: 100%;
       height: 100%;
       justify-content: center;
       align-items: flex-end;
       text-decoration: none;
-      color: wheat;
+      color: #acb0b4;
       background-color: #374044;
-
       border-top: 1px solid #101721;
       font-size: 0.7rem;
       
+      svg {
+        position: relative;
+        width: 100%;
+        height: 60%;
+      }
+
       div {
         position: relative;
+        width: 100%;
+        height: 100%;
         border: none;
-        margin-bottom: 1rem;
+        text-align: center;
       }
     }
   }

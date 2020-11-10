@@ -36,17 +36,17 @@ const Progress = ({
 
       return (
         <div className='progress'>
-          <div className='prog tasks'>
+          <div className='prog'>
             <span>Tasks</span>
             <FontAwesomeIcon icon={faThumbtack} size='2x' style={mainColor}/>
             <p>{tasks.items.length}</p>
           </div>
-          <div className='prog completed'>
+          <div className='prog'>
             <span>Completed</span>
             <FontAwesomeIcon icon={faTrophy} size='2x' style={mainColor} />
             <p>{completed}</p>
           </div>
-          <div className='prog records'>
+          <div className='prog'>
             <span>Records</span>
             <FontAwesomeIcon icon={faCalendar} size='2x' style={mainColor} />
             <p>{records.items.length}</p>

@@ -1,6 +1,8 @@
 import React from 'react';
 import { Switch, Route, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { faChartBar, faAngleDoubleRight, faChartPie, faAddressCard } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { fetchUser } from '../actions/account';
 import TaskList from './TaskList';
 import Profile from './Profile';
@@ -16,7 +18,8 @@ class Dashboard extends React.Component {
     super(props);
 
     this.state = {
-      user: ''
+      user: '',
+      tabColor: 'wheat'
     }
 
     this.onLogout = this.onLogout.bind(this);
@@ -51,6 +54,9 @@ class Dashboard extends React.Component {
   }
 
   render() {
+
+    const  { tabColor } = this.state;
+
     return (
       <div className='dashboard'>
         <div className='top-dashboard'>
@@ -73,15 +79,19 @@ class Dashboard extends React.Component {
         </div>
         <div className='bottom-dashboard component-links'>
           <Link to='/dashboard/tasks' className='menu-item'>
+            <FontAwesomeIcon icon={faChartBar} size='1x' />
             <div>Tasks</div>
           </Link>
           <Link to='/dashboard/records' className='menu-item'>
+            <FontAwesomeIcon icon={faAngleDoubleRight} size='1x'  />
             <div>Records</div>
           </Link>
           <Link to='/dashboard/progress' className='menu-item'>
+            <FontAwesomeIcon icon={faChartPie} size='1x'  />
             <div>Progress</div>
           </Link>
           <Link to='/dashboard/profile' className='menu-item'>
+          <FontAwesomeIcon icon={faAddressCard} size='1x' />
             <div>Profile</div>
           </Link>
         </div>
