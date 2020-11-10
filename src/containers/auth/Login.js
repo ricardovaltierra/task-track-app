@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchUser } from '../../actions/account';
 
@@ -9,7 +10,6 @@ class Login extends Component {
     this.state = {
       email: '',
       password: '',
-      loginErrors: '',
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -19,9 +19,11 @@ class Login extends Component {
   handleSubmit(e) {
     e.preventDefault();
 
+    const { handleSignIn, homeProps } = this.props;
+    const { history } = homeProps;
     const { email, password } = this.state;
 
-    this.props.handleSignIn({ email, password }, this.props.homeProps.history);
+    handleSignIn({ email, password }, history);
   }
 
   handleChange(e) {
@@ -32,6 +34,7 @@ class Login extends Component {
 
   render() {
     const { toggleClass } = this.props;
+    const { email, password } = this.state;
 
     return (
       <div id="login" className={toggleClass ? 'hidden' : ''}>
@@ -43,7 +46,7 @@ class Login extends Component {
               type="email"
               name="email"
               placeholder="Email Address"
-              value={this.state.email}
+              value={email}
               onChange={this.handleChange}
               autoComplete="off"
               required
@@ -55,7 +58,7 @@ class Login extends Component {
               type="password"
               name="password"
               placeholder="Password"
-              value={this.state.password}
+              value={password}
               onChange={this.handleChange}
               autoComplete="off"
               required
@@ -74,5 +77,13 @@ class Login extends Component {
 const mapDispatchToProps = dispatch => ({
   handleSignIn: (user, history) => dispatch(fetchUser('sign_in', user, history)),
 });
+
+Login.propTypes = {
+  handleSignIn: PropTypes.func.isRequired,
+  homeProps: PropTypes.shape({
+    history: PropTypes.shape({}),
+  }).isRequired,
+  toggleClass: PropTypes.bool.isRequired,
+};
 
 export default connect(null, mapDispatchToProps)(Login);

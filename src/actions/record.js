@@ -44,7 +44,7 @@ function fetchRecords(
           {
             record: {
               percentage: record.percentage,
-              user_id: record.user_id,
+              user_id: record.userId,
               task_id: record.value,
             },
           },

@@ -41,7 +41,7 @@ function fetchTasks(action = 'load', task = {}, routerHistory = '') {
               name: task.name,
               description: task.description,
               completion: task.completion,
-              user_id: task.user_id,
+              user_id: task.userId,
             },
           },
           { withCredentials: true },

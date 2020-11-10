@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React from 'react';
 import date from 'date-and-time';
 import { connect } from 'react-redux';
@@ -6,11 +8,12 @@ const Profile = ({ ...props }) => {
   const { onLogout, onDelete, appState } = props;
 
   const { account } = appState;
+  const { loading, errors } = account;
   const { user } = account;
 
   const renderProfile = () => {
-    if (account.loading) return <div>Loading...</div>;
-    if (account.errors.length > 0) return <div>Unable to load profile, try again please</div>;
+    if (loading) return <div>Loading...</div>;
+    if (errors.length > 0) return <div>Unable to load profile, try again please</div>;
 
     if (user) {
       const dateTime = user.created_at.split('T');
@@ -32,7 +35,7 @@ const Profile = ({ ...props }) => {
             </h2>
           </div>
           <div className="buttons">
-            <div onClick={() => onDelete(user)}>
+            <div role="button" tabIndex={0} onClick={() => onDelete(user)}>
               <p>Delete account</p>
             </div>
             <div className="division">
@@ -42,6 +45,8 @@ const Profile = ({ ...props }) => {
         </div>
       );
     }
+
+    return '';
   };
 
   return <>{renderProfile()}</>;

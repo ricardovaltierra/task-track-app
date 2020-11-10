@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
@@ -46,23 +48,25 @@ class Home extends Component {
 
   render() {
     const { errors } = this.props;
+    const { hidden, login, signup } = this.state;
     let jsonErrors = {};
     const errorItems = [];
 
-    if (errors.length !== undefined) {
+    if (errors.length > 0) {
       jsonErrors = JSON.parse(errors);
-      Object.keys(jsonErrors)
-      .forEach(key => {
-        if (jsonErrors.hasOwnProperty(key)) 
-          errorItems.push(jsonErrors[key]);
+      Object.keys(jsonErrors).forEach(key => {
+        if (Object.prototype.hasOwnProperty.call(jsonErrors, key)) errorItems.push(jsonErrors[key]);
       });
     }
 
     return (
       <div className="home">
         <div className="error-container">
-          {errorItems.map((error, index) => (
-            <p key={index} className="error-item">
+          {errorItems.map(error => (
+            <p
+              key={`${error}-${error.length}`}
+              className="error-item"
+            >
               {error}
             </p>
           ))}
@@ -71,20 +75,22 @@ class Home extends Component {
           <div className="logo" />
           <h1>Tasktracker</h1>
         </div>
-        <div className={this.state.hidden ? 'form register' : 'form'}>
+        <div className={hidden ? 'form register' : 'form'}>
           <ul className="tab-group">
-            <li className={this.state.login} onClick={this.toggleForm}>
+            <li className={login} onClick={this.toggleForm}>
+              {' '}
               <p>Log In</p>
             </li>
-            <li className={this.state.signup} onClick={this.toggleForm}>
+            <li className={signup} onClick={this.toggleForm}>
+              {' '}
               <p>Sign Up</p>
             </li>
           </ul>
           <div className="tab-content">
-            <Login homeProps={this.props} toggleClass={this.state.hidden} />
+            <Login homeProps={this.props} toggleClass={hidden} />
             <Registration
               homeProps={this.props}
-              toggleClass={this.state.hidden}
+              toggleClass={hidden}
             />
           </div>
         </div>
@@ -108,9 +114,12 @@ Home.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func,
   }).isRequired,
-  errors: PropTypes.shape({}),
+  errors: PropTypes.string,
 };
 
-Home.defaultProps = { errors: {} };
+Home.defaultProps = {
+  errors: '',
+  loggedIn: false,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

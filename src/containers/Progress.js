@@ -1,5 +1,7 @@
+/* eslint-disable react/forbid-prop-types */
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
 import {
   faThumbtack,
   faTrophy,
@@ -26,7 +28,9 @@ const Progress = ({
 
   const renderProgress = () => {
     if (tasks.loading || records.loading) return <div>Loading...</div>;
-    if (tasks.errors.length > 1 || records.errors.length > 1) return <div>Unable to load profile, try again please</div>;
+    if (tasks.errors.length > 1 || records.errors.length > 1) {
+      return <div>Unable to load profile, try again please</div>;
+    }
     if (tasks && records) {
       let completed = 0;
 
@@ -51,10 +55,12 @@ const Progress = ({
             <FontAwesomeIcon icon={faCalendar} size="2x" style={mainColor} />
             <p>{records.items.length}</p>
           </div>
-          <button onClick={() => onReset()}>Reset progress</button>
+          <button type="button" onClick={() => onReset()}>Reset progress</button>
         </div>
       );
     }
+
+    return '';
   };
 
   return <>{renderProgress()}</>;
@@ -68,5 +74,23 @@ const mapDispatchToProps = dispatch => ({
   handleFetchTasks: () => dispatch(fetchTasks()),
   handleFetchRecords: () => dispatch(fetchRecords()),
 });
+
+Progress.propTypes = {
+  onReset: PropTypes.func.isRequired,
+  handleFetchTasks: PropTypes.func.isRequired,
+  handleFetchRecords: PropTypes.func.isRequired,
+  appState: PropTypes.shape({
+    tasks: PropTypes.shape({
+      loading: PropTypes.bool,
+      errors: PropTypes.string,
+      items: PropTypes.array,
+    }),
+    records: PropTypes.shape({
+      loading: PropTypes.bool,
+      errors: PropTypes.string,
+      items: PropTypes.array,
+    }),
+  }).isRequired,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Progress);

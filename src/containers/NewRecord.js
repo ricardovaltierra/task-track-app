@@ -1,5 +1,7 @@
+/* eslint-disable camelcase */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
 import { fetchRecords } from '../actions/record';
 import { fetchTasks } from '../actions/task';
 
@@ -36,7 +38,7 @@ class NewRecord extends Component {
       }
 
       this.setState({
-        tasks: this.props.tasks.map(task => [
+        tasks: tasks.map(task => [
           task.id,
           task.name,
           task.created_at,
@@ -51,9 +53,9 @@ class NewRecord extends Component {
     e.preventDefault();
 
     const { percentage, value, flag } = this.state;
-    const { user_id, history } = this.props;
+    const { handleNewRecord, userId, history } = this.props;
 
-    this.props.handleNewRecord({ percentage, user_id, value }, history, flag);
+    handleNewRecord({ percentage, userId, value }, history, flag);
   }
 
   handleChange(e) {
@@ -69,17 +71,19 @@ class NewRecord extends Component {
   }
 
   render() {
+    const { value, tasks, percentage } = this.state;
+
     return (
       <div className="form-tr record">
         <form onSubmit={this.handleSubmit} className="new-task-form">
           <div className="field-wrap">
             <select
               name="task-record"
-              value={this.state.value}
+              value={value}
               onChange={this.handleSelect}
               className="task-option"
             >
-              {this.state.tasks.map(task => (
+              {tasks.map(task => (
                 <option key={task[2]} value={task[0]}>
                   {task[1]}
                 </option>
@@ -92,7 +96,7 @@ class NewRecord extends Component {
               type="number"
               name="percentage"
               placeholder="0"
-              value={this.state.percentage}
+              value={percentage}
               onChange={this.handleChange}
               autoComplete="off"
               required
@@ -110,12 +114,27 @@ class NewRecord extends Component {
 
 const mapStateToProps = state => ({
   tasks: state.tasks.items,
-  user_id: state.account.user.id,
+  userId: state.account.user.id,
 });
 
 const mapDispatchToProps = dispatch => ({
   handleNewRecord: (record, history, flag) => dispatch(fetchRecords('save', record, history, flag)),
   handleFetchTasks: () => dispatch(fetchTasks()),
 });
+
+NewRecord.propTypes = {
+  handleNewRecord: PropTypes.func.isRequired,
+  handleFetchTasks: PropTypes.func.isRequired,
+  userId: PropTypes.number.isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      task_id: PropTypes.string,
+    }),
+  }).isRequired,
+  tasks: PropTypes.array.isRequired, /* eslint-disable-line react/forbid-prop-types */
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewRecord);

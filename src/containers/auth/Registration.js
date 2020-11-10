@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchUser } from '../../actions/account';
 
@@ -9,7 +10,7 @@ class Registration extends Component {
     this.state = {
       email: '',
       password: '',
-      password_confirmation: '',
+      passwordConfirmation: '',
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -19,10 +20,11 @@ class Registration extends Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    const { email, password, password_confirmation } = this.state;
-    this.props.handleSignUp(
-      { email, password, password_confirmation },
-      this.props.homeProps.history,
+    const { email, password, passwordConfirmation } = this.state;
+    const { handleSignUp, homeProps } = this.props;
+    const { history } = homeProps;
+    handleSignUp(
+      { email, password, passwordConfirmation }, history,
     );
   }
 
@@ -34,6 +36,7 @@ class Registration extends Component {
 
   render() {
     const { toggleClass } = this.props;
+    const { email, password, passwordConfirmation } = this.state;
 
     return (
       <div id="signup" className={toggleClass ? '' : 'hidden'}>
@@ -45,7 +48,7 @@ class Registration extends Component {
               type="email"
               name="email"
               placeholder="Email Address"
-              value={this.state.email}
+              value={email}
               onChange={this.handleChange}
               autoComplete="off"
               required
@@ -57,7 +60,7 @@ class Registration extends Component {
               type="password"
               name="password"
               placeholder="Password"
-              value={this.state.password}
+              value={password}
               onChange={this.handleChange}
               autoComplete="off"
               required
@@ -67,9 +70,9 @@ class Registration extends Component {
           <div className="field-wrap">
             <input
               type="password"
-              name="password_confirmation"
+              name="passwordConfirmation"
               placeholder="Password Confirmation"
-              value={this.state.password_confirmation}
+              value={passwordConfirmation}
               onChange={this.handleChange}
               autoComplete="off"
               required
@@ -88,5 +91,13 @@ class Registration extends Component {
 const mapDispatchToProps = dispatch => ({
   handleSignUp: (user, history) => dispatch(fetchUser('sign_up', user, history)),
 });
+
+Registration.propTypes = {
+  handleSignUp: PropTypes.func.isRequired,
+  homeProps: PropTypes.shape({
+    history: PropTypes.shape({}),
+  }).isRequired,
+  toggleClass: PropTypes.bool.isRequired,
+};
 
 export default connect(null, mapDispatchToProps)(Registration);

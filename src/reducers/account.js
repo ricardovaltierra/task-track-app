@@ -9,7 +9,7 @@ import {
 
 export const initialState = {
   loading: true,
-  errors: {},
+  errors: '',
   user: {},
   loggedIn: false,
 };
@@ -23,7 +23,7 @@ const account = (state = initialState, action) => {
         user: action.payload.user,
         loggedIn: action.payload.loggedIn,
         loading: false,
-        errors: {},
+        errors: '',
       };
     case SIGN_FAILURE:
       return {
@@ -36,14 +36,14 @@ const account = (state = initialState, action) => {
         user: action.user,
         loggedIn: action.loggedIn,
         loading: false,
-        errors: {},
+        errors: '',
       };
     case DELETE_USER_SUCCESS:
       return {
         user: {},
         loggedIn: false,
         loading: false,
-        errors: {},
+        errors: '',
       };
     case DELETE_USER_FAILURE:
       return {

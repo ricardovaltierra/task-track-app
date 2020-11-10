@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -22,8 +23,10 @@ const TaskRecords = ({ ...props }) => {
 
   const renderTask = () => {
     if (tasks.loading) return <div>Loading...</div>;
-    if (tasks.errors.length > 1) return <div>Unable to load records, please try again.</div>;
-    const task = tasks.items.find(task => parseInt(task_id) === task.id);
+    if (tasks.errors.length > 1) {
+      return <div>Unable to load records, please try again.</div>;
+    }
+    const task = tasks.items.find(task => parseInt(task_id, 10) === task.id);
 
     if (task) {
       return (
@@ -33,6 +36,8 @@ const TaskRecords = ({ ...props }) => {
         </div>
       );
     }
+
+    return '';
   };
 
   const renderTaskRecords = () => {
@@ -40,7 +45,9 @@ const TaskRecords = ({ ...props }) => {
     if (records.errors.length > 1) return <div>Unable to load records, please try again</div>;
     if (records && task_id) {
       const recordList = records.items.map(record => {
-        if (parseInt(task_id) === record.task_id) return <Record key={record.id} record={record} />;
+        if (parseInt(task_id, 10) === record.task_id) {
+          return <Record key={record.id} record={record} />;
+        }
         return '';
       });
 
@@ -53,6 +60,8 @@ const TaskRecords = ({ ...props }) => {
         </>
       );
     }
+
+    return '';
   };
 
   return (

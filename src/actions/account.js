@@ -92,7 +92,7 @@ function fetchUser(action = 'sign_in', user = {}, routerHistory) {
               user: {
                 email: user.email,
                 password: user.password,
-                password_confirmation: user.password_confirmation,
+                password_confirmation: user.passwordConfirmation,
               },
             },
             { withCredentials: true },
