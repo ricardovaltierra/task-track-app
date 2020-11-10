@@ -1,14 +1,10 @@
 import React from "react";
-import date from 'date-and-time';
+import date from "date-and-time";
 import { connect } from "react-redux";
 
 const Profile = ({ ...props }) => {
-  
-  const { 
-    onLogout,
-    onDelete,
-    appState } = props;
-  
+  const { onLogout, onDelete, appState } = props;
+
   const { account } = appState;
   const { user } = account;
 
@@ -20,8 +16,11 @@ const Profile = ({ ...props }) => {
     if (user) {
       const dateTime = user.created_at.split("T");
       const dateArray = dateTime[0].split("-");
-      const pattern = date.compile('MMM D YYYY');
-      const dateFormat = date.format(new Date(dateArray[0], dateArray[1], dateArray[2]), pattern);
+      const pattern = date.compile("MMM D YYYY");
+      const dateFormat = date.format(
+        new Date(dateArray[0], dateArray[1], dateArray[2]),
+        pattern
+      );
 
       return (
         <div className="user-profile">
@@ -31,8 +30,12 @@ const Profile = ({ ...props }) => {
             <h2 className="created_at">Created: {dateFormat}</h2>
           </div>
           <div className="buttons">
-            <div onClick={() => onDelete(user)}><p>Delete account</p></div>
-            <div className='division' ><p onClick={onLogout}>Logout</p></div>
+            <div onClick={() => onDelete(user)}>
+              <p>Delete account</p>
+            </div>
+            <div className="division">
+              <p onClick={onLogout}>Logout</p>
+            </div>
           </div>
         </div>
       );

@@ -1,64 +1,69 @@
 import {
   GET_TASKS,
   GET_TASKS_SUCCESS,
-  GET_TASKS_FAILURE
-} from '../helpers/actions';
-import { getTRecordsSuccess } from './record';
+  GET_TASKS_FAILURE,
+} from "../helpers/actions";
+import { getTRecordsSuccess } from "./record";
 import axios from "axios";
 
 const getTasks = () => ({ type: GET_TASKS });
 
-const getTasksSuccess = tasks => ({
+const getTasksSuccess = (tasks) => ({
   type: GET_TASKS_SUCCESS,
-  payload: tasks
+  payload: tasks,
 });
 
-const getTasksFailure = errors => ({
+const getTasksFailure = (errors) => ({
   type: GET_TASKS_FAILURE,
-  errors: errors
-})
+  errors: errors,
+});
 
-function fetchTasks(action = 'load', task = {}, routerHistory = '') {
-  return dispatch => {
-    dispatch(getTasks())
-    if (action === 'load') {
-      return axios.get('https://steptracking-api.herokuapp.com/tasks', { withCredentials: true })
-            .then((response) => {
-              dispatch(getTasksSuccess(response.data.tasks))
-            })
-            .catch(errors => dispatch(getTasksFailure(errors)));
+function fetchTasks(action = "load", task = {}, routerHistory = "") {
+  return (dispatch) => {
+    dispatch(getTasks());
+    if (action === "load") {
+      return axios
+        .get("https://steptracking-api.herokuapp.com/tasks", {
+          withCredentials: true,
+        })
+        .then((response) => {
+          dispatch(getTasksSuccess(response.data.tasks));
+        })
+        .catch((errors) => dispatch(getTasksFailure(errors)));
     }
 
-    if (action === 'save') {
-      return axios.post('https://steptracking-api.herokuapp.com/tasks',
-        {
-          task: {
-            name: task.name,
-            description: task.description,
-            completion: task.completion,
-            user_id: task.user_id,
-          }
-        },
-       { withCredentials: true })
-            .then((response) => {
-              routerHistory.push('/dashboard/tasks')
-              // dispatch(getTasksSuccess(response.data.tasks))
-            })
-            .catch(errors => dispatch(getTasksFailure(errors)));
+    if (action === "save") {
+      return axios
+        .post(
+          "https://steptracking-api.herokuapp.com/tasks",
+          {
+            task: {
+              name: task.name,
+              description: task.description,
+              completion: task.completion,
+              user_id: task.user_id,
+            },
+          },
+          { withCredentials: true }
+        )
+        .then((response) => {
+          routerHistory.push("/dashboard/tasks");
+        })
+        .catch((errors) => dispatch(getTasksFailure(errors)));
     }
 
-    if(action === 'reset') {
-      return axios.delete('https://steptracking-api.herokuapp.com/reset',
-       { withCredentials: true })
-            .then((response) => {
-              dispatch(getTasksSuccess([]))
-              dispatch(getTRecordsSuccess([]))
-            })
-            .catch(
-              errors => dispatch(getTasksFailure(errors))
-            );
+    if (action === "reset") {
+      return axios
+        .delete("https://steptracking-api.herokuapp.com/reset", {
+          withCredentials: true,
+        })
+        .then((response) => {
+          dispatch(getTasksSuccess([]));
+          dispatch(getTRecordsSuccess([]));
+        })
+        .catch((errors) => dispatch(getTasksFailure(errors)));
     }
-  }
+  };
 }
 
 export { getTasks, getTasksSuccess, getTasksFailure, fetchTasks };

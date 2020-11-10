@@ -1,13 +1,13 @@
 import {
   GET_TASK_RECORDS,
   GET_TASK_RECORDS_SUCCESS,
-  GET_TASK_RECORDS_FAILURE
-} from '../helpers/actions';
+  GET_TASK_RECORDS_FAILURE,
+} from "../helpers/actions";
 
 const initialState = {
   loading: true,
-  errors: '',
-  items: []
+  errors: "",
+  items: [],
 };
 
 const records = (state = initialState, action) => {
@@ -18,13 +18,13 @@ const records = (state = initialState, action) => {
       return {
         items: action.payload,
         loading: false,
-        errors: ''
+        errors: "",
       };
     case GET_TASK_RECORDS_FAILURE:
       return {
         ...state,
         loading: false,
-        errors: action.errors
+        errors: action.errors,
       };
     default:
       return state;

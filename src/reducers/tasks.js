@@ -1,13 +1,13 @@
 import {
   GET_TASKS,
   GET_TASKS_SUCCESS,
-  GET_TASKS_FAILURE
-} from '../helpers/actions';
+  GET_TASKS_FAILURE,
+} from "../helpers/actions";
 
 const initialState = {
   loading: true,
-  errors: '',
-  items: []
+  errors: "",
+  items: [],
 };
 
 const tasks = (state = initialState, action) => {
@@ -18,13 +18,13 @@ const tasks = (state = initialState, action) => {
       return {
         items: action.payload,
         loading: false,
-        errors: ''
+        errors: "",
       };
     case GET_TASKS_FAILURE:
       return {
         ...state,
         loading: false,
-        errors: action.errors
+        errors: action.errors,
       };
     default:
       return state;

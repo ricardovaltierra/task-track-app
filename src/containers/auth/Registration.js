@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { connect } from 'react-redux';
-import { fetchUser } from '../../actions/account';
+import { connect } from "react-redux";
+import { fetchUser } from "../../actions/account";
 
 class Registration extends Component {
   constructor(props) {
@@ -19,19 +19,16 @@ class Registration extends Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    const {
-      email,
-      password,
-      password_confirmation
-    } = this.state;
+    const { email, password, password_confirmation } = this.state;
     this.props.handleSignUp(
       { email, password, password_confirmation },
-      this.props.homeProps.history);
+      this.props.homeProps.history
+    );
   }
 
   handleChange(e) {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   }
 
@@ -39,13 +36,11 @@ class Registration extends Component {
     let { toggleClass } = this.props;
 
     return (
-      <div id='signup' className={toggleClass ? '' : 'hidden'}>
-  
+      <div id="signup" className={toggleClass ? "" : "hidden"}>
         <h1>Sign Up</h1>
 
         <form onSubmit={this.handleSubmit}>
-
-          <div className='field-wrap'>
+          <div className="field-wrap">
             <input
               type="email"
               name="email"
@@ -70,26 +65,29 @@ class Registration extends Component {
           </div>
 
           <div className="field-wrap">
-              <input
-                type="password"
-                name="password_confirmation"
-                placeholder="Password Confirmation"
-                value={this.state.password_confirmation}
-                onChange={this.handleChange}
-                autoComplete="off"
-                required
-              />
+            <input
+              type="password"
+              name="password_confirmation"
+              placeholder="Password Confirmation"
+              value={this.state.password_confirmation}
+              onChange={this.handleChange}
+              autoComplete="off"
+              required
+            />
           </div>
 
-          <button type="submit" className='button button-block'>Register</button>
+          <button type="submit" className="button button-block">
+            Register
+          </button>
         </form>
       </div>
     );
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  handleSignUp: (user, history) => dispatch(fetchUser('sign_up', user, history))
+const mapDispatchToProps = (dispatch) => ({
+  handleSignUp: (user, history) =>
+    dispatch(fetchUser("sign_up", user, history)),
 });
 
 export default connect(null, mapDispatchToProps)(Registration);
