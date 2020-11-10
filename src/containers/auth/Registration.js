@@ -45,7 +45,6 @@ class Registration extends Component {
 
         <form onSubmit={this.handleSubmit}>
 
-          
           <div className='field-wrap'>
             <input
               type="email"

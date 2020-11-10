@@ -71,25 +71,30 @@ class NewRecord extends Component {
 
   render() {
     return (
-      <div>
+      <div className='form-tr record'>
         <form onSubmit={this.handleSubmit} className='new-task-form'>
 
-          <select name='task-record' value={this.state.value} onChange={this.handleSelect}>
-            {
-              this.state.tasks.map(task => <option key={task[2]} value={task[0]}>{task[1]}</option>)
-            }
-          </select>
+          <div className='field-wrap'>
+            <select name='task-record' value={this.state.value} onChange={this.handleSelect} className='task-option'>
+              {
+                this.state.tasks.map(task => <option key={task[2]} value={task[0]}>{task[1]}</option>)
+              }
+            </select>
+          </div>
 
-          <input
-            type="number"
-            name="percentage"
-            placeholder="0"
-            value={this.state.percentage}
-            onChange={this.handleChange}
-            required
-          />
+          <div className='field-wrap'>
+            <input
+              type="number"
+              name="percentage"
+              placeholder="0"
+              value={this.state.percentage}
+              onChange={this.handleChange}
+              autoComplete="off"
+              required
+            />
+          </div>
 
-          <button type="submit">Save record</button>
+          <button type="submit" className='button button-block'>Save record</button>
         </form>
       </div>
     );

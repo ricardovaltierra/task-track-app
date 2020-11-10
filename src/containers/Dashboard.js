@@ -55,8 +55,6 @@ class Dashboard extends React.Component {
 
   render() {
 
-    const  { tabColor } = this.state;
-
     return (
       <div className='dashboard'>
         <div className='top-dashboard'>

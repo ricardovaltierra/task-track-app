@@ -36,36 +36,44 @@ class NewTask extends Component {
 
   render() {
     return (
-      <div className=''>
+      <div className='form-tr'>
         <form onSubmit={this.handleSubmit} className='new-task-form'>
-          <input
-            type="text"
-            name="name"
-            placeholder="Task to be done"
-            value={this.state.name}
-            onChange={this.handleChange}
-            required
-          />
 
-          <textarea
-            name="description"
-            placeholder="Give a brief description"
-            value={this.state.desription}
-            onChange={this.handleChange}
-            required
-          />
+          <div className='field-wrap'>
+            <input
+              type="text"
+              name="name"
+              placeholder="Your awesome task..."
+              value={this.state.name}
+              onChange={this.handleChange}
+              autoComplete="off"
+              required
+            />
+          </div>
 
+          <div className='field-wrap'>
+            <textarea
+              name="description"
+              placeholder="Describe it a bit"
+              value={this.state.desription}
+              onChange={this.handleChange}
+              required
+            />
+          </div>
 
-          <input
-            type="number"
-            name="completion"
-            placeholder="0"
-            value={this.state.completion}
-            onChange={this.handleChange}
-            required
-          />
+          <div className='field-wrap'>
+            <input
+              type="number"
+              name="completion"
+              placeholder="Covered"
+              value={this.state.completion}
+              onChange={this.handleChange}
+              autoComplete="off"
+              required
+            />
+          </div>
 
-          <button type="submit">Save task</button>
+          <button type="submit" className='button button-block' >Save task</button>
         </form>
       </div>
     );
