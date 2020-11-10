@@ -20,10 +20,10 @@ const account = (state = initialState, action) => {
       return state;
     case SIGN_SUCCESS:
       return {
-        ...state,
         user: action.payload.user,
         logged_in: action.payload.logged_in,
         loading: false,
+        errors: {},
       }
     case SIGN_FAILURE:
       return {
@@ -33,22 +33,20 @@ const account = (state = initialState, action) => {
       }
     case GET_STATUS:
       return {
-        ...state,
         user: action.user,
         logged_in: action.logged_in,
-        loading: false
+        loading: false,
+        errors: {}
       };
     case DELETE_USER_SUCCESS:
-      
       return {
-        ...state,
         user: {},
         logged_in: false,
-        loading: false
+        loading: false,
+        errors: {}
       }
     case DELETE_USER_FAILURE:
       return {
-        ...state,
         user: {},
         logged_in: false,
         loading: false,
