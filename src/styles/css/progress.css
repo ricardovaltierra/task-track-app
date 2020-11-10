@@ -52,6 +52,7 @@
     color: #fff;
     transition: all 0.5s ease; }
     .progress button:hover, .progress button:focus {
-      background: #c80a0a; }
+      background: #c80a0a;
+      /* stylelint-disable-line csstree/validator */ }
 
 /*# sourceMappingURL=progress.css.map */

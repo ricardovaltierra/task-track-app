@@ -53,9 +53,6 @@
         color: rgba(3, 3, 3, 0.651);
         background-color: white;
         text-align: right; }
-    .task-list .task-items .task-item:first-child,
-    .task-list .task-items .record-task:first-child {
-      margin-top: 1.5rem; }
     .task-list .task-items .record-task {
       position: relative;
       display: grid;
@@ -91,6 +88,9 @@
         color: rgba(3, 3, 3, 0.651);
         background-color: white;
         text-align: right; }
+    .task-list .task-items .task-item:first-child,
+    .task-list .task-items .record-task:first-child {
+      margin-top: 1.5rem; }
   .task-list .task-new {
     position: relative;
     width: 100%;

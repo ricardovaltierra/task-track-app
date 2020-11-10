@@ -22,7 +22,7 @@
       position: relative;
       font-size: 0.8rem;
       color: #738596;
-      border-bottom: 1px solid #eff2f6;;
+      border-bottom: 1px solid #eff2f6;
       margin: 0;
     }
 
@@ -35,7 +35,7 @@
       border-radius: 50%;
       width: 40%;
       height: 60%;
-      border: 1px solid #eff2f6;;
+      border: 1px solid #eff2f6;
     }
 
     p {
@@ -60,8 +60,10 @@
     background: #e00b0b;
     color: #fff;
     transition: all 0.5s ease;
-    &:hover, &:focus {
-      background: darken(#e00b0b, 5%)
+
+    &:hover,
+    &:focus {
+      background: darken(#e00b0b, 5%); /* stylelint-disable-line csstree/validator */
     }
   }
 }

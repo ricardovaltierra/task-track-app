@@ -8,9 +8,10 @@
   .home .error-container {
     position: relative;
     display: grid;
-    width: 100%;
+    width: 95%;
     grid-auto-flow: row;
     align-content: start;
+    justify-items: center;
     font-family: 'Open Sans', sans-serif;
     font-weight: 300;
     font-size: 0.8rem;
@@ -126,7 +127,8 @@
       color: #fff;
       transition: all 0.5s ease; }
       .home .form .button:hover, .home .form .button:focus {
-        background: #179b77; }
+        background: #179b77;
+        /* stylelint-disable-line csstree/validator */ }
     .home .form .button-block {
       display: block;
       width: 80%; }

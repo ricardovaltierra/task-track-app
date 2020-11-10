@@ -39,7 +39,8 @@
       background-repeat: no-repeat;
       background-position: right 0.7em top 50%, 0 0;
       background-size: 0.65em auto, 100%; }
-    .form-tr .field-wrap input, .form-tr .field-wrap textarea {
+    .form-tr .field-wrap input,
+    .form-tr .field-wrap textarea {
       font-size: 1rem;
       display: block;
       width: 80%;
@@ -51,7 +52,8 @@
       color: #474747;
       border-radius: 0;
       transition: border-color 0.25s ease, box-shadow 0.25s ease; }
-      .form-tr .field-wrap input:focus, .form-tr .field-wrap textarea:focus {
+      .form-tr .field-wrap input:focus,
+      .form-tr .field-wrap textarea:focus {
         outline: 0;
         border-color: #1ab188; }
   .form-tr .button {
@@ -68,7 +70,8 @@
     color: #fff;
     transition: all 0.5s ease; }
     .form-tr .button:hover, .form-tr .button:focus {
-      background: #179b77; }
+      background: #179b77;
+      /* stylelint-disable-line csstree/validator */ }
   .form-tr .button-block {
     display: block;
     width: 80%; }
