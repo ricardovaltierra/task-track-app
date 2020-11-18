@@ -10,7 +10,7 @@ import {
   faAddressCard,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { fetchUser } from '../actions/account';
+import { fetchUser } from '../actions/fetchCalls';
 import TaskList from './TaskList';
 import Profile from './Profile';
 import TaskRecords from './TaskRecords';
@@ -18,7 +18,7 @@ import RecordList from './RecordList';
 import Progress from './Progress';
 import NewTask from './NewTask';
 import NewRecord from './NewRecord';
-import { fetchTasks } from '../actions/task';
+import { fetchTasks } from '../actions/fetchCalls';
 
 class Dashboard extends React.Component {
   constructor(props) {

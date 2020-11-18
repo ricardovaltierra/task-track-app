@@ -2,8 +2,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchRecords } from '../actions/record';
-import { fetchTasks } from '../actions/task';
+import { fetchRecords, fetchTasks } from '../actions/fetchCalls';
 import Record from '../components/Record';
 
 const TaskRecords = ({ ...props }) => {

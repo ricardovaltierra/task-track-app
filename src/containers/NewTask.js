@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
-import { fetchTasks } from '../actions/task';
+import { fetchTasks } from '../actions/fetchCalls';
 
 class NewTask extends Component {
   constructor(props) {

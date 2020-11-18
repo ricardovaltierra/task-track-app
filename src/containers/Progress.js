@@ -8,8 +8,7 @@ import {
   faCalendar,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { fetchTasks } from '../actions/task';
-import { fetchRecords } from '../actions/record';
+import { fetchTasks, fetchRecords } from '../actions/fetchCalls';
 
 const Progress = ({
   onReset,

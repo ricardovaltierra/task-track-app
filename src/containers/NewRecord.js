@@ -2,8 +2,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
-import { fetchRecords } from '../actions/record';
-import { fetchTasks } from '../actions/task';
+import { fetchRecords, fetchTasks } from '../actions/fetchCalls';
 
 class NewRecord extends Component {
   constructor(props) {

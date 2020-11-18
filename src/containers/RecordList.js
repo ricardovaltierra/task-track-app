@@ -3,8 +3,7 @@ import React, { useEffect } from 'react';
 import { PropTypes } from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchRecords } from '../actions/record';
-import { fetchTasks } from '../actions/task';
+import { fetchTasks, fetchRecords } from '../actions/fetchCalls';
 import Record from '../components/Record';
 
 const RecordList = ({

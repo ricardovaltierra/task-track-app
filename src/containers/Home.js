@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import Registration from './auth/Registration';
 import Login from './auth/Login';
-import { fetchUser } from '../actions/account';
+import { fetchUser } from '../actions/fetchCalls';
 
 class Home extends Component {
   constructor(props) {

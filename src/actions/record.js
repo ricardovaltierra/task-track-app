@@ -1,4 +1,3 @@
-import axios from 'axios';
 import {
   GET_TASK_RECORDS,
   GET_TASK_RECORDS_SUCCESS,
@@ -17,50 +16,6 @@ const getTRecordsFailure = errors => ({
   errors,
 });
 
-function fetchRecords(
-  action = 'load',
-  record = {},
-  routerHistory,
-  flag = false,
-) {
-  return dispatch => {
-    dispatch(getRecords);
-
-    if (action === 'load') {
-      return axios
-        .get('https://steptracking-api.herokuapp.com/records', {
-          withCredentials: true,
-        })
-        .then(response => {
-          dispatch(getTRecordsSuccess(response.data.records));
-        })
-        .catch(errors => dispatch(getTRecordsFailure(errors)));
-    }
-
-    if (action === 'save') {
-      return axios
-        .post(
-          'https://steptracking-api.herokuapp.com/records',
-          {
-            record: {
-              percentage: record.percentage,
-              user_id: record.userId,
-              task_id: record.value,
-            },
-          },
-          { withCredentials: true },
-        )
-        .then(() => {
-          if (!flag) routerHistory.push('/dashboard/tasks');
-          else routerHistory.push('/dashboard/records');
-        })
-        .catch(errors => dispatch(getTRecordsFailure(errors)));
-    }
-
-    return '';
-  };
-}
-
 export {
-  getRecords, getTRecordsSuccess, getTRecordsFailure, fetchRecords,
+  getRecords, getTRecordsSuccess, getTRecordsFailure,
 };

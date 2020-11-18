@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
-import { fetchUser } from '../../actions/account';
+import { fetchUser } from '../../actions/fetchCalls';
 
 class Login extends Component {
   constructor(props) {
