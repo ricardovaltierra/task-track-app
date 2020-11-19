@@ -188,6 +188,7 @@ function fetchRecords(
           withCredentials: true,
         })
         .then((response) => {
+          console.log(response.data.records)
           dispatch(getTRecordsSuccess(response.data.records));
         })
         .catch((errors) => dispatch(getTRecordsFailure(errors)));
