@@ -9,7 +9,7 @@ import {
   GET_TASK_RECORDS_FAILURE
 } from '../../helpers/actions';
 
-describe('receord actions', () => {
+describe('record actions', () => {
   it('should set state for getting records', () => {
     const getRecordsTest = { type: GET_TASK_RECORDS };
     expect(getRecords()).toEqual(getRecordsTest);
@@ -38,7 +38,7 @@ describe('receord actions', () => {
   it('should return an object with errors', () => {
     const errors = {
       "records":
-      ["Unable to load records. Something went wrong on the server."]
+      ["Unable to load records. Something went wrong on server."]
     };
 
     const getFailureTest = {
