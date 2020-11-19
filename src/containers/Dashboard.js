@@ -37,18 +37,25 @@ class Dashboard extends React.Component {
     const { handleSignStatus } = this.props;
 
     handleSignStatus().then(() => {
-      const { accountState, history } = this.props;
-      const { loggedIn } = accountState;
-      const { user } = accountState;
-
-      if (loggedIn === false) history.push('/');
-      else {
-        this.setState({
-          user: user.email,
-        });
-      }
+        const { accountState, history } = this.props;
+        const { loggedIn } = accountState;
+        const { user } = accountState;
+        
+        if (loggedIn === false) history.push('/');
+        else {
+          this.setState({
+            user: user.email,
+          });
+        }
     });
   }
+
+  componentWillUnmount() {
+    // fix Warning: Can't perform a React state update on an unmounted component
+    this.setState = (state,callback)=>{
+        return;
+    };
+}
 
   onLogout() {
     const { handleLogout, history } = this.props;
@@ -72,7 +79,7 @@ class Dashboard extends React.Component {
     const { user } = this.state;
 
     return (
-      <div className="dashboard">
+      <div className="dashboard" data-testid="dashboard">
         <div className="top-dashboard">
           <div className="title">
             <div className="avatar" />
@@ -135,7 +142,7 @@ class Dashboard extends React.Component {
             <FontAwesomeIcon icon={faChartPie} size="1x" />
             <div>Progress</div>
           </Link>
-          <Link to="/dashboard/profile" className="menu-item">
+          <Link to="/dashboard/profile" className="menu-item" data-testid="profile-link" >
             <FontAwesomeIcon icon={faAddressCard} size="1x" />
             <div>Profile</div>
           </Link>

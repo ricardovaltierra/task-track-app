@@ -49,7 +49,7 @@ describe('Home', () => {
 
     (async function () {
       await userEvent.click(loginButton)
-      const message = await screen.findByText(/Authentication failed/)
+      const message = await screen.queryByText(/Authentication failed/)
       expect(message).toBeNull()
     })();
   });

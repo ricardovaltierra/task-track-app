@@ -61,6 +61,7 @@ class Login extends Component {
               value={password}
               onChange={this.handleChange}
               autoComplete="off"
+              data-testid="login-password"
               required
             />
           </div>
