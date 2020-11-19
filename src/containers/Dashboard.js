@@ -130,15 +130,15 @@ class Dashboard extends React.Component {
           </Switch>
         </div>
         <div className="bottom-dashboard component-links">
-          <Link to="/dashboard/tasks" className="menu-item">
+          <Link to="/dashboard/tasks" className="menu-item" data-testid="tasklist-link" >
             <FontAwesomeIcon icon={faChartBar} size="1x" />
             <div>Tasks</div>
           </Link>
-          <Link to="/dashboard/records" className="menu-item">
+          <Link to="/dashboard/records" className="menu-item" data-testid="records-link">
             <FontAwesomeIcon icon={faAngleDoubleRight} size="1x" />
             <div>Records</div>
           </Link>
-          <Link to="/dashboard/progress" className="menu-item">
+          <Link to="/dashboard/progress" className="menu-item" data-testid="progress-link">
             <FontAwesomeIcon icon={faChartPie} size="1x" />
             <div>Progress</div>
           </Link>

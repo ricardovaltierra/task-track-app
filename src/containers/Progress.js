@@ -26,7 +26,7 @@ const Progress = ({
   const mainColor = { color: '#42b5e8' };
 
   const renderProgress = () => {
-    if (tasks.loading || records.loading) return <div>Loading...</div>;
+    if (tasks.loading || records.loading) return <div data-testid="progress-loading">Loading...</div>;
     if (tasks.errors.length > 1 || records.errors.length > 1) {
       return <div>Unable to load profile, try again please</div>;
     }
@@ -38,7 +38,7 @@ const Progress = ({
       }
 
       return (
-        <div className="progress">
+        <div className="progress" data-testid="progress">
           <div className="prog">
             <span>Tasks</span>
             <FontAwesomeIcon icon={faThumbtack} size="2x" style={mainColor} />

@@ -77,7 +77,7 @@ class NewTask extends Component {
             />
           </div>
 
-          <button type="submit" className="button button-block">
+          <button type="submit" className="button button-block" data-testid="new-task-button" >
             Save task
           </button>
         </form>

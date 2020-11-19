@@ -81,6 +81,7 @@ class NewRecord extends Component {
               value={value}
               onChange={this.handleSelect}
               className="task-option"
+              data-testid="task-option"
             >
               {tasks.map(task => (
                 <option key={task[2]} value={task[0]}>
