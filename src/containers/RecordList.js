@@ -30,15 +30,16 @@ const RecordList = ({
   };
 
   const renderRecords = () => {
-    if (loading || tasksState.loading) 
+    if (loading || tasksState.loading) {
       return (
         <>
           <div>Loading...</div>
-          <Link to="/dashboard/records/new" className="task-new" >
+          <Link to="/dashboard/records/new" className="task-new">
             <p>New record</p>
           </Link>
         </>
       );
+    }
     if (errors.length > 1 || tasksState.errors.length > 1) {
       return <div>Unable to load records, please try again.</div>;
     }
@@ -48,7 +49,7 @@ const RecordList = ({
       return (
         <>
           <div className="task-items">{recordList}</div>
-          <Link to="/dashboard/records/new" className="task-new" >
+          <Link to="/dashboard/records/new" className="task-new">
             <p>New record</p>
           </Link>
         </>

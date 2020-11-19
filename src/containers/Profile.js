@@ -39,7 +39,7 @@ const Profile = ({ ...props }) => {
               <p>Delete account</p>
             </div>
             <div className="division">
-              <p onClick={onLogout} data-testid="logout-button" >Logout</p>
+              <p onClick={onLogout} data-testid="logout-button">Logout</p>
             </div>
           </div>
         </div>

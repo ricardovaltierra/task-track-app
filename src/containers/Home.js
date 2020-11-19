@@ -73,7 +73,7 @@ class Home extends Component {
         </div>
         <div className="app-info">
           <div className="logo" />
-          <h1 data-testid="home-title" >Tasktracker</h1>
+          <h1 data-testid="home-title">Tasktracker</h1>
         </div>
         <div className={hidden ? 'form register' : 'form'}>
           <ul className="tab-group">

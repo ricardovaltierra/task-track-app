@@ -10,7 +10,7 @@ import {
   faAddressCard,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { fetchUser } from '../actions/fetchCalls';
+import { fetchUser, fetchTasks } from '../actions/fetchCalls';
 import TaskList from './TaskList';
 import Profile from './Profile';
 import TaskRecords from './TaskRecords';
@@ -18,7 +18,6 @@ import RecordList from './RecordList';
 import Progress from './Progress';
 import NewTask from './NewTask';
 import NewRecord from './NewRecord';
-import { fetchTasks } from '../actions/fetchCalls';
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -37,25 +36,24 @@ class Dashboard extends React.Component {
     const { handleSignStatus } = this.props;
 
     handleSignStatus().then(() => {
-        const { accountState, history } = this.props;
-        const { loggedIn } = accountState;
-        const { user } = accountState;
-        
-        if (loggedIn === false) history.push('/');
-        else {
-          this.setState({
-            user: user.email,
-          });
-        }
+      const { accountState, history } = this.props;
+      const { loggedIn } = accountState;
+      const { user } = accountState;
+
+      if (loggedIn === false) history.push('/');
+      else {
+        this.setState({
+          user: user.email,
+        });
+      }
     });
   }
 
   componentWillUnmount() {
     // fix Warning: Can't perform a React state update on an unmounted component
-    this.setState = (state,callback)=>{
-        return;
+    this.setState = () => {
     };
-}
+  }
 
   onLogout() {
     const { handleLogout, history } = this.props;
@@ -130,7 +128,7 @@ class Dashboard extends React.Component {
           </Switch>
         </div>
         <div className="bottom-dashboard component-links">
-          <Link to="/dashboard/tasks" className="menu-item" data-testid="tasklist-link" >
+          <Link to="/dashboard/tasks" className="menu-item" data-testid="tasklist-link">
             <FontAwesomeIcon icon={faChartBar} size="1x" />
             <div>Tasks</div>
           </Link>
@@ -142,7 +140,7 @@ class Dashboard extends React.Component {
             <FontAwesomeIcon icon={faChartPie} size="1x" />
             <div>Progress</div>
           </Link>
-          <Link to="/dashboard/profile" className="menu-item" data-testid="profile-link" >
+          <Link to="/dashboard/profile" className="menu-item" data-testid="profile-link">
             <FontAwesomeIcon icon={faAddressCard} size="1x" />
             <div>Profile</div>
           </Link>

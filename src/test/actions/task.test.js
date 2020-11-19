@@ -1,7 +1,7 @@
 import {
-  getTasks, 
+  getTasks,
   getTasksSuccess,
-  getTasksFailure
+  getTasksFailure,
 } from '../../actions/task';
 import {
   GET_TASKS,
@@ -17,16 +17,16 @@ describe('task actions', () => {
 
   it('should return array of tasks', () => {
     const tasks = [
-      { "data": "task #1 data here" },
-      { "data": "task #2 data here" },
-      { "data": "task #3 data here" },
-      { "data": "task #4 data here" },
-      { "data": "task #5 data here" }
+      { data: 'task #1 data here' },
+      { data: 'task #2 data here' },
+      { data: 'task #3 data here' },
+      { data: 'task #4 data here' },
+      { data: 'task #5 data here' },
     ];
 
     const getTSuccessTest = {
       type: GET_TASKS_SUCCESS,
-      payload: tasks
+      payload: tasks,
     };
 
     expect(getTasksSuccess(tasks)).toEqual(getTSuccessTest);
@@ -34,8 +34,8 @@ describe('task actions', () => {
 
   it('should return an object with errors', () => {
     const errors = {
-      "tasks": 
-      ["Unable to load tasks. Something went wrong on server."]
+      tasks:
+      ['Unable to load tasks. Something went wrong on server.'],
     };
 
     const getTFailureTest = {

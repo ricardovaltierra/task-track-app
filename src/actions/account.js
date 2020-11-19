@@ -37,8 +37,6 @@ const deleteUserFailure = error => ({
   error,
 });
 
-
-
 export {
   signUser, signUserSuccess, signUserFailure, getStatus, deleteUserSuccess, deleteUserFailure,
 };
