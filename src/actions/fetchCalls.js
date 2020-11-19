@@ -7,8 +7,16 @@ import {
   deleteUserSuccess,
   deleteUserFailure,
 } from "./account";
-import { getTasks, getTasksSuccess, getTasksFailure } from "./task";
-import { getRecords, getTRecordsSuccess, getTRecordsFailure } from "./record";
+import { 
+  getTasks, 
+  getTasksSuccess, 
+  getTasksFailure 
+} from "./task";
+import { 
+  getRecords, 
+  getTRecordsSuccess, 
+  getTRecordsFailure 
+} from "./record";
 
 function fetchUser(
   action = "sign_in", 
@@ -42,6 +50,7 @@ function fetchUser(
             const formatErrors = JSON.stringify({
               login: [`${error.response.data.errors}`],
             });
+            console.log('formatErrors', formatErrors);
             dispatch(signUserFailure(formatErrors));
           });
       case "sign_out":
