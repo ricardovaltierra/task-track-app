@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { PropTypes } from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchTasks } from '../actions/task';
+import { fetchTasks } from '../actions/fetchCalls';
 import Task from '../components/Task';
 
 const TaskList = ({ handleFetchTasks, tasksState }) => {

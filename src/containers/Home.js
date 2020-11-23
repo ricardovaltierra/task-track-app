@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import Registration from './auth/Registration';
 import Login from './auth/Login';
-import { fetchUser } from '../actions/account';
+import { fetchUser } from '../actions/fetchCalls';
 
 class Home extends Component {
   constructor(props) {
@@ -73,7 +73,7 @@ class Home extends Component {
         </div>
         <div className="app-info">
           <div className="logo" />
-          <h1>Tasktracker</h1>
+          <h1 data-testid="home-title">Tasktracker</h1>
         </div>
         <div className={hidden ? 'form register' : 'form'}>
           <ul className="tab-group">

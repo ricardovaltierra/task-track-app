@@ -10,7 +10,7 @@ import {
   faAddressCard,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { fetchUser } from '../actions/account';
+import { fetchUser, fetchTasks } from '../actions/fetchCalls';
 import TaskList from './TaskList';
 import Profile from './Profile';
 import TaskRecords from './TaskRecords';
@@ -18,7 +18,6 @@ import RecordList from './RecordList';
 import Progress from './Progress';
 import NewTask from './NewTask';
 import NewRecord from './NewRecord';
-import { fetchTasks } from '../actions/task';
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -50,6 +49,12 @@ class Dashboard extends React.Component {
     });
   }
 
+  componentWillUnmount() {
+    // fix Warning: Can't perform a React state update on an unmounted component
+    this.setState = () => {
+    };
+  }
+
   onLogout() {
     const { handleLogout, history } = this.props;
     handleLogout(history);
@@ -72,7 +77,7 @@ class Dashboard extends React.Component {
     const { user } = this.state;
 
     return (
-      <div className="dashboard">
+      <div className="dashboard" data-testid="dashboard">
         <div className="top-dashboard">
           <div className="title">
             <div className="avatar" />
@@ -123,19 +128,19 @@ class Dashboard extends React.Component {
           </Switch>
         </div>
         <div className="bottom-dashboard component-links">
-          <Link to="/dashboard/tasks" className="menu-item">
+          <Link to="/dashboard/tasks" className="menu-item" data-testid="tasklist-link">
             <FontAwesomeIcon icon={faChartBar} size="1x" />
             <div>Tasks</div>
           </Link>
-          <Link to="/dashboard/records" className="menu-item">
+          <Link to="/dashboard/records" className="menu-item" data-testid="records-link">
             <FontAwesomeIcon icon={faAngleDoubleRight} size="1x" />
             <div>Records</div>
           </Link>
-          <Link to="/dashboard/progress" className="menu-item">
+          <Link to="/dashboard/progress" className="menu-item" data-testid="progress-link">
             <FontAwesomeIcon icon={faChartPie} size="1x" />
             <div>Progress</div>
           </Link>
-          <Link to="/dashboard/profile" className="menu-item">
+          <Link to="/dashboard/profile" className="menu-item" data-testid="profile-link">
             <FontAwesomeIcon icon={faAddressCard} size="1x" />
             <div>Profile</div>
           </Link>

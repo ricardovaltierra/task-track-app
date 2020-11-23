@@ -2,6 +2,7 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React from 'react';
 import date from 'date-and-time';
+import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 
 const Profile = ({ ...props }) => {
@@ -39,7 +40,7 @@ const Profile = ({ ...props }) => {
               <p>Delete account</p>
             </div>
             <div className="division">
-              <p onClick={onLogout}>Logout</p>
+              <p onClick={onLogout} data-testid="logout-button">Logout</p>
             </div>
           </div>
         </div>
@@ -55,5 +56,20 @@ const Profile = ({ ...props }) => {
 const mapStateToProps = state => ({
   appState: state,
 });
+
+Profile.propTypes = {
+  onLogout: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
+  appState: PropTypes.shape({
+    account: PropTypes.shape({
+      loading: PropTypes.bool,
+      errors: PropTypes.string,
+      user: PropTypes.shape({
+        email: PropTypes.string,
+        created_at: PropTypes.string,
+      }),
+    }),
+  }).isRequired,
+};
 
 export default connect(mapStateToProps, null)(Profile);

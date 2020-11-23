@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
-import { fetchUser } from '../../actions/account';
+import { fetchUser } from '../../actions/fetchCalls';
 
 class Registration extends Component {
   constructor(props) {
@@ -63,6 +63,7 @@ class Registration extends Component {
               value={password}
               onChange={this.handleChange}
               autoComplete="off"
+              data-testid="signup-password"
               required
             />
           </div>
@@ -74,6 +75,7 @@ class Registration extends Component {
               placeholder="Password Confirmation"
               value={passwordConfirmation}
               onChange={this.handleChange}
+              data-testid="signup-password-confirmation"
               autoComplete="off"
               required
             />

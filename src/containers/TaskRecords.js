@@ -1,9 +1,9 @@
 /* eslint-disable camelcase */
 import React, { useEffect } from 'react';
+import { PropTypes } from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchRecords } from '../actions/record';
-import { fetchTasks } from '../actions/task';
+import { fetchRecords, fetchTasks } from '../actions/fetchCalls';
 import Record from '../components/Record';
 
 const TaskRecords = ({ ...props }) => {
@@ -80,5 +80,27 @@ const mapDispatchToProps = dispatch => ({
   handleFetchTRecords: () => dispatch(fetchRecords('load')),
   handleFetchTasks: () => dispatch(fetchTasks()),
 });
+
+TaskRecords.propTypes = {
+  handleFetchTasks: PropTypes.func.isRequired,
+  handleFetchTRecords: PropTypes.func.isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      task_id: PropTypes.string,
+    }),
+  }).isRequired,
+  appState: PropTypes.shape({
+    tasks: PropTypes.shape({
+      loading: PropTypes.bool,
+      errors: PropTypes.string,
+      items: PropTypes.array, // eslint-disable-line react/forbid-prop-types
+    }),
+    records: PropTypes.shape({
+      loading: PropTypes.bool,
+      errors: PropTypes.string,
+      items: PropTypes.array, // eslint-disable-line react/forbid-prop-types
+    }),
+  }).isRequired,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(TaskRecords);

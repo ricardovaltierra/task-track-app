@@ -13,6 +13,7 @@ const Task = ({ task }) => {
       key={task.created_at}
       to={{ pathname: `/dashboard/tasks/${task.id}` }}
       className="task-item"
+      data-testid="task-item"
     >
       <p>{task.name}</p>
       <span style={comStyle}>{`${task.completion}%`}</span>

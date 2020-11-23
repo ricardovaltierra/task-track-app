@@ -2,8 +2,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
-import { fetchRecords } from '../actions/record';
-import { fetchTasks } from '../actions/task';
+import { fetchRecords, fetchTasks } from '../actions/fetchCalls';
 
 class NewRecord extends Component {
   constructor(props) {
@@ -82,6 +81,7 @@ class NewRecord extends Component {
               value={value}
               onChange={this.handleSelect}
               className="task-option"
+              data-testid="task-option"
             >
               {tasks.map(task => (
                 <option key={task[2]} value={task[0]}>
