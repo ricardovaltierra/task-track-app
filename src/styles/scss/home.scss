@@ -66,6 +66,7 @@
     background: rgba(55, 64, 68, 0.9);
     width: 90%;
     height: 80%;
+    max-height: 320px !important;
     font-family: 'Open Sans', sans-serif;
     border-radius: 4px;
     box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
@@ -90,10 +91,10 @@
 
         p {
           display: block;
-          padding: 0.1rem;
+          padding-top: 0.1rem;
           background: rgba(160, 179, 176, 0.25);
           color: #a0b3b0;
-          font-size: 1rem;
+          font-size: 0.9em;
           float: left;
           width: 50%;
           height: 25px;
@@ -173,7 +174,7 @@
   }
 
   .register {
-    height: 90%;
+    height: 95%;
     margin-top: -1rem;
   }
 }
