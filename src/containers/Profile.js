@@ -39,7 +39,7 @@ const Profile = ({ ...props }) => {
             <div role="button" tabIndex={0} onClick={() => onDelete(user)}>
               <p>Delete account</p>
             </div>
-            <div role="button" className="division" onClick={onLogout} tabIndex={0}>
+            <div role="button" onClick={onLogout} tabIndex={0}>
               <p data-testid="logout-button">Logout</p>
             </div>
           </div>

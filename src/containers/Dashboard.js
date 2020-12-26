@@ -80,11 +80,12 @@ class Dashboard extends React.Component {
       <div className="dashboard" data-testid="dashboard">
         <div className="top-dashboard">
           <div className="title">
-            <div className="avatar" />
-            <h2>
-              Account:
-              {user}
-            </h2>
+            <div className="logo-container" >
+              <div className="logo" />
+            </div>
+            <div className="account" >
+              <h2>{user}</h2>
+            </div>
           </div>
         </div>
         <div className="component-wrapper">

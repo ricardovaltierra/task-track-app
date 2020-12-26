@@ -298,18 +298,18 @@
     font-weight: 300;
     width: 100%;
     color: #8d9caa;
-    background-color: #fdfdfd;
-    border: 0; }
+    background-color: #ccc; }
     .user-profile .buttons div {
       position: relative;
       display: flex;
-      width: 100%;
+      width: 98.9%;
       height: 100%;
       align-items: center;
       justify-content: center;
+      background-color: #fdfdfd;
+      border-left: 1px solid #ccc;
+      border-right: 1px solid #ccc;
       margin: 0; }
-    .user-profile .buttons .division {
-      border-left: 1px solid #ccc; }
 
 .form-tr {
   position: relative;
@@ -406,23 +406,32 @@
     .dashboard .top-dashboard .title {
       position: relative;
       display: grid;
-      grid-template-columns: 40% auto;
-      justify-content: center;
+      grid-template-columns: 50% auto;
       font-family: 'Open Sans', sans-serif;
       text-align: center;
       background-color: #42b5e8; }
-      .dashboard .top-dashboard .title .avatar {
+      .dashboard .top-dashboard .title .logo-container {
         position: relative;
+        display: grid;
+        padding-left: 1.5rem;
         width: 100%;
-        height: 100%;
-        background: url("../assets/logo.png") no-repeat 15% 50% scroll;
-        background-size: 35px; }
-      .dashboard .top-dashboard .title h2 {
+        height: 100%; }
+        .dashboard .top-dashboard .title .logo-container .logo {
+          position: relative;
+          width: 35px;
+          background: url("../assets/logo.png") no-repeat 15% 50% scroll;
+          background-size: 35px; }
+      .dashboard .top-dashboard .title .account {
         position: relative;
-        align-self: center;
-        padding-right: 0.4rem;
-        font-size: 1rem;
-        color: wheat; }
+        display: grid;
+        padding-right: 1rem; }
+        .dashboard .top-dashboard .title .account h2 {
+          position: relative;
+          align-self: center;
+          justify-self: end;
+          padding-right: 0.4rem;
+          font-size: 1rem;
+          color: wheat; }
   .dashboard .component-wrapper {
     position: relative;
     display: flex;
