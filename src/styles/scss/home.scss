@@ -5,6 +5,7 @@
   grid-template-rows: 10% 35% 55%;
   justify-items: center;
   width: 100%;
+  height: 100%;
   background-color: #42b5e8;
 
   .error-container {
@@ -37,7 +38,7 @@
     grid-template-rows: 60% auto;
     justify-content: center;
     width: 100%;
-    height: 35vh;
+    height: 100%;
     padding: 0;
 
     .logo {
@@ -94,7 +95,7 @@
           font-size: 1rem;
           float: left;
           width: 50%;
-          height: 4vh;
+          height: 25px;
           text-align: center;
           cursor: pointer;
         }

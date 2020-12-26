@@ -6,6 +6,7 @@
   grid-template-rows: 10% 35% 55%;
   justify-items: center;
   width: 100%;
+  height: 100%;
   background-color: #42b5e8; }
   .home .error-container {
     position: relative;
@@ -33,7 +34,7 @@
     grid-template-rows: 60% auto;
     justify-content: center;
     width: 100%;
-    height: 35vh;
+    height: 100%;
     padding: 0; }
     .home .app-info .logo {
       position: relative;
@@ -81,7 +82,7 @@
           font-size: 1rem;
           float: left;
           width: 50%;
-          height: 4vh;
+          height: 25px;
           text-align: center;
           cursor: pointer; }
       .home .form .tab-group .active p {
@@ -233,9 +234,11 @@
       margin-top: 1.5rem; }
   .task-list .task-new {
     position: relative;
+    align-self: end;
     width: 100%;
     height: 9vh;
     z-index: 1;
+    margin-bottom: 18px;
     font-family: 'Open Sans', sans-serif;
     font-weight: 600;
     text-align: center;
@@ -603,8 +606,8 @@
   display: grid;
   width: 100%;
   height: 100vh;
-  max-height: 97vh;
-  overflow: hidden;
+  min-height: 640px;
+  overflow: auto;
   background-color: #dadbdd; }
 
 /*# sourceMappingURL=app.css.map */

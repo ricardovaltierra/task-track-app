@@ -93,9 +93,11 @@
       margin-top: 1.5rem; }
   .task-list .task-new {
     position: relative;
+    align-self: end;
     width: 100%;
     height: 9vh;
     z-index: 1;
+    margin-bottom: 18px;
     font-family: 'Open Sans', sans-serif;
     font-weight: 600;
     text-align: center;
