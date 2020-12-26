@@ -3,6 +3,7 @@
   position: relative;
   display: grid;
   grid-template-rows: 10% 35% 55%;
+  gap: 1rem;
   justify-items: center;
   width: 100%;
   height: 100%;
@@ -64,7 +65,7 @@
     grid-template-rows: 20% auto;
     background: rgba(55, 64, 68, 0.9);
     width: 90%;
-    height: 90%;
+    height: 80%;
     font-family: 'Open Sans', sans-serif;
     border-radius: 4px;
     box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
@@ -116,7 +117,7 @@
       color: #fff;
       font-size: 1.4rem;
       font-weight: 300;
-      margin: 1rem 0 1.5rem;
+      margin: 0.5rem 0 1.5rem;
     }
 
     .field-wrap {
@@ -172,7 +173,7 @@
   }
 
   .register {
-    height: 103%;
+    height: 90%;
     margin-top: -1rem;
   }
 }
