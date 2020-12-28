@@ -27,6 +27,7 @@ const TaskList = ({ handleFetchTasks, tasksState }) => {
     <div className="task-list">
       <h1>Tasks</h1>
       <div className="task-items">{renderTasks()}</div>
+      <div className="empty-fill" />
       <Link to="/dashboard/tasks/new" className="task-new">
         <p>New task</p>
       </Link>
