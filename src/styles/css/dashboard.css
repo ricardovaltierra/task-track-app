@@ -165,15 +165,15 @@
       align-self: center;
       font-size: 2.65vh; }
   .trecord-list .trecord-items {
-    position: relative;
+    position: absolute;
     width: 100%;
-    max-height: 100%;
+    top: 26%;
+    height: 60%;
     display: grid;
     grid-auto-flow: row;
     align-content: start;
     justify-items: center;
-    overflow: scroll;
-    background-color: #dadbdd; }
+    overflow: auto; }
     .trecord-list .trecord-items .record-item {
       position: relative;
       display: grid;
