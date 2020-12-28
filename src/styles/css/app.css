@@ -553,7 +553,7 @@
     position: absolute;
     display: grid;
     width: 100%;
-    min-width: 100%;
+    min-width: 76.8px;
     height: 12vh;
     top: 0; }
     .dashboard .top-dashboard .title {
