@@ -43,6 +43,27 @@
     }
   }
 
+  .record-new {
+    position: absolute;
+    display: grid;
+    align-self: end;
+    width: 100%;
+    height: 11.56%;
+    z-index: 1;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    color: #ecf6fc;
+    background-color: #1ab188;
+
+    p {
+      position: relative;
+      align-self: center;
+      font-size: 2.65vh;
+    }
+  }
+
   .trecord-items {
     position: relative;
     width: 100%;
@@ -86,19 +107,5 @@
         text-align: right;
       }
     }
-  }
-
-  .record-new {
-    position: relative;
-    align-self: end;
-    width: 100%;
-    height: 9vh;
-    z-index: 1;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 600;
-    text-align: center;
-    text-decoration: none;
-    color: #ecf6fc;
-    background-color: #1ab188;
   }
 }

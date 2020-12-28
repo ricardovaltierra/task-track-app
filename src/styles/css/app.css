@@ -291,6 +291,23 @@
       padding-top: 1rem;
       color: #304a65;
       background-color: #ebebeb; }
+  .trecord-list .record-new {
+    position: absolute;
+    display: grid;
+    align-self: end;
+    width: 100%;
+    height: 11.56%;
+    z-index: 1;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    color: #ecf6fc;
+    background-color: #1ab188; }
+    .trecord-list .record-new p {
+      position: relative;
+      align-self: center;
+      font-size: 2.65vh; }
   .trecord-list .trecord-items {
     position: relative;
     width: 100%;
@@ -328,18 +345,6 @@
         color: rgba(3, 3, 3, 0.651);
         background-color: white;
         text-align: right; }
-  .trecord-list .record-new {
-    position: relative;
-    align-self: end;
-    width: 100%;
-    height: 9vh;
-    z-index: 1;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 600;
-    text-align: center;
-    text-decoration: none;
-    color: #ecf6fc;
-    background-color: #1ab188; }
 
 .progress {
   position: relative;
