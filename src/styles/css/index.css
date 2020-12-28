@@ -165,13 +165,12 @@
     position: absolute;
     width: 100%;
     top: 6%;
-    height: 75%;
+    height: 80%;
     display: grid;
     grid-auto-flow: row;
     align-content: start;
     justify-items: center;
-    overflow: auto;
-    background-color: red; }
+    overflow: auto; }
     .task-list .task-items .task-item {
       position: relative;
       display: grid;
@@ -237,16 +236,12 @@
     .task-list .task-items .task-item:first-child,
     .task-list .task-items .record-task:first-child {
       margin-top: 1.5rem; }
-  .task-list .empty-fill {
-    position: relative;
-    display: flex;
-    background-color: orange;
-    height: 100%; }
   .task-list .task-new {
-    position: relative;
+    position: absolute;
+    display: grid;
     align-self: end;
     width: 100%;
-    height: 9vh;
+    height: 11.56%;
     z-index: 1;
     font-family: 'Open Sans', sans-serif;
     font-weight: 600;
@@ -254,6 +249,10 @@
     text-decoration: none;
     color: #ecf6fc;
     background-color: #1ab188; }
+    .task-list .task-new p {
+      position: relative;
+      align-self: center;
+      font-size: 2.5vh; }
 
 .trecord-list {
   position: relative;
