@@ -155,7 +155,13 @@ function fetchTasks(
         .then(() => {
           routerHistory.push('/dashboard/tasks');
         })
-        .catch(errors => dispatch(getTasksFailure(errors)));
+        .catch(error => {
+          console.log('save error', error.response.data.errors);
+          // const formatErrors = JSON.stringify({
+          //   login: [`${error.response.data.errors}`],
+          // });
+          // dispatch(getTasksFailure(formatErrors));
+        });
     }
 
     if (action === 'reset') {
@@ -211,7 +217,13 @@ function fetchRecords(
           if (!flag) routerHistory.push('/dashboard/tasks');
           else routerHistory.push('/dashboard/records');
         })
-        .catch(errors => dispatch(getTRecordsFailure(errors)));
+        .catch(error => {
+          console.log('save error', error.response.data.errors);
+          // const formatErrors = JSON.stringify({
+          //   login: [`${error.response.data.errors}`],
+          // });
+          // dispatch(getTRecordsFailure(formatErrors));
+        });
     }
 
     return '';

@@ -2,6 +2,8 @@ import {
   GET_TASKS,
   GET_TASKS_SUCCESS,
   GET_TASKS_FAILURE,
+  SAVE_TASK_SUCCESS,
+  SAVE_TASK_FAILURE
 } from '../helpers/actions';
 
 const initialState = {
@@ -21,6 +23,14 @@ const tasks = (state = initialState, action) => {
         errors: '',
       };
     case GET_TASKS_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        errors: action.errors,
+      };
+    case SAVE_TASK_SUCCESS:
+      return state;
+    case SAVE_TASK_FAILURE:
       return {
         ...state,
         loading: false,
