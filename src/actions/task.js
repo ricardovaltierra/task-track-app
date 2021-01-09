@@ -3,7 +3,7 @@ import {
   GET_TASKS_SUCCESS,
   GET_TASKS_FAILURE,
   SAVE_TASK_SUCCESS,
-  SAVE_TASK_FAILURE
+  SAVE_TASK_FAILURE,
 } from '../helpers/actions';
 
 const getTasks = () => ({ type: GET_TASKS });

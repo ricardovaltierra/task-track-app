@@ -120,6 +120,7 @@ const mapDispatchToProps = dispatch => ({
 NewTask.propTypes = {
   handleNewTask: PropTypes.func.isRequired,
   userId: PropTypes.number.isRequired,
+  errors: PropTypes.string.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func,
   }).isRequired,

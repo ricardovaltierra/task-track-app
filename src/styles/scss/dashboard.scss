@@ -21,7 +21,7 @@
     .title {
       position: relative;
       display: grid;
-      grid-template-columns: 50% auto;
+      grid-template-columns: 20% auto;
       font-family: 'Open Sans', sans-serif;
       text-align: center;
       background-color: #42b5e8;
@@ -44,14 +44,16 @@
       .account {
         position: relative;
         display: grid;
+        justify-content: end;
         padding-right: 1rem;
+        overflow: auto;
 
         h2 {
           position: relative;
           align-self: center;
           justify-self: end;
           padding-right: 0.4rem;
-          font-size: 1rem;
+          font-size: 0.8rem;
           color: wheat;
         }
       }

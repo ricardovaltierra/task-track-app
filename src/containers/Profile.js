@@ -29,7 +29,7 @@ const Profile = ({ ...props }) => {
         <div className="user-profile">
           <div className="picture-info">
             <div className="picture" />
-            <h1 className="username">{user.email}</h1>
+            <div className="username"><h1>{user.email}</h1></div>
             <h2 className="created_at">
               Created:
               {dateFormat}
