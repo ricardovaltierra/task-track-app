@@ -37,7 +37,7 @@
 
 ## About The Project
 
-Mobile task app designed to register your todos and keep a record of every improvement you have every day. Register and create tasks as you want to keep track of, later make new records of improvement over them. View your finished ones and reset if you want to begin again from zero.
+Mobile task app designed to register your todos and keep a record of every improvement you have daily. Register and create tasks as you want to keep track of, later make new records of improvement over them. View your finished ones and reset if you want to begin again from zero.
 
 ## Preview
 
